@@ -1,0 +1,43 @@
+{% if page and page.meta and page.meta.cover %}
+<div class="cover center-cropped">
+  <img itemprop="image" src="{{ 'assets/img/cover/' | url }}{{ page.meta.cover }}" alt="">
+</div>
+<h1>{{ page.title | d(config.site_name, true)}}</h1>
+{% endif %}
+
+<!-- Tags -->
+{% include "partials/tags.html" %}
+
+<!-- Actions -->
+{% include "partials/actions.html" %}
+
+{% if "\x3ch1" not in page.content and not page.meta.cover %}
+<h1>{{ page.title | d(config.site_name, true)}}</h1>
+{% endif %}
+
+<!-- Page content -->
+<div>
+  {{ page.content }}
+</div>
+
+<!-- Source file information -->
+{% include "partials/source-file.html" %}
+
+<!-- Was this page helpful? -->
+{% include "partials/feedback.html" %}
+
+{% set translation_notice = config.extra.privacy_guides.translation_notice %}
+{% if config.theme.language == "en" %}
+{% elif translation_notice %}
+<div class="admonition info">
+  <p>{{ translation_notice.notice }} <strong><a href="https://crowdin.com/project/privacyguides">{{
+        translation_notice.cta }}</a></strong></p>
+  <p>You're viewing the {{ translation_notice.language }} copy of Privacy Guides, translated by our fantastic language
+    team on <a href="https://crowdin.com/project/privacyguides">Crowdin</a>. If you notice an error, or see any
+    untranslated sections on this page, please consider <a href="https://matrix.to/#/#pg-i18n:aragon.sh">helping
+      out!</a></p>
+</div>
+{% endif %}
+
+<!-- Comment system -->
+{% include "partials/comments.html" %}

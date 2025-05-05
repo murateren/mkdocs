@@ -1,0 +1,344 @@
+site_name: Murat Eren - Blog
+site_url: https://sitename.example
+site_description: My MkDocs Material Documentation
+site_author: "Murat Eren <murate@gmail.com>"
+site_dir: "site"
+docs_dir: docs
+
+#edit_uri_template:
+#  !ENV [BUILD_EDIT_URI_TEMPLATE, "blob/main/docs/{path}?plain=1"]
+
+extra:
+  generator: false
+  context: "production"
+  offline: false
+  privacy_guides:
+    footer:
+      intro: "Footer Intro Text."
+      note: "Footer Note Text."
+      copyright:
+        author: "Murat Eren."
+        date: "2025"
+      license:
+        - fontawesome/brands/creative-commons
+        - fontawesome/brands/creative-commons-by
+        - fontawesome/brands/creative-commons-sa
+      links:
+        - name: "Privacy notice."
+          url: https://sitename.example/privacy/
+    homepage:
+      description: "Homepage Description Text."
+      hero:
+        header: "Hero Header Goes Here."
+        subheader: "Hero Subheader Goes Here."
+        buttons:
+          - name: "Knowledge Notes"
+            title: "The first step of your journey"
+            link: "basics/why-privacy-matters/"
+            class: md-button md-button--primary
+          - name: "Recommended Tools"
+            title: "Recommendations"
+            link: "tools/"
+            class: md-button
+      cta:
+        - title: "Connect:"
+          links:
+            - icon: simple/gmail
+              link: "mailto:murate@gmail.com?subject=Support%20Request&body=Hi%20team%2C%0A%0AI%20need%20help%20with..."
+              name: "Mail"
+            - icon: simple/x
+              link: https://x.com/erenm
+              name: "Twitter"
+            - icon: fontawesome/brands/linkedin
+              link: https://www.linkedin.com/in/murateren
+              name: "LinkedIn"
+          description: "Text."
+      rss:
+        - title: "Privacy Guides blog feed"
+          link: "https://www.privacyguides.org/articles/feed_rss_created.xml"
+        - title: "Latest Privacy Guides forum topics"
+          link: "https://discuss.privacyguides.net/latest.rss"
+        - title: "Privacy Guides release changelog"
+          link: "https://discuss.privacyguides.net/c/site-development/changelog/9.rss"
+    translation_notice:
+      notice: !ENV TRANSLATION_NOTICE
+      cta: "Visit Crowdin"
+      language: !ENV SITE_LANGUAGE_ENGLISH
+    translation_stylesheet: !ENV [TRANSLATION_STYLESHEET]
+  social:
+    - icon: simple/gmail
+      link: "mailto:murate@gmail.com?subject=Support%20Request&body=Hi%20team%2C%0A%0AI%20need%20help%20with..."
+      name: "Mail"
+    - icon: simple/x
+      link: https://x.com/erenm
+      name: "Twitter"
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/murateren
+      name: "LinkedIn"
+#  alternate:
+#    - name: English
+#      link: /en/
+#      lang: en
+#      icon: https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f1fa-1f1f8.svg
+#    - name: Turkish
+#      link: /tr/
+#      lang: tr
+#      icon: https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f1ea-1f1f8.svg
+
+theme:
+  name: material
+  language: "en"
+  custom_dir: theme
+  palette:
+    - media: "(prefers-color-scheme)"
+      scheme: default
+      accent: deep purple
+      toggle:
+        icon: material/brightness-auto
+        name: "Switch to dark mode"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      accent: amber
+      toggle:
+        icon: material/brightness-2
+        name: "Switch to light mode"
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      accent: deep purple
+      toggle:
+        icon: material/brightness-5
+        name: "Switch to system theme"
+  favicon: assets/brand/mylogo/BuWiFi.ico
+  icon:
+    repo: simple/github
+    edit: material/pencil
+    view: material/eye
+  features:
+    - announce.dismiss
+    - navigation.tracking
+    - navigation.tabs # Static upper section tabs (exist)
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes # Implied section 'index.md' files
+    - content.action.edit
+    - content.tabs.link
+    - content.tooltips
+    - search.highlight # Highlight all occurrences of queried string
+    - toc.follow
+    - navigation.prune
+    - navigation.tabs.sticky # Static upper section tabs (stay)
+    - navigation.footer # Add 'previous' and 'next' buttons in the footer
+    - navigation.instant # Keep navigation from reloading
+    - navigation.instant.progress # Display page loading progress-bar ( > 400ms)
+    - navigation.instant.preview
+    - navigation.top
+    - search.share # Search Query can be copied to Clipboard
+    - search.suggest # Display likeliest completion for the last queried word
+    - content.icon.fontawesome
+    - content.action.view
+    - content.code.copy
+    - header.autohide
+
+extra_css:
+  - assets/stylesheets/extra.css?v=20250306
+extra_javascript:
+  - path: assets/javascripts/randomize-element.js?v=20250306
+    defer: true
+  - path: assets/javascripts/feedback.js?v=20250306
+    defer: true
+
+watch:
+  - theme
+  - includes
+
+plugins:
+  - meta
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      post_url_format: "{date}/{file}"
+      post_excerpt: required
+      pagination_per_page: 5
+  - blog:
+      blog_dir: videos
+      blog_toc: true
+      post_url_format: "{date}/{file}"
+      post_excerpt: optional
+      pagination_per_page: 5
+  - tags:
+      enabled: true
+  - rss:
+      match_path: posts/.*
+      abstract_chars_count: -1
+      date_from_meta:
+        as_creation: date.created
+        as_update: date.updated
+      categories:
+        - categories
+        - tags
+      use_git: false
+  - glightbox: {}
+  - search: {}
+  - privacy:
+      enabled: true
+  - offline:
+      enabled: false
+
+markdown_extensions:
+  admonition: {}
+  pymdownx.details: {}
+  pymdownx.superfences:
+    custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
+  pymdownx.tabbed:
+    alternate_style: true
+  pymdownx.arithmatex:
+    generic: true
+  pymdownx.critic: {}
+  pymdownx.caret: {}
+  pymdownx.keys: {}
+  pymdownx.mark: {}
+  pymdownx.tilde: {}
+  pymdownx.snippets:
+    auto_append:
+      - "includes/abbreviations.en.txt"
+  pymdownx.tasklist:
+    custom_checkbox: true
+  attr_list: {}
+  def_list: {}
+  md_in_html: {}
+  abbr: {}
+  pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  tables: {}
+  footnotes: {}
+  toc:
+    toc_depth: 4
+
+nav:
+  - "Home": "index.md"
+  - "Knowledge Base":
+      - "basics/why-privacy-matters.md"
+      - "basics/threat-modeling.md"
+      - "basics/common-threats.md"
+      - "basics/common-misconceptions.md"
+      - "basics/account-creation.md"
+      - "basics/account-deletion.md"
+      - "Technology Essentials":
+          - "basics/passwords-overview.md"
+          - "basics/multi-factor-authentication.md"
+          - "basics/hardware.md"
+          - "basics/email-security.md"
+          - "basics/vpn-overview.md"
+      - "Advanced Topics":
+          - "advanced/dns-overview.md"
+          - "advanced/tor-overview.md"
+          - "advanced/payments.md"
+          - "advanced/communication-network-types.md"
+      - "Operating Systems":
+          - "os/index.md"
+          - "os/android-overview.md"
+          - "os/ios-overview.md"
+          - "os/linux-overview.md"
+          - "os/macos-overview.md"
+          - "os/qubes-overview.md"
+          - "Windows":
+              - "os/windows/index.md"
+              - "os/windows/group-policies.md"
+  - "Recommendations":
+      - "tools.md"
+      - "Internet Browsing":
+          - "tor.md"
+          - "desktop-browsers.md"
+          - "mobile-browsers.md"
+          - "browser-extensions.md"
+      - "Providers":
+          - "cloud.md"
+          - "data-broker-removals.md"
+          - "dns.md"
+          - "email-aliasing.md"
+          - "email.md"
+          - "financial-services.md"
+          - "photo-management.md"
+          - "search-engines.md"
+          - "vpn.md"
+      - "Software":
+          - "ai-chat.md"
+          - "calendar.md"
+          - "cryptocurrency.md"
+          - "data-redaction.md"
+          - "document-collaboration.md"
+          - "email-clients.md"
+          - "encryption.md"
+          - "file-sharing.md"
+          - "frontends.md"
+          - "health-and-wellness.md"
+          - "language-tools.md"
+          - "maps.md"
+          - "multi-factor-authentication.md"
+          - "news-aggregators.md"
+          - "notebooks.md"
+          - "office-suites.md"
+          - "passwords.md"
+          - "pastebins.md"
+          - "real-time-communication.md"
+          - "social-networks.md"
+      - "Hardware":
+          - "mobile-phones.md"
+          - "security-keys.md"
+      - "Operating Systems":
+          - "Android":
+              - "android/index.md"
+              - "android/distributions.md"
+              - "android/general-apps.md"
+              - "android/obtaining-apps.md"
+          - "desktop.md"
+          - "router.md"
+      - "Advanced":
+          - "alternative-networks.md"
+          - "device-integrity.md"
+  - "Blog":
+      - "All Posts": blog/index.md
+      - "Editorial Policy": blog/editorial.md
+      - "Tags": tags.md
+  - "Videos":
+      - "All Posts": videos/index.md
+      - "Editorial Policy": videos/editorial.md
+      - "Tags": tags.md
+  - "About":
+      - "about.md"
+      - "about/donate.md"
+      - "Team Members": https://discuss.privacyguides.net/u?group=team&order=solutions&period=all
+      - "Policies":
+          - "about/criteria.md"
+          - "about/donation-acceptance-policy.md"
+          - "about/executive-policy.md"
+          - "privacy.md"
+          - "about/notices.md"
+      - "Community":
+          - "about/jobs.md"
+          - "about/contributors.md"
+          - "Online Services": "about/services.md"
+          - "Code of Conduct": "CODE_OF_CONDUCT.md"
+          - "about/statistics.md"
+      - "Contributing":
+          - "Writing Guide":
+              - "meta/writing-style.md"
+              - "meta/admonitions.md"
+              - "meta/brand.md"
+              - "meta/translations.md"
+          - "Technical Guides":
+              - "meta/uploading-images.md"
+              - "meta/git-recommendations.md"
+              - "meta/commit-messages.md"
+              - "meta/pr-comments.md"
+
+validation:
+  nav:
+    not_found: info
+    omitted_files: ignore
+    absolute_links: ignore

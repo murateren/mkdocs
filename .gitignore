@@ -1,0 +1,28 @@
+site
+/includes/*.*.*
+!/includes/*.en.*
+/theme/overrides/*.*.*
+
+.cache/*
+!.cache/plugin
+/.cache/plugin/*
+!.cache/plugin/social
+/.cache/plugin/social/*
+!.cache/plugin/social/fonts
+
+node_modules
+
+includes/members.md
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mkdocs documentation
+/site
+

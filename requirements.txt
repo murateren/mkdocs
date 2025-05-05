@@ -1,0 +1,32 @@
+# Requirements for core
+jinja2
+markdown
+mkdocs
+mkdocs-material
+mkdocs-material-extensions
+pygments
+pymdown-extensions
+
+# Requirements for plugins
+babel
+colorama
+paginate
+regex>=2022.4
+requests
+
+# Additional Material and MkDocs plugins
+mkdocs-glightbox
+mkdocs-get-deps
+mkdocs-minify-plugin
+mkdocs-git-committers-plugin-2
+mkdocs-git-revision-date-localized-plugin
+mkdocs-rss-plugin
+
+mkdocs-blog-plugin
+
+mkdocs-macros-plugin
+#mkdocs-optimize-plugin
+#mkdocs-typeset-plugin
+Pillow
+cairosvg
+

@@ -1,0 +1,6 @@
+template: blog-post.html
+comments: false
+social:
+  cards_layout: blog
+authors:
+  - murat

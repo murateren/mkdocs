@@ -22,7 +22,7 @@ mkdocs-git-committers-plugin-2
 mkdocs-git-revision-date-localized-plugin
 mkdocs-rss-plugin
 
-mkdocs-blog-plugin
+#mkdocs-blog-plugin
 
 mkdocs-macros-plugin
 #mkdocs-optimize-plugin

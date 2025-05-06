@@ -1,6 +1,6 @@
-site_name: Murat Eren - Blog
-site_url: https://sitename.example
-site_description: My MkDocs Material Documentation
+site_name: Murat Eren - Notes
+site_url: https://murateren.github.io/mkdocs/
+site_description: My Notes
 site_author: "Murat Eren <murate@gmail.com>"
 site_dir: "site"
 docs_dir: docs

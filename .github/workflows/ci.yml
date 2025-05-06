@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material
+          pip install mkdocs-material mkdocs-rss-plugin
 
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force

@@ -3,6 +3,7 @@ title: EasyOptOuts Review & Real-World Test
 description: "People-search sites represent an immense privacy risk to the majority of Americans. EasyOptOuts is a low-cost online service which automates opt-out requests on your behalf."
 date:
     created: 2025-02-03T16:20:00Z
+    updated: 2025-03-27T20:00:00Z
 categories:
     - Reviews
 authors:

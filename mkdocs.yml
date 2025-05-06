@@ -1,8 +1,8 @@
 site_name: Murat Eren - Notes
 site_url: https://murateren.github.io/mkdocs/
 site_description: My Notes
-site_author: "Murat Eren <murate@gmail.com>"
-site_dir: "site"
+site_author: "Murat Eren (murate@gmail.com)"
+site_dir: site
 docs_dir: docs
 
 #edit_uri_template:
@@ -25,7 +25,7 @@ extra:
         - fontawesome/brands/creative-commons-sa
       links:
         - name: "Privacy notice."
-          url: https://sitename.example/privacy/
+          url: https://murateren.github.io/mkdocs/privacy/
     homepage:
       description: "Homepage Description Text."
       hero:
@@ -108,7 +108,8 @@ theme:
       toggle:
         icon: material/brightness-5
         name: "Switch to system theme"
-  favicon: assets/brand/mylogo/BuWiFi.ico
+  logo: assets/img/logo/BuWiFi-black-logo.svg
+  favicon: assets/img/logo/BuWiFi.ico
   icon:
     repo: simple/github
     edit: material/pencil
@@ -169,6 +170,7 @@ plugins:
   - tags:
       enabled: true
   - rss:
+      image: https://murateren.github.io/mkdocs/assets/img/logo/BuWiFi-black-logo.svg
       match_path: blog/posts/.*
       abstract_chars_count: -1
       date_from_meta:

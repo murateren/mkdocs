@@ -2,6 +2,7 @@
 template: blog-post.html
 date:
     created: 2021-12-01T19:00:00Z
+    updated: 2021-12-27T20:00:00Z
 categories:
     - Reviews
 authors:

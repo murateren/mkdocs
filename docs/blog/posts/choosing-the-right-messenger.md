@@ -2,6 +2,7 @@
 template: blog-post.html
 date:
     created: 2019-11-27T19:00:00Z
+    updated: 2019-12-27T20:00:00Z
 categories:
     - Opinion
 authors:

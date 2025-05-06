@@ -79,7 +79,7 @@ authors:
   murat:
     name: Murat Eren
     description: Founder
-    avatar: ../assets/img/avatar/murat-profile-pic.jpg
+    avatar: assets/img/avatar/murat-profile-pic.jpg
     mastodon:
       username: username
       instance: instance

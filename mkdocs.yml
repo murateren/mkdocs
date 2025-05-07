@@ -1,4 +1,4 @@
-site_name: Murat Eren - Notes
+site_name: My Notes
 site_url: https://murateren.github.io/mkdocs/
 site_description: My Notes
 site_author: "Murat Eren (murate@gmail.com)"
@@ -148,6 +148,9 @@ extra_javascript:
     defer: true
   - path: assets/javascripts/feedback.js?v=20250306
     defer: true
+
+hooks:
+  - hooks/socialmedia.py
 
 watch:
   - theme

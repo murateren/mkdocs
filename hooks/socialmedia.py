@@ -2,35 +2,37 @@ from textwrap import dedent
 import urllib.parse
 import re
 
+# Share URL templates
 x_intent = "https://x.com/intent/tweet?text={text}&url={url}&hashtags={hashtags}&via={via}"
-li_sharer = (
-    "https://www.linkedin.com/shareArticle?mini=true"
-    "&url={url}"
-    "&title={title}"
-    "&summary={summary}"
-)
+li_share = "https://www.linkedin.com/shareArticle?mini=true&url={url}&title={title}&summary={summary}"
 
-include = re.compile(r"blog/[1-9].*")
+# Match only certain pages, e.g., blog entries
+include = re.compile(r"blog/.*")
 
 def on_page_markdown(markdown, **kwargs):
-    page = kwargs['page']
-    config = kwargs['config']
+    page = kwargs["page"]
+    config = kwargs["config"]
+
     if not include.match(page.url):
         return markdown
 
+    # Encode components
     page_url = config.site_url + page.url
-    page_title = urllib.parse.quote(page.title + '\n')  # Page title
-    summary = urllib.parse.quote(page.summary if hasattr(page, 'summary') else page.title)  # Summary (use title if no summary available)
-    hashtags = urllib.parse.quote("privacy,protocol")  # Example hashtags
-    via = "YourXHandle"  # Your X/Twitter handle
+    encoded_url = urllib.parse.quote(page_url)
+    title = urllib.parse.quote(page.title)
+    summary = title
+    hashtags = urllib.parse.quote("privacy,security")
+    via = "YourXHandle"
 
-    # Format share URL for X (Twitter)
-    share_url = x_intent.format(text=page_title, url=page_url, hashtags=hashtags, via=via)
+    # Final share URLs
+    x_url = x_intent.format(text=title, url=encoded_url, hashtags=hashtags, via=via)
+    li_url = li_share.format(url=encoded_url, title=title, summary=summary)
 
-    # Format share URL for LinkedIn
-    linkedin_url = li_sharer.format(url=page_url, title=page_title, summary=summary)
-
+    # Append share buttons
     return markdown + dedent(f"""
-    [Share on :simple-x:]({share_url}){{ .md-button }}
-    [Share on :material-linkedin:]({linkedin_url}){{ .md-button }}
+    ---
+    **Share this page:**
+
+    [Share on :simple-x:]({x_url}){{ .md-button }}
+    [Share on :material-linkedin:]({li_url}){{ .md-button }}
     """)

@@ -1,5 +1,5 @@
 site_name: My Notes
-site_url: https://murateren.github.io/mkdocs/
+site_url: https://murateren.github.io/mynotes/
 site_description: My Notes
 site_author: "Murat Eren (murate@gmail.com)"
 site_dir: site
@@ -25,7 +25,7 @@ extra:
         - fontawesome/brands/creative-commons-sa
       links:
         - name: "Privacy notice."
-          url: https://murateren.github.io/mkdocs/privacy/
+          url: https://murateren.github.io/mynotes/privacy/
     homepage:
       description: "Homepage Description Text."
       hero:
@@ -158,6 +158,7 @@ watch:
 
 plugins:
   - meta
+  - social
   - blog:
       blog_dir: blog
       blog_toc: true
@@ -173,7 +174,7 @@ plugins:
   - tags:
       enabled: true
   - rss:
-      image: https://murateren.github.io/mkdocs/assets/img/logo/BuWiFi-black-logo.svg
+      image: https://murateren.github.io/mynotes/assets/img/logo/BuWiFi-black-logo.svg
       match_path: blog/posts/.*
       abstract_chars_count: -1
       date_from_meta:

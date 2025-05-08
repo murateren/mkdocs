@@ -22,7 +22,7 @@ def on_page_markdown(markdown, **kwargs):
     title = urllib.parse.quote(page.title)
     summary = title
     hashtags = urllib.parse.quote("privacy,security")
-    via = "YourXHandle"
+    via = "erenm"
 
     # Final share URLs
     x_url = x_intent.format(text=title, url=encoded_url, hashtags=hashtags, via=via)

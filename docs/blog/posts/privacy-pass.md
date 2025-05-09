@@ -6,8 +6,12 @@ categories:
     - Explainers
 authors:
     - fria
+ 
 tags:
-    - Privacy Pass
+  - "privacy rights"
+  - "data protection"
+  - "security"
+
 license: BY-SA
 schema_type: BackgroundNewsArticle
 description: |

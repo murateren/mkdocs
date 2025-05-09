@@ -31,7 +31,6 @@ def on_page_markdown(markdown, **kwargs):
     return markdown + dedent(f"""
     ---
     **Share this page:**  
-
-    [Share on :simple-x:]({x_url}){{ .md-button }}  
+    [Share on :simple-x:]({x_url}){{ .md-button }}
     [Share on :material-linkedin:]({li_url}){{ .md-button }}
     """)

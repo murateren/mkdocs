@@ -3,7 +3,7 @@ template: blog-post.html
 title: "Privacy Pass Explained Privacy Pass: The New Protocol for Private Authentication"
 description: |
   Privacy Pass is a new way to privately authenticate with a service. Let's look at how it could change the way we use services.
-image: ../assets/images/privacy-pass/cover.webp
+image: assets/images/privacy-pass/cover.webp
 date:
     created: 2025-04-21T17:30:00Z
 categories:

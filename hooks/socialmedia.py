@@ -6,7 +6,7 @@ import re
 x_intent = "https://x.com/intent/tweet?text={text}&url={url}&hashtags={hashtags}&via={via}"
 li_share = "https://www.linkedin.com/shareArticle?mini=true&url={url}&title={title}&summary={summary}"
 
-include = re.compile(r"blog/.*")
+include = re.compile(r"blog/.+/.+")
 
 def on_page_markdown(markdown, **kwargs):
     page = kwargs["page"]
@@ -31,6 +31,6 @@ def on_page_markdown(markdown, **kwargs):
     return markdown + dedent(f"""
     ---
     **Share this page:**  
-    [Share on :simple-x:]({x_url}){{ .md-button }}
+    [Share on :simple-x:]({x_url}){{ .md-button style="margin-right: 1em;" }}
     [Share on :material-linkedin:]({li_url}){{ .md-button }}
     """)

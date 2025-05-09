@@ -1,79 +1,39 @@
 {% extends "base.html" %}
 
-<!-- Template used: main.html -->
-
 {% block site_meta %}
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-{% if page.meta and page.meta.description %}
-<meta name="description" content="{{ page.meta.description }}">
-{% endif %}
-{% if page.meta and page.meta.author %}
-<meta name="author" content="{{ page.meta.author }}">
-{% elif page.authors %}
-<meta name="author" content="{{ page.authors[0].name }}">
-{% elif config.site_author %}
-<meta name="author" content="{{ config.site_author }}">
-{% endif %}
-{% if page.canonical_url %}
-<link rel="canonical" href="{{ page.canonical_url }}">
-{% endif %}
-{% if page.previous_page %}
-<link rel="prev" href="{{ page.previous_page.url | url }}">
-{% endif %}
-{% if page.next_page %}
-<link rel="next" href="{{ page.next_page.url | url }}">
-{% endif %}
-{% if config.extra.alternate is iterable %}
-<link rel="alternate" href="{{ " https://www.privacyguides.org/" ~ "en" ~ "/" ~ page.url }}" hreflang="x-default">
-{% for alt in config.extra.alternate %}
-<link rel="alternate" href="{{ " https://www.privacyguides.org/" ~ alt.lang ~ "/" ~ page.url }}"
-  hreflang="{{ alt.lang | d(lang.t('language')) }}">
-{% endfor %}
-{% endif %}
-{% if "rss" in config.plugins %}
-<link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.created') }}"
-  href="{{ 'feed_rss_created.xml' | url }}">
-<link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}"
-  href="{{ 'feed_rss_updated.xml' | url }}">
-{% endif %}
-<link rel="icon" href="{{ config.theme.favicon | url }}">
-<meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.1.0+insiders-4.32.2">
-{% if page %}
-<meta name="global-data" id="global-data" {% for data in page.meta.global %}data-{{ data.0 }}="{{data.1}}" {% endfor %}>
-{% endif %}
+  {% include "partials/meta.html" %}
 {% endblock %}
+
 {% block htmltitle %}
-{% if page.meta and page.meta.meta_title and config.theme.language == "en" %}
-<title>{{ page.meta.meta_title }}</title>
-{% elif page.meta and page.meta.title %}
-<title>{{ page.meta.title }} - {{ config.site_name }}</title>
-{% elif page.title and not page.is_homepage %}
-<title>{{ page.title | striptags }} - {{ config.site_name }}</title>
-{% else %}
-<title>{{ config.site_name }}</title>
-{% endif %}
+  {% if page.meta and page.meta.meta_title and config.theme.language == "en" %}
+    <title>{{ page.meta.meta_title }}</title>
+  {% elif page.meta and page.meta.title %}
+    <title>{{ page.meta.title }} - {{ config.site_name }}</title>
+  {% elif page.title and not page.is_homepage %}
+    <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
+  {% else %}
+    <title>{{ config.site_name }}</title>
+  {% endif %}
 {% endblock %}
 
 {% block extrahead %}
-<!-- language-specific stylesheets -->
-{% if config.extra.privacy_guides.translation_stylesheet %}
-<link rel="stylesheet" href="{{ config.extra.privacy_guides.translation_stylesheet | url }}" />
-{% endif %}
+  {% if config.extra.privacy_guides.translation_stylesheet %}
+    <link rel="stylesheet" href="{{ config.extra.privacy_guides.translation_stylesheet | url }}" />
+  {% endif %}
 
-{% if page and page.meta and page.meta.robots %}
-<meta name="robots" content="{{ page.meta.robots }}">
-{% else %}
-<meta name="robots" content="max-snippet:-1, max-image-preview:large">
-{% endif %}
+  {% if page and page.meta and page.meta.robots %}
+    <meta name="robots" content="{{ page.meta.robots }}">
+  {% else %}
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large">
+  {% endif %}
 
-{% if config.extra.context == "production" %}
-<meta http-equiv="onion-location" content="{{ page.canonical_url | replace("
-  https://www.privacyguides.org", "http://www.xoe4vn5uwdztif6goazfbmogh6wh5jc4up35bqdflu6bkdc5cas5vjqd.onion" ) }}" />
-{% endif %}
-{% if page and page.meta and page.meta.schema %}
-<script type="application/ld+json">
-  {{ page.meta.schema|tojson }}
-  </script>
-{% endif %}
+  {% if config.extra.context == "production" and page.canonical_url %}
+    <meta http-equiv="onion-location" content="{{ page.canonical_url | replace("https://www.privacyguides.org", "http://www.xoe4vn5uwdztif6goazfbmogh6wh5jc4up35bqdflu6bkdc5cas5vjqd.onion") }}">
+  {% endif %}
+
+  {% if page and page.meta and page.meta.schema %}
+    <script type="application/ld+json">
+      {{ page.meta.schema | tojson }}
+    </script>
+  {% endif %}
 {% endblock %}

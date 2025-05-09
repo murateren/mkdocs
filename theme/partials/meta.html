@@ -1,12 +1,105 @@
-{% if page and page.meta %}
-  <meta property="og:title" content="{{ page.title | escape }}">
-  <meta property="og:description" content="{{ page.meta.description | default(page.title) | escape }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+{# Page description #}
+{% if page.meta and page.meta.description %}
+    <meta name="description" content="{{ page.meta.description | default(page.title) }}">
+{% endif %}
+
+{# Page author #}
+{% if page.meta and page.meta.author %}
+  <meta name="author" content="{{ page.meta.author }}">
+{% elif page.authors %}
+  <meta name="author" content="{{ page.authors[0].name }}">
+{% elif config.site_author %}
+  <meta name="author" content="{{ config.site_author }}">
+{% endif %}
+
+{# Canonical, prev, next links #}
+{% if page.canonical_url %}
+  <link rel="canonical" href="{{ page.canonical_url }}">
+{% endif %}
+{% if page.previous_page %}
+  <link rel="prev" href="{{ page.previous_page.url | url }}">
+{% endif %}
+{% if page.next_page %}
+  <link rel="next" href="{{ page.next_page.url | url }}">
+{% endif %}
+
+{# Language alternates #}
+{% if config.extra.alternate is iterable %}
+  <link rel="alternate" href="https://www.privacyguides.org/en/{{ page.url }}" hreflang="x-default">
+  {% for alt in config.extra.alternate %}
+    <link rel="alternate" href="https://www.privacyguides.org/{{ alt.lang }}/{{ page.url }}" hreflang="{{ alt.lang | d(lang.t('language')) }}">
+  {% endfor %}
+{% endif %}
+
+{# RSS feeds #}
+{% if "rss" in config.plugins %}
+  <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.created') }}" href="{{ 'feed_rss_created.xml' | url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}" href="{{ 'feed_rss_updated.xml' | url }}">
+{% endif %}
+
+{# Favicon #}
+<link rel="icon" href="{{ config.theme.favicon | url }}">
+
+{# Generator info #}
+<meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material">
+
+{# Open Graph metadata #}
+{% if page %}
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.meta.description | default(page.title) }}">
   <meta property="og:url" content="{{ config.site_url }}{{ page.url }}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{{ config.site_url }}assets/images/privacy-pass/cover.webp">
 
-  <meta name="twitter:title" content="{{ page.title | escape }}">
-  <meta name="twitter:description" content="{{ page.meta.description | default(page.title) | escape }}">
-  <meta name="twitter:image" content="{{ config.site_url }}assets/images/privacy-pass/cover.webp">
+
+  {% if page.meta.image %}
+    <meta property="og:image" content="{{ config.site_url.rstrip('/') }}{{ page.meta.image }}">
+  {% else %}
+    <meta property="og:image" content="{{ config.site_url.rstrip('/') }}/assets/images/privacy-pass/cover.webp">
+  {% endif %}
+
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:locale" content="{{ config.theme.language | default('en_US') }}">
+
+
+{% endif %}
+
+{# Twitter Card metadata #}
+{% if page %}
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.meta.description | default(page.title) }}">
+
+
+  {% if page.meta.image %}
+    <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}{{ page.meta.image }}">
+  {% else %}
+    <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}/assets/images/privacy-pass/cover.webp">
+  {% endif %}
+
+
+
+  <meta name="twitter:site" content="@erenm"> {# Replace accordingly #}
+
+{% endif %}
+
+{# Robots #}
+{% if page and page.meta and page.meta.robots %}
+  <meta name="robots" content="{{ page.meta.robots }}">
+{% else %}
+  <meta name="robots" content="max-snippet:-1, max-image-preview:large">
+{% endif %}
+
+{# Onion mirror (only in production) #}
+{% if config.extra.context == "production" and page.canonical_url %}
+  <meta http-equiv="onion-location" content="{{ page.canonical_url | replace('https://www.privacyguides.org', 'http://www.xoe4vn5uwdztif6goazfbmogh6wh5jc4up35bqdflu6bkdc5cas5vjqd.onion') }}">
+{% endif %}
+
+{# JSON-LD Schema #}
+{% if page and page.meta and page.meta.schema %}
+  <script type="application/ld+json">
+    {{ page.meta.schema | tojson }}
+  </script>
 {% endif %}

@@ -9,6 +9,7 @@ docs_dir: docs
 #  !ENV [BUILD_EDIT_URI_TEMPLATE, "blob/main/docs/{path}?plain=1"]
 
 extra:
+  x_via: erenm
   generator: false
   context: "production"
   offline: false

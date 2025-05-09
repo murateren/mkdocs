@@ -23,10 +23,18 @@ def on_page_markdown(markdown, **kwargs):
     tags = page.meta.get('tags', [])
     hashtags = urllib.parse.quote(",".join([tag.replace(" ", "") for tag in tags]))  # Remove spaces for hashtags
 
-    via = "erenm"
+    x_url = x_intent.format(
+        text=title,
+        url=encoded_url,
+        hashtags=hashtags,
+        via=config.extra.get("x_via", "erenm")  # fallback in case it's missing
+    )
 
-    x_url = x_intent.format(text=title, url=encoded_url, hashtags=hashtags, via=via)
-    li_url = li_share.format(url=encoded_url, title=title, summary=summary)
+    li_url = li_share.format(
+        url=encoded_url,
+        title=title,
+        summary=summary
+    )
 
     return markdown + dedent(f"""
     ---

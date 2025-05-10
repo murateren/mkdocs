@@ -65,17 +65,21 @@
 
 {% endif %}
 
+
+
+
 {# Twitter Card metadata #}
 {% if page %}
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:description" content="{{ page.meta.description | default(page.title) }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.meta.description | default(page.title) }}">
 
 
-  {% if page.meta.image %}
+{% if page.meta.image %}
     <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}{{ page.meta.image }}">
+    <meta name="twitter:image:alt" content="Illustration of Privacy Pass protocol concept">
   {% else %}
-    <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}/assets/images/privacy-pass/cover.webp">
+    <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}/assets/images/privacy-pass/cover.jpg">
   {% endif %}
 
 

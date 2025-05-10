@@ -1,4 +1,4 @@
-# Requirements for core
+# Core requirements
 jinja2
 markdown
 mkdocs
@@ -7,26 +7,31 @@ mkdocs-material-extensions
 pygments
 pymdown-extensions
 
-# Requirements for plugins
+# General dependencies
 babel
 colorama
 paginate
 regex>=2022.4
 requests
 
-# Additional Material and MkDocs plugins
+# MkDocs plugins
 mkdocs-glightbox
 mkdocs-get-deps
 mkdocs-minify-plugin
 mkdocs-git-committers-plugin-2
 mkdocs-git-revision-date-localized-plugin
 mkdocs-rss-plugin
-
-#mkdocs-blog-plugin
-
 mkdocs-macros-plugin
-#mkdocs-optimize-plugin
-#mkdocs-typeset-plugin
+
+# Optional/experimental plugins (uncomment if used)
+# mkdocs-blog-plugin
+# mkdocs-optimize-plugin
+# mkdocs-typeset-plugin
+
+# Image processing support for social plugin
 Pillow
 cairosvg
+urllib3
 
+# Enable image support in mkdocs-material (via extras syntax)
+mkdocs-material[imaging]

@@ -89,7 +89,6 @@ extra:
 theme:
   name: material
   language: "en"
-  font: false
   custom_dir: theme
   palette:
     - media: "(prefers-color-scheme)"
@@ -110,6 +109,8 @@ theme:
       toggle:
         icon: material/brightness-5
         name: "Switch to system theme"
+  #logo:    assets/brand/mylogo/BuWiFi-black-logo.svg
+  #favicon: assets/brand/mylogo/BuWiFi.ico
   logo: assets/img/logo/BuWiFi-black-logo.svg
   favicon: assets/img/logo/BuWiFi.ico
   icon:
@@ -160,6 +161,13 @@ watch:
 
 plugins:
   - meta
+  - search
+  - social:
+      cards: true
+      cards_layout_options:
+        font_family: Roboto
+        background_color: "#252529"
+        color: "#e1e1e6"
   - blog:
       blog_dir: blog
       blog_toc: true
@@ -186,7 +194,6 @@ plugins:
         - tags
       use_git: false
   - glightbox: {}
-  - search: {}
 
 markdown_extensions:
   admonition: {}

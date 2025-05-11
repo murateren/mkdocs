@@ -61,11 +61,6 @@ extra:
           link: "https://discuss.privacyguides.net/latest.rss"
         - title: "Privacy Guides release changelog"
           link: "https://discuss.privacyguides.net/c/site-development/changelog/9.rss"
-    translation_notice:
-      notice: !ENV TRANSLATION_NOTICE
-      cta: "Visit Crowdin"
-      language: !ENV SITE_LANGUAGE_ENGLISH
-    translation_stylesheet: !ENV [TRANSLATION_STYLESHEET]
   social:
     - icon: simple/gmail
       link: "mailto:murate@gmail.com?subject=Support%20Request&body=Hi%20team%2C%0A%0AI%20need%20help%20with..."
@@ -109,9 +104,7 @@ theme:
       toggle:
         icon: material/brightness-5
         name: "Switch to system theme"
-  #logo:    assets/brand/mylogo/BuWiFi-black-logo.svg
-  #favicon: assets/brand/mylogo/BuWiFi.ico
-  logo: assets/img/logo/BuWiFi-black-logo.svg
+  logo:    assets/img/logo/BuWiFi-white-logo.svg
   favicon: assets/img/logo/BuWiFi.ico
   icon:
     repo: simple/github
@@ -163,11 +156,11 @@ plugins:
   - meta
   - search
   - social:
+      enabled: true
       cards: true
       cards_layout_options:
-        font_family: Roboto
-        background_color: "#252529"
-        color: "#e1e1e6"
+        background_color: "#042440"
+        font_family: "Source Sans 3"
   - blog:
       blog_dir: blog
       blog_toc: true

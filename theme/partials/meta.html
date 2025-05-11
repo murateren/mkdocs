@@ -28,9 +28,9 @@
 
 {# Language alternates #}
 {% if config.extra.alternate is iterable %}
-  <link rel="alternate" href="https://www.privacyguides.org/en/{{ page.url }}" hreflang="x-default">
+  <link rel="alternate" href="{{ config.site_url }}en/{{ page.url }}" hreflang="x-default">
   {% for alt in config.extra.alternate %}
-    <link rel="alternate" href="https://www.privacyguides.org/{{ alt.lang }}/{{ page.url }}" hreflang="{{ alt.lang | d(lang.t('language')) }}">
+    <link rel="alternate" href="{{ config.site_url }}{{ alt.lang }}/{{ page.url }}" hreflang="{{ alt.lang | d(lang.t('language')) }}">
   {% endfor %}
 {% endif %}
 
@@ -46,46 +46,29 @@
 {# Generator info #}
 <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material">
 
+{# Set automatic social card image path #}
+{% set image_name = page.url | replace('index.html', '') | replace('/', '') %}
+{% set social_image_path = '/assets/images/social/' ~ image_name ~ '.png' %}
+
 {# Open Graph metadata #}
 {% if page %}
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.meta.description | default(page.title) }}">
   <meta property="og:url" content="{{ config.site_url }}{{ page.url }}">
   <meta property="og:type" content="article">
-
-  {% if page.meta.image %}
-    <meta property="og:image" content="{{ config.site_url.rstrip('/') }}{{ page.meta.image }}">
-  {% else %}
-    <meta property="og:image" content="{{ config.site_url.rstrip('/') }}/assets/images/privacy-pass/cover.webp">
-  {% endif %}
-
+  <meta property="og:image" content="{{ config.site_url.rstrip('/') }}{{ social_image_path }}">
   <meta property="og:site_name" content="{{ config.site_name }}">
   <meta property="og:locale" content="{{ config.theme.language | default('en_US') }}">
-
-
 {% endif %}
-
-
-
 
 {# Twitter Card metadata #}
 {% if page %}
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ page.title }}">
-<meta name="twitter:description" content="{{ page.meta.description | default(page.title) }}">
-
-
-{% if page.meta.image %}
-    <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}{{ page.meta.image }}">
-    <meta name="twitter:image:alt" content="Illustration of Privacy Pass protocol concept">
-  {% else %}
-    <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}/assets/images/privacy-pass/cover.jpg">
-  {% endif %}
-
-
-
-  <meta name="twitter:site" content="@erenm"> {# Replace accordingly #}
-
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.meta.description | default(page.title) }}">
+  <meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}{{ social_image_path }}">
+  <meta name="twitter:image:alt" content="Preview of {{ page.title }}">
+  <meta name="twitter:site" content="@erenm"> {# Replace with your actual Twitter handle #}
 {% endif %}
 
 {# Robots #}

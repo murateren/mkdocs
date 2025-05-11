@@ -1,8 +1,8 @@
 from textwrap import dedent
 import urllib.parse
 import re
+import os
 
-# Share URL templates
 x_intent = "https://x.com/intent/tweet?text={text}&url={url}&hashtags={hashtags}&via={via}"
 li_share = "https://www.linkedin.com/shareArticle?mini=true&url={url}&title={title}&summary={summary}"
 
@@ -21,13 +21,13 @@ def on_page_markdown(markdown, **kwargs):
     summary = urllib.parse.quote(page.meta.get('description', page.title))
 
     tags = page.meta.get('tags', [])
-    hashtags = urllib.parse.quote(",".join([tag.replace(" ", "") for tag in tags]))  # Remove spaces for hashtags
+    hashtags = urllib.parse.quote(",".join([tag.replace(" ", "") for tag in tags]))
 
     x_url = x_intent.format(
         text=title,
         url=encoded_url,
         hashtags=hashtags,
-        via=config.extra.get("x_via", "erenm")  # fallback in case it's missing
+        via=config.extra.get("x_via", "erenm")
     )
 
     li_url = li_share.format(
@@ -35,6 +35,12 @@ def on_page_markdown(markdown, **kwargs):
         title=title,
         summary=summary
     )
+
+    # === ADD THIS BLOCK ===
+    # Automatically assign social image if not defined
+    if "image" not in page.meta:
+        filename = os.path.splitext(os.path.basename(page.file.src_path))[0]
+        page.meta["image"] = f"/assets/images/social/{filename}.png"
 
     return markdown + dedent(f"""
     ---

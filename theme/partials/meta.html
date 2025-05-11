@@ -47,8 +47,8 @@
 <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material">
 
 {# Set automatic social card image path #}
-{% set image_name = page.url | replace('index.html', '') | replace('/', '') %}
-{% set social_image_path = '/assets/images/social/' ~ image_name ~ '.png' %}
+{% set page_path = page.url | replace('index.html', '') | trim('/') %}
+{% set social_image_path = '/assets/images/social/' ~ page_path ~ '.png' %}
 
 {# Open Graph metadata #}
 {% if page %}

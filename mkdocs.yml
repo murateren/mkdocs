@@ -105,9 +105,9 @@ theme:
         icon: material/brightness-5
         name: "Switch to system theme"
   #logo:    assets/img/logo/BuWiFi-white-logo.svg
-  logo:    fontawesome/brands/nurse
   favicon: assets/img/logo/BuWiFi.ico
   icon:
+    logo: fontawesome/brands/nurse
     repo: simple/github
     edit: material/pencil
     view: material/eye

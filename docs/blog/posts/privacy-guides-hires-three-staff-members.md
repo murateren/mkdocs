@@ -11,7 +11,6 @@ tags:
 schema_type: NewsArticle
 ---
 
-
 At Privacy Guides, we are always looking for ways to be more effective at our mission of promoting privacy and security for everyone. To help us grow, reach a broader audience, and provide more high quality educational resources, we are thrilled to announce the hiring of three talented individuals to our team! Each of them brings a strong passion to their respective roles, and we are excited about working with them.<!-- more -->
 
 ## Em – Journalist

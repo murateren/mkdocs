@@ -107,7 +107,7 @@ theme:
   #logo:    assets/img/logo/BuWiFi-white-logo.svg
   favicon: assets/img/logo/BuWiFi.ico
   icon:
-    logo: docs/assets/img/logo/BuWiFi-white-logo.svg
+    logo: docs/assets/img/logo/BuWiFi-white.svg
     repo: simple/github
     edit: material/pencil
     view: material/eye
@@ -159,6 +159,7 @@ plugins:
   - social:
       enabled: true
       cards: true
+      logo: ""
       cards_layout_options:
         background_color: "#042440"
         font_family: "Source Sans 3"

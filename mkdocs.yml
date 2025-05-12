@@ -104,7 +104,7 @@ theme:
       toggle:
         icon: material/brightness-5
         name: "Switch to system theme"
-  logo: /assets/img/logo/BuWiFi-white-logo.svg
+  logo: assets/img/logo/BuWiFi-white-logo.svg
   favicon: assets/img/logo/BuWiFi.ico
   icon:
     #logo: assets/img/logo/BuWiFi-white

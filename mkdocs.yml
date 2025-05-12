@@ -156,7 +156,7 @@ plugins:
   - meta
   - search
   - social:
-      enabled: false
+      enabled: true
       cards: true
       cards_layout_options:
         background_color: "#042440"

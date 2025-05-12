@@ -58,14 +58,20 @@
   <meta property="og:url" content="{{ config.site_url }}{{ page.url }}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="{{ social_image_url }}">
-  <meta property="og:image:secure_url" content="{{ social_image_url }}"> {# Add secure URL #}
+  <meta property="og:image:secure_url" content="{{ social_image_url }}">
   <meta property="og:image:alt" content="Preview of {{ page.title }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/png">
   <meta property="og:site_name" content="{{ config.site_name }}">
   <meta property="og:locale" content="{{ config.theme.language | default('en_US') }}">
+  {% if page.meta.updated %}
+    <meta property="og:updated_time" content="{{ page.meta.updated | string }}">
+  {% elif page.meta.date %}
+    <meta property="og:updated_time" content="{{ page.meta.date | string }}">
+  {% endif %}
 {% endif %}
+
 
 {# Twitter Card metadata #}
 {% if page %}

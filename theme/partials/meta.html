@@ -66,10 +66,13 @@
   <meta property="og:site_name" content="{{ config.site_name }}">
   <meta property="og:locale" content="{{ config.theme.language | default('en_US') }}">
   {% if page.meta.updated %}
-    <meta property="og:updated_time" content="{{ page.meta.updated | string }}">
-  {% elif page.meta.date %}
-    <meta property="og:updated_time" content="{{ page.meta.date | string }}">
+    <meta property="og:updated_time" content="{{ page.meta.updated | date("Y-m-d\TH:i:s\Z") }}">
+    {% elif page.meta.date %}
+    <meta property="og:updated_time" content="{{ page.meta.date | date("Y-m-d\TH:i:s\Z") }}">
   {% endif %}
+{% endif %}
+
+
 {% endif %}
 
 

@@ -51,7 +51,6 @@
 {% set social_image_path = '/assets/images/social/' ~ page_path ~ '.png' %}
 {% set social_image_url = config.site_url.rstrip('/') ~ social_image_path %}
 
-{# Open Graph metadata #}
 {% if page %}
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.meta.description | default(page.title) }}">
@@ -65,11 +64,6 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:site_name" content="{{ config.site_name }}">
   <meta property="og:locale" content="{{ config.theme.language | default('en_US') }}">
-  {% if page.meta.updated %}
-    <meta property="og:updated_time" content="{{ page.meta.updated | date("Y-m-d\TH:i:s\Z") }}">
-    {% elif page.meta.date %}
-    <meta property="og:updated_time" content="{{ page.meta.date | date("Y-m-d\TH:i:s\Z") }}">
-  {% endif %}
 {% endif %}
 
 {# Twitter Card metadata #}

@@ -1,19 +1,16 @@
 ---
+title: "Privacy-Preserving Attribution: Mozilla Disappoints Us Yet Again"
+description: "'No shady privacy policies or back doors for advertisers' proclaims the Firefox homepage, but that's no longer true in Firefox 128."
 date:
-    created: 2024-07-14T19:00:00Z
+    created: 2025-05-01 10:30:00
+    updated: 2025-05-06 12:00:00
 categories:
     - News
-authors:
-    - jonah
 tags:
     - Firefox
     - Mozilla
-description: "'No shady privacy policies or back doors for advertisers' proclaims the Firefox homepage, but that's no longer true in Firefox 128."
 schema_type: AnalysisNewsArticle
 ---
-
-# "Privacy-Preserving" Attribution: Mozilla Disappoints Us Yet Again
-
 ![](../assets/images/mozilla-disappoints-us-yet-again-2/cover.webp)
 
 <small aria-hidden="true">Image: Unsplash</small>

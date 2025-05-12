@@ -1,6 +1,8 @@
+title: Post Title Placeholder
+description: Post Description Placeholder
 template: blog-post.html
-comments: false
-social:
-  cards_layout: blog
 authors:
   - murat
+date:
+  created: 2025-05-01 10:30:00
+  updated: 2025-05-06 12:00:00

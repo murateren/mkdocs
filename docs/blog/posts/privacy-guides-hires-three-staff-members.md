@@ -1,17 +1,16 @@
 ---
+title: "Privacy Guides Hires Three Staff Membersdescription"
+description: "Privacy Guides Hires Three Staff Membersdescription: Privacy Guides is welcoming three new additions to the team."
 date:
-    created: 2025-01-17T19:00:00Z
+    created: 2025-05-01 10:30:00
+    updated: 2025-05-06 12:00:00
 categories:
     - Announcements
-authors:
-    - niek-de-wilde
 tags:
     - Privacy Guides
-description: Privacy Guides is welcoming three new additions to the team.
 schema_type: NewsArticle
 ---
 
-# Privacy Guides Hires Three Staff Members
 
 At Privacy Guides, we are always looking for ways to be more effective at our mission of promoting privacy and security for everyone. To help us grow, reach a broader audience, and provide more high quality educational resources, we are thrilled to announce the hiring of three talented individuals to our team! Each of them brings a strong passion to their respective roles, and we are excited about working with them.<!-- more -->
 

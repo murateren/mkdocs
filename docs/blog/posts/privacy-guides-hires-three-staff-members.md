@@ -1,9 +1,6 @@
 ---
 title: "Privacy Guides Hires Three Staff Membersdescription"
 description: "Privacy Guides Hires Three Staff Membersdescription: Privacy Guides is welcoming three new additions to the team."
-date:
-    created: 2025-05-01 10:30:00
-    updated: 2025-05-06 12:00:00
 categories:
     - Announcements
 tags:

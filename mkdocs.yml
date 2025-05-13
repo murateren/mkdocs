@@ -5,9 +5,6 @@ site_author: "Murat Eren (murate@gmail.com)"
 site_dir: site
 docs_dir: docs
 
-#edit_uri_template:
-#  !ENV [BUILD_EDIT_URI_TEMPLATE, "blob/main/docs/{path}?plain=1"]
-
 extra:
   x_via: erenm
   generator: false

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
-
+{# 
+{% block site_meta %}
+  {% include "partials/meta.html" %}
+{% endblock %}
+#}
 
 {% block htmltitle %}
   {% if page.meta and page.meta.meta_title and config.theme.language == "en" %}

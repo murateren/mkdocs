@@ -1,7 +1,10 @@
-template: video-post.html
-hide:
-  - toc
-social:
-  cards_layout: video
+title: Video Post Title Placeholder
+description: Video Post Description Placeholder
 authors:
   - murat
+date:
+  created: 2025-05-01 10:30:00
+  updated: 2025-05-06 12:00:00
+template: video-post.html
+social:
+  cards_layout: video

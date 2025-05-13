@@ -159,6 +159,7 @@ plugins:
   - social:
       enabled: true
       cards: true
+      image: assets/img/logo/icon-white
       cards_layout_options:
         background_color: "#042440"
         font_family: "Source Sans 3"

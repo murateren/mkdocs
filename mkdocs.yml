@@ -104,10 +104,10 @@ theme:
       toggle:
         icon: material/brightness-5
         name: "Switch to system theme"
-  logo: assets/img/logo/icon-white.svg
+  #logo: assets/img/logo/icon-white.svg
   favicon: assets/img/logo/BuWiFi.ico
   icon:
-    #logo: assets/img/logo/BuWiFi-white
+    logo: assets/img/logo/icon-white.svg
     repo: simple/github
     edit: material/pencil
     view: material/eye

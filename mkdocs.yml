@@ -107,7 +107,7 @@ theme:
   #logo: assets/img/logo/icon-white.svg
   favicon: assets/img/logo/BuWiFi.ico
   icon:
-    logo: assets/img/logo/icon-white
+    #logo: assets/img/logo/icon-white
     repo: simple/github
     edit: material/pencil
     view: material/eye

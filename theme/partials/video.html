@@ -27,13 +27,13 @@
 
   <!-- Post content -->
   <div class="md-post__content md-typeset">
-    <h2 class="toclink">
-      <a href="{{ post.url | url }}">
+    <h2>
+      <a class="md-meta__link" href="{{ post.url | url }}">
         {{ post.title | d(config.site_name, true)}}
       </a>
     </h2>
     <div>
-      <a href="{{ post.url | url }}">
+      <a class="md-meta__link" href="{{ post.url | url }}">
         <img width="100%" height="100%" src="{{ post.meta.thumbnail }}"></img>
       </a>
     </div>

@@ -136,6 +136,7 @@ theme:
 
 extra_css:
   - assets/stylesheets/extra.css?v=20250306
+  - assets/stylesheets/custom.css
 extra_javascript:
   - path: assets/javascripts/randomize-element.js?v=20250306
     defer: true

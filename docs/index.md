@@ -134,6 +134,15 @@ Much like the right to interracial marriage, woman's suffrage, freedom of speech
 
 You shouldn't confuse privacy with secrecy. We know what happens in the bathroom, but you still close the door. That's because you want privacy, not secrecy. **Everyone** has something to protect. Privacy is something that makes us human.
 
+<span class="label-underline">McKinsey Business Building</span>
+
+# Welcome to My Site
+
+This is a link styled like **McKinsey Business Building**:
+[Click here](https://example.com)
+
+1. List items with [links](https://example.com) will also have the underline.
+
 [:material-book-outline: Why Privacy Matters](basics/why-privacy-matters.md){ class="md-button" }
 </div>
 

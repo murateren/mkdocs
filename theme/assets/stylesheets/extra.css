@@ -1,27 +1,30 @@
+/*
+/// Copyright (c) 2022-2024 Jonah Aragon <jonah@triplebit.net>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+*/
+
 @font-face {
-  font-family: 'Bower';
-  src: url("../brand/fonts/McKinsey/Bower-Bold.woff2") format("woff");
+    font-family: 'Bagnard';
+    src: url("../brand/fonts/Bagnard/Bold.woff") format("woff");
   font-display: swap;
-  font-weight: normal;
-  font-style: normal;
 }
-
- @font-face {
-  font-family: 'McKinsey';
-  src: url("../brand/fonts/McKinsey/McKinseySans-Light.woff2") format("woff");
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-}
-
-:root {
-  --md-text-font: 'McKinsey', sans-serif;
-  --md-code-font: 'McKinsey', monospace;
-}
-
-.md-button, .md-social {
-    font-family: 'McKinsey', sans-serif !important;
-  }
 
 /* Define brand */
 :root, [data-md-color-scheme="default"] {
@@ -142,23 +145,12 @@
 }
 
 /* header font */
-/* header font */
+
 .md-header__topic:first-child {
   font-weight: 300;
 }
-
 h1, h2, h3, .md-header__topic {
-    font-family: "Bower", serif;
-    color: var(--md-accent-fg-color);
-}
-
-
-.md-typeset h1 {
-    color: var(--md-accent-fg-color);
-      /*    border-bottom: 2px solid #eee;
-      font-size: 2em;
-    padding-bottom: 0.5em;
-    margin-bottom: 1em;*/
+    font-family: "Bagnard", serif;
 }
 
 /* Recommendation cards */
@@ -606,24 +598,4 @@ path[d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-
 .md-typeset .mdx-donors-count,
 .md-typeset .mdx-donors-total {
   font-weight:700
-}
-
-
-.blog-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.blog-card {
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  background: var(--md-default-bg-color);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: 0.3s;
-}
-
-.blog-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }

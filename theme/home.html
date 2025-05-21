@@ -42,7 +42,7 @@
   {% for cta in homepage.cta %}
   <h2>{{ cta.title }}</h2>
   {% for icon in cta.links %}
-  <a href="{{ icon.link }}" title="{{ icon.name }}">
+  <a class="md-meta__link" href="{{ icon.link }}" title="{{ icon.name }}">
     <span class="twemoji">{% include ".icons/" ~ icon.icon ~ ".svg" %}</span>
   </a>
   {% endfor %}

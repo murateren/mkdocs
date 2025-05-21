@@ -46,11 +46,11 @@ tags:
   og:video:height: "315"
 
   # Mastodon
-  fediverse:creator: "@privacyguides@neat.computer"
+  fediverse:creator: "@murate@gmail.com"
 
   # Twitter
-  twitter:site: "@privacy_guides"
-  twitter:creator: "@privacy_guides"
+  twitter:site: "@erenm"
+  twitter:creator: "@erenm"
   twitter:card: summary_large_image
   twitter:title: *page_title
   twitter:description: *page_description

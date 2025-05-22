@@ -1,0 +1,2014 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This guide details actions you can take to configure and harden Signal in accordance with your threat model.">
+      
+      
+        <meta name="author" content="Murat Eren (murate@gmail.com)">
+      
+      
+        <link rel="canonical" href="https://murateren.github.io/mynotes/blog/2025/05/01/signal-configuration-and-hardening/">
+      
+      
+        <link rel="prev" href="../signal-number-registration-update/">
+      
+      
+        <link rel="next" href="../security-privacy-anonymity/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/img/logo/BuWiFi.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+  
+    <title>Blog Post Title Placeholder - My Notes</title>
+  
+
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css?v=20250306">
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Blog Post Title Placeholder - My Notes" >
+      
+        <meta  property="og:description"  content="This guide details actions you can take to configure and harden Signal in accordance with your threat model." >
+      
+        <meta  property="og:image"  content="https://murateren.github.io/mynotes/assets/images/social/blog/posts/signal-configuration-and-hardening.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://murateren.github.io/mynotes/blog/2025/05/01/signal-configuration-and-hardening/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Blog Post Title Placeholder - My Notes" >
+      
+        <meta  name="twitter:description"  content="This guide details actions you can take to configure and harden Signal in accordance with your threat model." >
+      
+        <meta  name="twitter:image"  content="https://murateren.github.io/mynotes/assets/images/social/blog/posts/signal-configuration-and-hardening.png" >
+      
+    
+    
+  
+
+  
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large">
+  
+
+  
+    <meta http-equiv="onion-location" content="https://murateren.github.io/mynotes/blog/2025/05/01/signal-configuration-and-hardening/">
+  
+
+  
+
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#signal-configuration-and-hardening-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+
+<!-- Determine classes -->
+
+
+
+
+
+<!-- Header -->
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+
+    <!-- Link to home -->
+    <a href="../../../../.." title="My Notes"
+      class="md-header__button md-logo" aria-label="My Notes" data-md-component="logo">
+      <!--  -->
+<img src="../../../../../assets/brand/mylogo/BuWiFi-black.svg#only-light" alt="logo" width="24" height="24">
+<img src="../../../../../assets/brand/mylogo/BuWiFi-white.svg#only-dark" alt="logo" width="24" height="24">
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+            Blog Post Title Placeholder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repository information -->
+    
+
+    <!-- Button to open search modal -->
+    
+    <label class="md-header__button md-icon" for="__search">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+    </label>
+
+
+    <!-- Site language selector -->
+    
+
+    <!-- Color palette toggle -->
+    
+    
+    <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to system theme"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-2.69L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20z"/></svg>
+      </label>
+    
+  
+</form>
+    
+    
+
+    <!-- User preference: color palette -->
+    
+    <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+
+    <!--  <div class="md-header__option">
+  <div class="">
+    
+    <a href="/en/about/donate/" class="md-header__button md-icon pg-red" title="Donate">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg>
+    </a>
+  </div>
+</div>  -->
+
+    <!-- Search interface -->
+    <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+  
+  
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../basics/why-privacy-matters/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Knowledge Base
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recommendations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../videos/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Videos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../about/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+  
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="My Notes" class="md-nav__button md-logo" aria-label="My Notes" data-md-component="logo">
+      <!--  -->
+<img src="../../../../../assets/brand/mylogo/BuWiFi-black.svg#only-light" alt="logo" width="24" height="24">
+<img src="../../../../../assets/brand/mylogo/BuWiFi-white.svg#only-dark" alt="logo" width="24" height="24">
+    </a>
+    My Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../basics/why-privacy-matters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Knowledge Base
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../tools/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Recommendations
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../editorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Editorial Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/announcements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Announcements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/explainers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Explainers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/guest-wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Guest WiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    News
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/opinion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Opinion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/reviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reviews
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../videos/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Videos
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../about/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#signal-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signal-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal PIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Numbers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disappearing-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disappearing Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-link-previews" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable Link Previews
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Screen Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      Screen Lock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notification Privacy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-relaying" class="md-nav__link">
+    <span class="md-ellipsis">
+      Call Relaying
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bypass-internet-censorship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bypass Internet Censorship
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-signal-call-history-ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable Signal Call History (iOS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Signal Hardening
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal Hardening">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid-device-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid Device Linking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#molly-android" class="md-nav__link">
+    <span class="md-ellipsis">
+      Molly (Android)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Molly (Android)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privacy-and-security-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privacy and Security Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+<div class="md-content md-content--post" data-md-component="content" itemscope
+  itemtype="https://schema.org/AnalysisNewsArticle">
+  <meta itemprop="headline" content="Blog Post Title Placeholder" />
+  <meta itemprop="isAccessibleForFree" content="True" />
+  <meta itemprop="isFamilyFriendly" content="True" />
+  
+  <meta itemprop="inLanguage" content="en-US" />
+  
+  <span itemprop="publisher" itemscope itemtype="https://schema.org/NewsMediaOrganization">
+    <meta itemprop="name" content="Privacy Guides" />
+    <link itemprop="url" href="https://www.privacyguides.org/" />
+    <link itemprop="sameAs" href="https://mastodon.neat.computer/@privacyguides" />
+    <link itemprop="sameAs" href="https://twitter.com/privacy_guides" />
+    <link itemprop="sameAs" href="https://github.com/privacyguides" />
+    <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <link itemprop="url" href="https://www.privacyguides.org/en/assets/brand/logos/png/square/pg-yellow.png" />
+      <meta itemprop="width" content="512" />
+      <meta itemprop="height" content="512" />
+    </span>
+    <link itemprop="publishingPrinciples" href="https://www.privacyguides.org/en/about/criteria/" />
+    <link itemprop="actionableFeedbackPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#actionable-feedback" />
+    <link itemprop="correctionsPolicy" href="https://www.privacyguides.org/articles/editorial/#corrections-policy" />
+    <link itemprop="ethicsPolicy" href="https://www.privacyguides.org/articles/editorial/#ethics-policy" />
+    <link itemprop="missionCoveragePrioritiesPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#coverage-priorities" />
+    <link itemprop="unnamedSourcesPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#unnamed-sources-policy" />
+    <link itemprop="verificationFactCheckingPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#verification-fact-checking" />
+    <link itemprop="ownershipFundingInfo" href="https://www.privacyguides.org/en/about/donate/" />
+    <link itemprop="masthead" href="https://www.privacyguides.org/en/about/" />
+  </span>
+
+  <!-- Sidebar -->
+  <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner md-post">
+        <nav class="md-nav md-nav--primary">
+
+          <!-- Back to overview link -->
+          <div class="md-post__back">
+            <div class="md-nav__title md-nav__container">
+              <a href="../../../../" class=" md-nav__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                <span class="md-ellipsis">
+                  Back to index
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Post authors -->
+          
+          <div class="md-post__authors md-typeset">
+            
+            <div class="md-profile md-post__profile" itemprop="author" itemscope
+              itemtype="https://schema.org/Person">
+              <span class="md-author md-author--long">
+                <img src="../../../../../assets/img/avatar/murat-profile-pic.jpg" alt="Murat Eren" />
+              </span>
+              <span class="md-profile__description">
+                <strong>
+                  
+                  <span itemprop="name">Murat Eren</span>
+                  
+                </strong>
+                <br />
+                <span itemprop="jobTitle">Founder</span>
+              </span>
+            </div>
+            
+          </div>
+          
+
+          <!-- Post metadata -->
+          <ul class="md-post__meta md-nav__list">
+            <li class="md-nav__item md-nav__item--section">
+              <div class="md-post__title">
+                <span class="md-ellipsis">
+                  Metadata
+                </span>
+              </div>
+              <nav class="md-nav">
+                <ul class="md-nav__list">
+
+                  <!-- Post date -->
+                  <li class="md-nav__item">
+                    <div class="md-nav__link" title="Date published">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                      <time datetime="2025-05-01 10:30:00+00:00" class="md-ellipsis" itemprop="datePublished">May 1, 2025</time>
+                    </div>
+                  </li>
+
+                  <!-- Post date updated -->
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link" title="Date last updated">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
+                      <time datetime="2025-05-06 12:00:00+00:00" class="md-ellipsis" itemprop="dateModified">May 6, 2025</time>
+                    </div>
+                  </li>
+                  
+
+                  <!-- Post categories -->
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                      <span class="md-ellipsis">
+                        in
+                        
+                        <a class="md-meta__link" href="../../../../category/tutorials/">Tutorials</a></span>
+                    </div>
+                  </li>
+                  
+
+                  <!-- Post readtime -->
+                  
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                      <span class="md-ellipsis" itemprop="timeRequired">
+                        
+                        7 min read
+                        
+                      </span>
+                    </div>
+                  </li>
+                  
+                </ul>
+              </nav>
+            </li>
+          </ul>
+
+          <!-- Related links -->
+          
+
+          
+          
+          
+        </nav>
+
+        <!-- Table of contents, if integrated -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <article class="md-content__inner md-typeset">
+    
+    
+    
+    
+
+    
+    
+
+<!-- Tags -->
+
+  
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../../tags/#tag:instant-messengers" class="md-tag">Instant Messengers</a>
+      
+    
+      
+      
+      
+        <a href="../../../../../tags/#tag:molly" class="md-tag">Molly</a>
+      
+    
+      
+      
+      
+        <a href="../../../../../tags/#tag:signal" class="md-tag">Signal</a>
+      
+    
+  </nav>
+
+
+<!-- Actions -->
+
+
+
+
+<!-- Page content -->
+<div>
+<h1 id="signal-configuration-and-hardening-guide">Signal Configuration and Hardening Guide</h1>
+<p><a href="https://www.privacyguides.org/en/real-time-communication#signal">Signal</a> is a widely regarded instant messaging service that is not only easy to use but is also private and secure. Signal's strong <abbr title="End-to-End Encryption/Encrypted">E2EE</abbr> implementation and metadata protections provide a level of assurance that only you and your intended recipients are able to read communications.<!-- more --></p>
+<p>This guide details actions you can take to configure and harden Signal in accordance with your <a href="https://www.privacyguides.org/en/basics/threat-modeling/">threat model</a>.</p>
+<h2 id="signal-configuration">Signal Configuration</h2>
+<h3 id="signal-pin">Signal PIN</h3>
+<p>When you register for Signal with your phone number, you will be asked to set up a Signal PIN. This PIN can be used to recover your profile, settings, contacts and who you've blocked in case you ever lose or switch devices.</p>
+<p>Additionally, your Signal PIN can also double as a registration lock that prevents others from registering with your number.</p>
+<div class="admonition attention">
+<p class="admonition-title">Registration Lock</p>
+<p>The server will not enforce the registration lock after 7 days of inactivity. After that, someone will be able to reset the PIN at registration and register with your phone number. This will wipe the data stored in your Signal account, as it is encrypted by the PIN, but it won't prevent someone from registering with your number provided that they can receive a text on it.</p>
+</div>
+<p><strong>Important update</strong>: since this blog post was published, there have been changes to the registration flow for Signal. You should read about this <a href="../signal-number-registration-update/">here</a>.</p>
+<p>If you haven't set up a Signal PIN, or have previously opted out of setting one up, follow these steps on Android/iOS:</p>
+<ul>
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Account</strong> &gt; <strong>Signal PIN</strong></li>
+<li>Select <strong>Create new PIN</strong></li>
+</ul>
+<p>Signal will prompt you to enter a PIN. We suggest using a strong alphanumeric PIN that can be stored in a <a href="https://www.privacyguides.org/en/passwords/">password manager</a>.</p>
+<p>Once you have done that, or if you already have set up a PIN, make sure that <strong>Registration Lock</strong> is also enabled.</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Account</strong> &gt; <strong>Signal PIN</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Turn on <strong>Registration Lock</strong></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you forget the PIN and have enabled a registration lock, you may be locked out of your account for up to 7 days.</p>
+</div>
+<p>You can learn more about Signal PIN on <a href="https://support.signal.org/hc/en-us/articles/360007059792-Signal-PIN">Signal's website</a>.</p>
+<h3 id="safety-numbers">Safety Numbers</h3>
+<p>Safety numbers are a feature in Signal that allows you to ensure that messages are delivered securely between verified devices.</p>
+<p>It is best practice to always compare safety numbers with your contacts. This can be done in a couple of ways:</p>
+<ul>
+<li>Scanning your contact's QR code while viewing their safety number.</li>
+<li>Comparing the safety numbers on both ends, be it visually or audibly.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In order for safety numbers to also verify that the intended recipient has access to the device you're verifying, you need a secondary communication channel where you can authenticate the person that is holding the device. For example, an in-person meeting or during a video call.</p>
+</div>
+<p>To view the safety number for a particular contact, you need to follow these steps within Signal:</p>
+<ul>
+<li>Go to a chat with a contact.</li>
+<li>Select the chat header or <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>View Safety Number</strong></li>
+</ul>
+<p>Once you've compared the safety numbers on both devices, you can mark that contact as <strong>Verified</strong>.</p>
+<p>A checkmark will appear in the chat header by your contact's name when the safety number is marked as verified. It will remain verified unless the safety number changes, or you manually change the verification status.</p>
+<p>After doing that, any time the safety number changes, you'll be notified.</p>
+<p>If the safety number with one of your contacts changes, we recommend asking the contact what happened (if they switched to a new device or re-installed Signal, for example) and verify the safety numbers again.</p>
+<p>For more demanding threat models, you should agree on a protocol with your contacts in advance on what to do in case the safety number ever changes.</p>
+<p>You can learn more about safety numbers on <a href="https://support.signal.org/hc/en-us/articles/360007060632-What-is-a-safety-number-and-why-do-I-see-that-it-changed-">Signal's website</a>.</p>
+<h3 id="disappearing-messages">Disappearing Messages</h3>
+<p>While communication in Signal is <abbr title="End-to-End Encryption/Encrypted">E2EE</abbr>, the messages are still available on the devices, unless they are manually deleted.</p>
+<p>It is good practice to set up disappearing messages in Signal's settings so that any chats you start will disappear after a specified amount of time has passed.</p>
+<p>On Android/iOS:</p>
+<ul>
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Privacy</strong></li>
+<li>Under <strong>Disappearing messages</strong>, select <strong>Default timer for new chats</strong></li>
+<li>Select the desired amount of time and select <strong>Save</strong></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Override the global default for specific contacts</p>
+<ul>
+<li>Go to a chat with a contact</li>
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> on the top right</li>
+<li>Select <strong>Disappearing messages</strong></li>
+<li>Select the desired amount of time and select <strong>Save</strong></li>
+</ul>
+</div>
+<p>We recommend setting up a reasonable timer by default, such as one week, and adjusting it per contact as you see fit.</p>
+<div class="admonition tip">
+<p class="admonition-title">Snapchat-like Functionality</p>
+<p>Signal allows you to send "view-once" media that are automatically removed from the conversation after they have been viewed.</p>
+</div>
+<h3 id="disable-link-previews">Disable Link Previews</h3>
+<p>Signal offers the ability to retrieve previews of webpages linked within a conversation.</p>
+<p>This means that when you send a link, a request will be sent to that website so that a preview of the website can be displayed alongside the link. Thus, we recommend disabling link previews.</p>
+<p>Your recipient doesn't make any requests unless they open the link on their end.</p>
+<p>On Android/iOS:</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Chats</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Turn off <strong>Generate link previews</strong></li>
+</ul>
+<h3 id="screen-security">Screen Security</h3>
+<p>Signal allows you to prevent a preview of the app being shown (i.e., in the app switcher) unless you explicitly open it.</p>
+<p>On Android:</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Privacy</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Turn on <strong>Screen Security</strong></li>
+</ul>
+<p>On iOS:</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Privacy</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Turn on <strong>Hide Screen in App Switcher</strong></li>
+</ul>
+<h3 id="screen-lock">Screen Lock</h3>
+<p>If someone gets a hold of your device while it is unlocked, you run the risk of them being able to open the Signal app and look at your conversations.</p>
+<p>To mitigate this, you can leverage the Screen Lock option to require additional authentication before Signal can be accessed.</p>
+<p>On Android/iOS:</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Privacy</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Turn on <strong>Screen Lock</strong></li>
+</ul>
+<h3 id="notification-privacy">Notification Privacy</h3>
+<p>Even when your phone is locked, anyone who can lay eyes on the device can read messages and sender names from your lock screen.</p>
+<p>On Signal, you have the ability to hide message content and sender name, or just the message content itself.</p>
+<p>On Android:</p>
+<ul>
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Notifications</strong></li>
+<li>Select <strong>Show</strong></li>
+<li>Select <strong>No name or message</strong> or <strong>Name only</strong> respectively.</li>
+</ul>
+<p>On iOS:</p>
+<ul>
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Notifications</strong></li>
+<li>Select <strong>Show</strong></li>
+<li>Select <strong>No name or Content</strong> or <strong>Name Only</strong> respectively.</li>
+</ul>
+<h3 id="call-relaying">Call Relaying</h3>
+<p>Signal allows you to relay all calls (including video calls) through the Signal server to avoid revealing your <abbr title="Internet Protocol">IP</abbr> address to your contact. This may reduce call quality.</p>
+<p>On Android/iOS:</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Privacy</strong> &gt; <strong>Advanced</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Turn on <strong>Always Relay Calls</strong></li>
+</ul>
+<p>For incoming calls from people who are not in your Contacts app, the call will be relayed through the Signal server regardless of how you've set it up.</p>
+<h3 id="bypass-internet-censorship">Bypass Internet Censorship</h3>
+<p>If Signal is blocked in your country, it has a built-in "Censorship Circumvention" feature that uses domain fronting to bypass restrictions.</p>
+<p>On Android/iOS:</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> → <strong>Settings</strong> → <strong>Privacy</strong> → <strong>Advanced</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Turn on <strong>Censorship Circumvention</strong></li>
+</ul>
+<p>Additionally, Signal allows you to set up a proxy to bypass censorship.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All traffic remains opaque to the proxy operator. However, the censoring party could learn that you are using Signal through a proxy because the app <a href="https://community.signalusers.org/t/traffic-not-routed-to-tls-proxies-can-expose-users-to-censors/27479">fails to route all the <abbr title="Internet Protocol">IP</abbr> connections to the proxy</a>.</p>
+</div>
+<p>You can learn more about Signal's proxy support on their <a href="https://support.signal.org/hc/en-us/articles/360056052052-Proxy-Support">website</a>.</p>
+<h3 id="disable-signal-call-history-ios">Disable Signal Call History (iOS)</h3>
+<p>Signal allows you to see your call history from your regular phone app. This allows your iOS device to sync your call history with iCloud, including whom you spoke to, when, and for how long.</p>
+<p>If you use iCloud and you don’t want to share call history on Signal, confirm it’s turned off:</p>
+<ul class="task-list">
+<li>Select <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2"/></svg></span> &gt; <strong>Settings</strong> &gt; <strong>Privacy</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Turn off <strong>Show Calls in Recents</strong></li>
+</ul>
+<h2 id="signal-hardening">Signal Hardening</h2>
+<h3 id="avoid-device-linking">Avoid Device Linking</h3>
+<p>While it may be tempting to link your Signal account to your desktop device for convenience, keep in mind that this extends your trust to an additional and potentially less secure operating system.</p>
+<p>Avoid linking your Signal account to a desktop device to reduce your <abbr title="The total number of possible entry points for unauthorized access to a system">attack surface</abbr>, if your threat model calls for protecting against <a class="pg-orange" href="https://www.privacyguides.org/en/basics/common-threats/#security-and-privacy"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.8-1.07-1.5-1.82-2L17 4.41 15.59 3l-2.17 2.17a6 6 0 0 0-2.83 0L8.41 3 7 4.41 8.62 6c-.75.5-1.36 1.21-1.81 2H4v2h2.09c-.06.33-.09.66-.09 1v1H4v2h2v1c0 .34.03.67.09 1H4v2h2.81A5.99 5.99 0 0 0 15 20.18c.91-.52 1.67-1.28 2.19-2.18H20v-2h-2.09c.06-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.03-.67-.09-1H20zm-4 7a4 4 0 0 1-4 4 4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4 4 4 0 0 1 4 4zm-2-5v2h-4v-2zm-4 4h4v2h-4z"/></svg></span> Passive Attacks</a>.</p>
+<h3 id="molly-android">Molly (Android)</h3>
+<p>If you use <a href="https://www.privacyguides.org/en/real-time-communication/#molly-android">Molly</a> on Android to access the Signal network, there are many privacy and security-enhancing features that you may want to explore.</p>
+<h4 id="privacy-and-security-features">Privacy and Security Features</h4>
+<p>Molly has implemented database encryption at rest, which means that you can encrypt the app's database with a passphrase to ensure that none of its data is accessible without it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As long as Molly is locked, you will not receive notifications for any incoming messages or calls until you unlock it again.</p>
+</div>
+<p>Once enabled, a configurable lock timer can be set, after which point Molly will lock itself if you haven't unlocked your device for that specific time period. Alternatively, you can manually lock the app whenever you want.</p>
+<p>For the database encryption feature to be useful, two conditions must be met:</p>
+<ol>
+<li>Molly has to be locked at the time an attacker gains access to the device. This can include a physical attack in which the attacker seizes your device and manages to unlock the device itself, or a remote attack, in which the device is compromised and manages to elevate privileges to root.</li>
+<li>If you become aware that your device has been compromised, you should not unlock Molly's database.</li>
+</ol>
+<p>If both of the above conditions are met, the data within Molly is safe as long as the passphrase is not accessible to the attacker.</p>
+<p>To supplement the database encryption feature, Molly securely wipes your device's RAM once the database is locked to defend against forensic analysis.</p>
+<p>While Molly is running, your data is kept in RAM. When any app closes, its data remains in RAM until another app takes the same physical memory pages. That can take seconds or days, depending on many factors. To prevent anyone from dumping the RAM to disk and extracting your data after Molly is locked, the app overrides all free RAM memory with random data when you lock the database.</p>
+<p>There is also the ability to configure a SOCKS proxy in Molly to route its traffic through the proxy or <a href="https://www.privacyguides.org/en/tor#orbot">Tor via Orbot</a>. When enabled, all traffic is routed through the proxy and there are no known <abbr title="Internet Protocol">IP</abbr> or <abbr title="Domain Name System">DNS</abbr> leaks. When using this feature, <a href="#call-relaying">call relaying</a> will always be enabled, regardless of the setting.</p>
+<p>Signal adds everyone who you have communicated with to its database. Molly allows you to delete those contacts and stop sharing your profile with them.</p>
+<p>To supplement the feature above, as well as for additional security and to fight spam, Molly offers the ability to block unknown contacts that you've never been in contact with or those that are not in your contact list without you having to manually block them.</p>
+<p>You can find a full list of Molly's <a href="https://github.com/mollyim/mollyim-android#features">features</a> on the project's repository.</p>
+<hr />
+<p><strong>Share this page:</strong><br />
+<a class="md-button" href="https://x.com/intent/tweet?text=Blog%20Post%20Title%20Placeholder&amp;url=https%3A//murateren.github.io/mynotes/blog/2025/05/01/signal-configuration-and-hardening/&amp;hashtags=Signal%2CMolly%2CInstantMessengers&amp;via=erenm" style="margin-right: 1em;">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span></a>
+<a class="md-button" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//murateren.github.io/mynotes/blog/2025/05/01/signal-configuration-and-hardening/&amp;title=Blog%20Post%20Title%20Placeholder&amp;summary=This%20guide%20details%20actions%20you%20can%20take%20to%20configure%20and%20harden%20Signal%20in%20accordance%20with%20your%20threat%20model.">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg></span></a></p>
+</div>
+
+<!-- Source file information -->
+<!-- Render date of last update -->
+
+
+<!-- Render date of creation -->
+
+
+<!-- ---------------------------------------------------------------------- -->
+
+<!-- Render authors -->
+
+
+
+<!-- ---------------------------------------------------------------------- -->
+
+<!-- Determine date of last update -->
+
+  
+
+  <!-- Determine date of creation -->
+  
+
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+
+
+  
+
+
+
+
+
+
+
+<!-- Comment system -->
+
+    
+
+    <!-- 
+      <div>
+        <hr>
+        <p><strong><a href="https://discuss.privacyguides.net/c/announcements/articles/10">
+          <span class="twemoji">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0m.116 4.563a7.4 7.4 0 0 0-6.337 3.57 7.25 7.25 0 0 0-.148 7.22L4.4 19.61l4.794-1.074a7.42 7.42 0 0 0 8.136-1.39 7.26 7.26 0 0 0 1.737-7.997 7.375 7.375 0 0 0-6.84-4.585z"></path></svg>
+          </span> Join our forum
+        </a>
+        to comment on this article.</strong></p>
+        <p><em>Thank you for reading, and please consider sharing this post with your friends.
+          Privacy Guides is an independent, nonprofit media outlet. We don't have ads or sponsors, so if you liked this work your <a href="https://donate.magicgrants.org/privacyguides">donation</a> would be greatly appreciated.
+          Have a question, comment, or tip for us? You can securely <a href="https://www.privacyguides.org/en/about/#contact-us">contact us</a> at <code>@privacyguides.01</code> on Signal.</em></p>
+      </div>
+    </article>
+  </div>
+ -->
+
+    
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../signal-number-registration-update/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Blog Post Title Placeholder">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Blog Post Title Placeholder
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../security-privacy-anonymity/" class="md-footer__link md-footer__link--next" aria-label="Next: Blog Post Title Placeholder">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Blog Post Title Placeholder
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+
+<!-- Copyright information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight" title="This version of Privacy Guides was built on May 22, 2025 at 11:17AM">
+      Footer Intro Text.
+      <br />
+      Footer Note Text.
+      <br />
+      <a href='/license' aria-label="More information about our website license.">
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="m245.83 214.87-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86m143.05 0-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86M247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248m.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82"/></svg></span>
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3m-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35q0 34.5-34.5 34.5c-34.5 0-34.5-11.5-34.5-34.5M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8m.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3"/></svg></span>
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8m.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3M137.7 221c13-83.9 80.5-95.7 108.9-95.7 99.8 0 127.5 82.5 127.5 134.2 0 63.6-41 132.9-128.9 132.9-38.9 0-99.1-20-109.4-97h62.5c1.5 30.1 19.6 45.2 54.5 45.2 23.3 0 58-18.2 58-82.8 0-82.5-49.1-80.6-56.7-80.6q-49.65 0-55.8 43.8h18.2l-49.2 49.2-49-49.2z"/></svg></span>
+        
+      </a>
+      2025 Murat Eren.
+      
+        <a href="https://murateren.github.io/mynotes/privacy/">
+          <strong>Privacy notice.</strong>
+        </a>
+      
+    </div>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:murate@gmail.com?subject=Support%20Request&body=Hi%20team%2C%0A%0AI%20need%20help%20with..." target="_blank" rel="noopener" title="Mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/erenm" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/murateren" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "content.action.edit", "content.tabs.link", "content.tooltips", "search.highlight", "toc.follow", "navigation.prune", "navigation.tabs.sticky", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.top", "search.share", "search.suggest", "content.icon.fontawesome", "content.action.view", "content.code.copy", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../../../assets/javascripts/randomize-element.js?v=20250306" defer></script>
+      
+        <script src="../../../../../assets/javascripts/feedback.js?v=20250306" defer></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

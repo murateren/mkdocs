@@ -1,0 +1,2852 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This tutorial demonstrates how to reset a YubiKey close to factory defaults and create a backup of most YubiKey applications on a spare key.">
+      
+      
+        <meta name="author" content="Murat Eren (murate@gmail.com)">
+      
+      
+        <link rel="canonical" href="https://murateren.github.io/mynotes/blog/2025/05/01/yubikey-reset-and-backup/">
+      
+      
+        <link rel="prev" href="../../../02/03/easyoptouts-review/">
+      
+      
+        <link rel="next" href="../why-i-run-a-tor-relay/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/img/logo/BuWiFi.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+  
+    <title>Blog Post Title Placeholder - My Notes</title>
+  
+
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css?v=20250306">
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Blog Post Title Placeholder - My Notes" >
+      
+        <meta  property="og:description"  content="This tutorial demonstrates how to reset a YubiKey close to factory defaults and create a backup of most YubiKey applications on a spare key." >
+      
+        <meta  property="og:image"  content="https://murateren.github.io/mynotes/assets/images/social/blog/posts/yubikey-reset-and-backup.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://murateren.github.io/mynotes/blog/2025/05/01/yubikey-reset-and-backup/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Blog Post Title Placeholder - My Notes" >
+      
+        <meta  name="twitter:description"  content="This tutorial demonstrates how to reset a YubiKey close to factory defaults and create a backup of most YubiKey applications on a spare key." >
+      
+        <meta  name="twitter:image"  content="https://murateren.github.io/mynotes/assets/images/social/blog/posts/yubikey-reset-and-backup.png" >
+      
+    
+    
+  
+
+  
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large">
+  
+
+  
+    <meta http-equiv="onion-location" content="https://murateren.github.io/mynotes/blog/2025/05/01/yubikey-reset-and-backup/">
+  
+
+  
+
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-reset-your-yubikey-and-create-a-backup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+
+<!-- Determine classes -->
+
+
+
+
+
+<!-- Header -->
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+
+    <!-- Link to home -->
+    <a href="../../../../.." title="My Notes"
+      class="md-header__button md-logo" aria-label="My Notes" data-md-component="logo">
+      <!--  -->
+<img src="../../../../../assets/brand/mylogo/BuWiFi-black.svg#only-light" alt="logo" width="24" height="24">
+<img src="../../../../../assets/brand/mylogo/BuWiFi-white.svg#only-dark" alt="logo" width="24" height="24">
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+            Blog Post Title Placeholder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repository information -->
+    
+
+    <!-- Button to open search modal -->
+    
+    <label class="md-header__button md-icon" for="__search">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+    </label>
+
+
+    <!-- Site language selector -->
+    
+
+    <!-- Color palette toggle -->
+    
+    
+    <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to system theme"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-2.69L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20z"/></svg>
+      </label>
+    
+  
+</form>
+    
+    
+
+    <!-- User preference: color palette -->
+    
+    <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+
+    <!--  <div class="md-header__option">
+  <div class="">
+    
+    <a href="/en/about/donate/" class="md-header__button md-icon pg-red" title="Donate">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg>
+    </a>
+  </div>
+</div>  -->
+
+    <!-- Search interface -->
+    <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+  
+  
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../basics/why-privacy-matters/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Knowledge Base
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recommendations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../videos/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Videos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../about/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+  
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="My Notes" class="md-nav__button md-logo" aria-label="My Notes" data-md-component="logo">
+      <!--  -->
+<img src="../../../../../assets/brand/mylogo/BuWiFi-black.svg#only-light" alt="logo" width="24" height="24">
+<img src="../../../../../assets/brand/mylogo/BuWiFi-white.svg#only-dark" alt="logo" width="24" height="24">
+    </a>
+    My Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../basics/why-privacy-matters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Knowledge Base
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../tools/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Recommendations
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../editorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Editorial Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/announcements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Announcements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/explainers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Explainers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/guest-wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Guest WiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    News
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/opinion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Opinion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/reviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reviews
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../videos/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Videos
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../about/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-would-you-need-to-reset-your-yubikey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why would you need to reset your YubiKey?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why would you need to reset your YubiKey?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#you-accidentally-doxxed-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      You accidentally "doxxed" yourself
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-key-is-compromised" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your key is compromised
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#you-need-to-set-up-a-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      You need to set up a backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-and-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements and preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements and preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-remove-your-keys-from-all-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Remove your keys from all accounts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-download-and-install-the-yubico-authenticator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Download and install the Yubico Authenticator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-open-the-yubico-authenticator-and-plug-in-your-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Open the Yubico Authenticator and plug in your keys
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resetting-your-yubikey-to-factory-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resetting your YubiKey to factory defaults
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resetting your YubiKey to factory defaults">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-4-delete-your-yubikeys-one-time-password-otp-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Delete your YubiKey's One-Time Password (OTP) application
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Delete your YubiKey&#39;s One-Time Password (OTP) application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-from-the-yubico-authenticator" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. From the Yubico Authenticator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-delete-credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Delete credential
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-reset-your-yubikeys-fido2-oath-and-piv-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Reset your YubiKey's FIDO2, OATH, and PIV applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Reset your YubiKey&#39;s FIDO2, OATH, and PIV applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-reset-oath" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Reset OATH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-reset-fido2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Reset FIDO2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-reset-piv" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Reset PIV
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-reset-your-yubikeys-openpgp-and-yubihsm-auth-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Reset your YubiKey's OpenPGP and YubiHSM Auth applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Reset your YubiKey&#39;s OpenPGP and YubiHSM Auth applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-install-ykman-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Install ykman CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-navigate-to-the-application-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Navigate to the application directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-reset-the-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Reset the applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-and-backing-up-of-your-yubikeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up and backing up of your YubiKeys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up and backing up of your YubiKeys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-7-secure-your-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7: Secure your keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 7: Secure your keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-from-the-yubico-authenticator" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. From the Yubico Authenticator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-change-the-default-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Change the default PIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-change-the-default-puk" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Change the default PUK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-change-the-default-management-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4. Change the default Management key
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-create-and-register-each-keys-otp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8: Create and register each key's OTP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Create and register each key&#39;s OTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-from-the-yubico-authenticator" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. From the Yubico Authenticator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-for-the-public-id-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. For the Public ID field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-for-the-private-id-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3. For the Private ID field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-for-the-secret-key-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4. For the Secret key field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-save-your-otp-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5. Save your OTP credentials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-set-up-the-otp-credentials-for-your-spare-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.6. Set up the OTP credentials for your spare key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87-register-your-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.7. Register your keys
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-create-and-clone-your-keys-challenge-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 9: Create and clone your key's Challenge-response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 9: Create and clone your key&#39;s Challenge-response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-from-the-yubico-authenticator" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. From the Yubico Authenticator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-generate-a-secret-key-and-save-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2. Generate a Secret key and save it
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-clone-your-keys-challenge-response-to-your-spare-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3. Clone your key's Challenge-response to your spare key
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-10-register-and-copy-your-keys-oath-totps-passkeys-static-passwords-and-oath-hotps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 10: Register and copy your key's OATH-TOTPs, Passkeys, Static passwords, and OATH-HOTPs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 10: Register and copy your key&#39;s OATH-TOTPs, Passkeys, Static passwords, and OATH-HOTPs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-register-and-copy-oath-time-based-one-time-password-oath-totp-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1. Register and copy OATH Time-based One-Time Password (OATH-TOTP) codes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-register-and-copy-passkeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2. Register and copy Passkeys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-optional-delete-yubikeys-slots-to-install-other-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.3. Optional: Delete YubiKey's slot(s) to install other application(s)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-optional-setup-and-copy-static-passwords" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.4. Optional: Setup and copy Static passwords
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-optional-setup-and-copy-oath-hmac-based-one-time-password-oath-hotp-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.5. Optional: Setup and copy OATH HMAC-based One-Time Password (OATH-HOTP) codes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-11-generate-and-copy-an-openpgp-key-and-subkeys-to-your-yubikeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 11: Generate and copy an OpenPGP key and subkeys to your YubiKeys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 11: Generate and copy an OpenPGP key and subkeys to your YubiKeys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-secure-your-yubikeys-openpgp-application-with-a-new-pin-and-admin-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1. Secure your YubiKeys' OpenPGP application with a new PIN and Admin PIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-open-or-install-the-appropriate-gpg-application-for-your-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2. Open or install the appropriate GPG application for your OS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-generate-an-openpgp-key-externally" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3. Generate an OpenPGP key externally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-add-subkeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.4. Add subkeys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-backup-your-openpgp-private-key-and-subkeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.5. Backup your OpenPGP Private Key and subkeys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-move-your-openpgp-key-and-subkeys-to-your-yubikeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.6. Move your OpenPGP key and subkeys to your YubiKeys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#117-verify-that-all-your-subkeys-are-stored-properly-to-your-yubikey" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.7. Verify that all your subkeys are stored properly to your YubiKey
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#118-copy-your-openpgp-key-and-subkeys-to-your-spare-yubikey" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.8. Copy your OpenPGP key and subkeys to your spare YubiKey
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-your-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Review your configuration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+<div class="md-content md-content--post" data-md-component="content" itemscope
+  itemtype="https://schema.org/AnalysisNewsArticle">
+  <meta itemprop="headline" content="Blog Post Title Placeholder" />
+  <meta itemprop="isAccessibleForFree" content="True" />
+  <meta itemprop="isFamilyFriendly" content="True" />
+  
+  <meta itemprop="inLanguage" content="en-US" />
+  
+  <span itemprop="publisher" itemscope itemtype="https://schema.org/NewsMediaOrganization">
+    <meta itemprop="name" content="Privacy Guides" />
+    <link itemprop="url" href="https://www.privacyguides.org/" />
+    <link itemprop="sameAs" href="https://mastodon.neat.computer/@privacyguides" />
+    <link itemprop="sameAs" href="https://twitter.com/privacy_guides" />
+    <link itemprop="sameAs" href="https://github.com/privacyguides" />
+    <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <link itemprop="url" href="https://www.privacyguides.org/en/assets/brand/logos/png/square/pg-yellow.png" />
+      <meta itemprop="width" content="512" />
+      <meta itemprop="height" content="512" />
+    </span>
+    <link itemprop="publishingPrinciples" href="https://www.privacyguides.org/en/about/criteria/" />
+    <link itemprop="actionableFeedbackPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#actionable-feedback" />
+    <link itemprop="correctionsPolicy" href="https://www.privacyguides.org/articles/editorial/#corrections-policy" />
+    <link itemprop="ethicsPolicy" href="https://www.privacyguides.org/articles/editorial/#ethics-policy" />
+    <link itemprop="missionCoveragePrioritiesPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#coverage-priorities" />
+    <link itemprop="unnamedSourcesPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#unnamed-sources-policy" />
+    <link itemprop="verificationFactCheckingPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#verification-fact-checking" />
+    <link itemprop="ownershipFundingInfo" href="https://www.privacyguides.org/en/about/donate/" />
+    <link itemprop="masthead" href="https://www.privacyguides.org/en/about/" />
+  </span>
+
+  <!-- Sidebar -->
+  <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner md-post">
+        <nav class="md-nav md-nav--primary">
+
+          <!-- Back to overview link -->
+          <div class="md-post__back">
+            <div class="md-nav__title md-nav__container">
+              <a href="../../../../" class=" md-nav__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                <span class="md-ellipsis">
+                  Back to index
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Post authors -->
+          
+          <div class="md-post__authors md-typeset">
+            
+            <div class="md-profile md-post__profile" itemprop="author" itemscope
+              itemtype="https://schema.org/Person">
+              <span class="md-author md-author--long">
+                <img src="../../../../../assets/img/avatar/murat-profile-pic.jpg" alt="Murat Eren" />
+              </span>
+              <span class="md-profile__description">
+                <strong>
+                  
+                  <span itemprop="name">Murat Eren</span>
+                  
+                </strong>
+                <br />
+                <span itemprop="jobTitle">Founder</span>
+              </span>
+            </div>
+            
+          </div>
+          
+
+          <!-- Post metadata -->
+          <ul class="md-post__meta md-nav__list">
+            <li class="md-nav__item md-nav__item--section">
+              <div class="md-post__title">
+                <span class="md-ellipsis">
+                  Metadata
+                </span>
+              </div>
+              <nav class="md-nav">
+                <ul class="md-nav__list">
+
+                  <!-- Post date -->
+                  <li class="md-nav__item">
+                    <div class="md-nav__link" title="Date published">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                      <time datetime="2025-05-01 10:30:00+00:00" class="md-ellipsis" itemprop="datePublished">May 1, 2025</time>
+                    </div>
+                  </li>
+
+                  <!-- Post date updated -->
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link" title="Date last updated">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
+                      <time datetime="2025-05-06 12:00:00+00:00" class="md-ellipsis" itemprop="dateModified">May 6, 2025</time>
+                    </div>
+                  </li>
+                  
+
+                  <!-- Post categories -->
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                      <span class="md-ellipsis">
+                        in
+                        
+                        <a class="md-meta__link" href="../../../../category/tutorials/">Tutorials</a></span>
+                    </div>
+                  </li>
+                  
+
+                  <!-- Post readtime -->
+                  
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                      <span class="md-ellipsis" itemprop="timeRequired">
+                        
+                        34 min read
+                        
+                      </span>
+                    </div>
+                  </li>
+                  
+                </ul>
+              </nav>
+            </li>
+          </ul>
+
+          <!-- Related links -->
+          
+
+          
+          
+          
+        </nav>
+
+        <!-- Table of contents, if integrated -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <article class="md-content__inner md-typeset">
+    
+    
+    
+    
+
+    
+    
+
+<!-- Tags -->
+
+  
+
+
+
+<!-- Actions -->
+
+
+
+
+<!-- Page content -->
+<div>
+<h1 id="how-to-reset-your-yubikey-and-create-a-backup">How to Reset Your YubiKey and Create a Backup</h1>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/cover.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Photo of YubiKey on a table between a MacBook and a phone." src="../../../../assets/images/yubikey-reset-and-backup/cover.webp" /></a>
+<small aria-hidden="true">Photo: Yubico</small></p>
+<p>If you are not familiar with it already, a YubiKey is a physical <a href="https://www.privacyguides.org/en/security-keys/">security key</a> produced by <a href="https://www.yubico.com/">Yubico</a> that can be used for various authentication and security purposes. One common usage is to use it as a second factor of authentication for a <a href="https://www.yubico.com/works-with-yubikey/catalog/">service or product</a>. This tutorial explains how to reset a YubiKey to factory defaults and create a near copy of it for backup purposes.<!-- more --></p>
+<p>The biggest security <em>advantage</em> to using a physical security key is that it's something you have that cannot be accessed remotely or easily emulated.</p>
+<p>The biggest security <em>disadvantage</em> of using a physical security key is the risk of losing it. This is why you should always <strong>get two</strong> physical security keys, to use the second one as a <strong>backup</strong>.</p>
+<p>There are many brands of physical security key, but this tutorial is specifically for YubiKey, one of the <a href="https://www.privacyguides.org/en/security-keys/">most recommended brands</a>.</p>
+<p>To follow this tutorial, you will need to have <strong>two YubiKeys</strong> from either the series 5, 5 FIPS, 4, or 4 FIPS. Both these keys should not be currently in use with any of your accounts, as described in <a href="#step-1-remove-your-keys-from-all-accounts">Step 1</a>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger! Reset is irreversible!</p>
+<p>Do <strong>not</strong> skip Step 1 below! If one or both of your YubiKey(s) are registered with any account before starting the reset, <strong>you must</strong> first remove the key(s) from this account's settings.
+Once a YubiKey application is reset, this operation is irreversible and previous settings will be lost permanently. <strong>Be very careful about this!</strong></p>
+</div>
+<h2 id="why-would-you-need-to-reset-your-yubikey"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m9 3c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9-5a3 3 0 0 0-3 3c0 1.31.83 2.42 2 2.83V18h2v-2h2v-2h-2v-2.17c1.17-.41 2-1.52 2-2.83a3 3 0 0 0-3-3"/></svg></span> Why would you need to reset your YubiKey?</h2>
+<p>Resetting your YubiKey <em>isn't</em> something you should be doing regularly.</p>
+<p>If you use your key with a lot of services, it can be a laborious and even dangerous task, for example if you forget to remove an account and get permanently locked out once your key is reset. However, there are a few situations where you might want to do this:</p>
+<h3 id="you-accidentally-doxxed-yourself">You accidentally "doxxed" yourself</h3>
+<p>When using a security key regularly, it isn't rare to accidentally touch your YubiKey and inadvertently trigger its <a href="https://docs.yubico.com/yesdk/users-manual/application-otp/challenge-response.html">Challenge-response</a> in an inappropriate field. If this happens in the <em>wrong field</em>, this information could get stored in a service provider's log files for example.</p>
+<p>Perhaps you also just "doxxed" yourself by unintentionally texting your key's Challenge-response to a puzzled recipient in a personal unencrypted social media Direct Message (true story).</p>
+<p>The privacy risk of this is low but, depending on your situation, leaking your YubiKey's One-Time Password (<abbr title="One-Time Password">OTP</abbr>) Challenge-response in a plain text field <em>could</em> technically create a link between accounts. This is because despite the second part of the string changing every time, the first 12 characters are static, meaning this part always remains the same. This static part is the <a href="https://docs.yubico.com/yesdk/users-manual/application-otp/yubico-otp.html">Public ID</a> of your YubiKey. When resetting your YubiKey, you can change this static part.</p>
+<h3 id="your-key-is-compromised">Your key is compromised</h3>
+<p>Another situation that could make you want to reset your YubiKey is if you are in a very high risk situation and a sophisticated malicious actor had physical access to your key, especially if your key's firmware is <a href="https://www.yubico.com/support/security-advisories/ysa-2024-03/">older than 5.7</a>. If this person or group were able to physically accessed your key with older firmware, under some rare conditions, they <a href="https://arstechnica.com/security/2024/09/yubikeys-are-vulnerable-to-cloning-attacks-thanks-to-newly-discovered-side-channel/"><em>could</em></a> have cloned it.</p>
+<p>If you are at risk and this happens to you, you would first need to revoke access to all the services you've used your compromised key with.</p>
+<p>Then, to re-register a key with your services, the safest course of action would be to get an entirely new set of keys. But if this isn't possible, a second option could be to reset your key and re-register it with new credentials.</p>
+<h3 id="you-need-to-set-up-a-backup">You need to set up a backup</h3>
+<p>This is the most common situation we will be focusing on. You might need to reset your YubiKeys' applications simply to create a clone of it so that you have a backup.</p>
+<p>Keeping a backup of your key is especially important for usages such as setting up a YubiKey as a second factor of authentication with KeePassXC, for example.</p>
+<p>Some services will allow you to register two or more <em>different</em> keys to authenticate your account, but other services might only allow you to register one. This is when you want to make sure your have a backup of this key.</p>
+<h2 id="requirements-and-preparation"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16h-2v-1H8v1H6v-1H2v5h20v-5h-4zm2-8h-3V6c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v4h4v-2h2v2h8v-2h2v2h4v-4c0-1.1-.9-2-2-2m-5 0H9V6h6z"/></svg></span> Requirements and preparation</h2>
+<p>For this tutorial you will need:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Two YubiKeys (from series 5, 5 FIPS, 4, or 4 FIPS)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Computer running Linux, macOS, or Windows</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Internet connection</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Ability to install software on this computer</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">It is recommended to follow this tutorial from a desktop computer.</p>
+</div>
+<h3 id="step-1-remove-your-keys-from-all-accounts">Step 1: Remove your keys from all accounts</h3>
+<p>First, make sure you are <em>not</em> using these two YubiKeys with any account, service, or product. <strong>The importance of this cannot be stressed enough.</strong> You do not want to realize next month you are <em>permanently locked out</em> of an account because you reset your key and forgot it was set up with that account.</p>
+<p>If you are using these keys with any account, remove the keys from the setting of each account and test multiple times that you are able to log in without it. Ideally, start with fresh keys.</p>
+<div class="admonition tip">
+<p class="admonition-title">YubiKey's applications can be reset independently</p>
+<p>Depending on your situation, you might want to reset one of your YubiKeys' application and not all.</p>
+<p>Except for the YubiKey Bio Series Multi-protocol Edition (which we don't cover in this tutorial), each YubiKey application can be reset independently without affecting the others. You could for example reset your <abbr title="One-Time Password">OTP</abbr> slots without affecting your FIDO2 settings, and vice versa. For this tutorial, we will reset every application. Skip the ones you do not need to reset.</p>
+</div>
+<h3 id="step-2-download-and-install-the-yubico-authenticator">Step 2: Download and install the Yubico Authenticator</h3>
+<p>Go to this Yubico website <a href="https://www.yubico.com/products/yubico-authenticator/#h-download-yubico-authenticator">page</a>, click on the link for your specific Operating System, then download and <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/installation.html">install</a> the <strong>Yubico Authenticator</strong> application on your computer.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-1-download.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a browser showing the page to download the Yubico Authenticator." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-1-download.webp" /></a></p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-2-yubicoapp.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a YubiKey icon with &quot;Insert your YubiKey&quot;." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-2-yubicoapp.webp" /></a></p>
+<h3 id="step-3-open-the-yubico-authenticator-and-plug-in-your-keys">Step 3: Open the Yubico Authenticator and plug in your keys</h3>
+<p>Open the <strong>Yubico Authenticator</strong> application. If you can, insert both your YubiKeys in your computer's ports. If you can't insert both keys at once, insert your main YubiKey first, then for each step unplug your main key once you are done, plug in your spare key, and repeat each step.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-3-keysplugged.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Home menu and 2 YubiKeys plugged in. The application window showing the main YubiKey is colored green." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-3-keysplugged.webp" /></a></p>
+<p>From the "Home" section, you can see your keys' serial number, firmware version, as well as which applications are installed on your key. You can also set labels for each key and change the interface's color to make it easier to see which key you are configuring.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-4-keyspluggedspare.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Home menu with a spare YubiKey. The application window is colored teal." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-4-keyspluggedspare.webp" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">If you don't see the menu options</p>
+<p>If you do not see the menu on the left (Home, Accounts, Passkeys, Certificates, Slots), make the <strong>Yubico Authenticator</strong> window wider or click on the 3-bar button on the upper-left. If you do not see the menu on the right (Device, Application), click on the 3-dot button on the upper-right.</p>
+</div>
+<h2 id="resetting-your-yubikey-to-factory-defaults"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6.5C4 4 6 2 8.5 2S13 4 13 6.5c0 1.96-1.25 3.63-3 4.24V15h3v3h-3v4H7V10.74c-1.75-.61-3-2.28-3-4.24m3 0C7 7.33 7.67 8 8.5 8S10 7.33 10 6.5 9.33 5 8.5 5 7 5.67 7 6.5M18 7h2v6h-2m0 4h2v-2h-2"/></svg></span> Resetting your YubiKey to factory defaults</h2>
+<div class="admonition info">
+<p class="admonition-title">Disabling applications</p>
+<p>From the "Device" menu, you can click on "Toggle applications" to enable or disable applications independently. Note that disabling a YubiKey application doesn't reset it, all credentials and settings will be <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/settings.html#toggle-yubikey-applications-on-off">preserved</a>.</p>
+</div>
+<h3 id="step-4-delete-your-yubikeys-one-time-password-otp-application">Step 4: Delete your YubiKey's One-Time Password (<abbr title="One-Time Password">OTP</abbr>) application</h3>
+<p>This step will not reset your YubiKey's <abbr title="One-Time Password">OTP</abbr> application to exact factory defaults, but it will emulate a factory reset very closely once you have added new credentials in the following sections.</p>
+<h4 id="41-from-the-yubico-authenticator">4.1. From the Yubico Authenticator</h4>
+<p>Click on the "Slots" button in the left-side menu. You will see 2 slots listed there labeled as "Short touch" and "Long touch" slots. If these slots are configured already, under the label you will see "Slot is configured". Click on each configured slot.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-5-slots.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-5-slots.webp" /></a></p>
+<h4 id="42-delete-credential">4.2. Delete credential</h4>
+<p>This will open a new menu on the right. Click on "Delete credential" (if you cannot see this option, it could be because your program window isn't big enough, scroll down to see more options).</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-6-deletecredential.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the Short touch slot selected." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-6-deletecredential.webp" /></a></p>
+<p>A "Delete credential" message will pop up with a warning, click "Delete" on the lower-right.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-7-deletepopup.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Delete credential popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-7-deletepopup.webp" /></a></p>
+<p>Verify that you see both slots labeled with "Slot is empty" in the Slots section.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-8-slotsempty.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the two slots labeled empty." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-8-slotsempty.webp" /></a></p>
+<h3 id="step-5-reset-your-yubikeys-fido2-oath-and-piv-applications">Step 5: Reset your YubiKey's FIDO2, OATH, and PIV applications</h3>
+<div class="admonition warning">
+<p class="admonition-title">Compatibility:</p>
+<p>This step might not work fully with models older than YubiKey 5 and 5 FIPS Series</p>
+</div>
+<h4 id="51-reset-oath">5.1. Reset OATH</h4>
+<p>From the <strong>Yubico Authenticator</strong>, in the "Device" menu on the right, click on "Factory reset". On the "Factory reset" popup section, click on "OATH". You will see a checkmark appear over "OATH", then click on "Reset" on the lower-right.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger! This step is irreversible!</p>
+<p><strong>Reset cannot be reversed!</strong> Make sure you have properly unpaired all your accounts from this key before clicking "Reset".</p>
+</div>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-9-reset-oath.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Factory reset popup with the OATH option selected." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-9-reset-oath.webp" /></a></p>
+<h4 id="52-reset-fido2">5.2. Reset FIDO2</h4>
+<p>From the "Device" menu, click on "Factory reset" again. This time click on "FIDO2". You will see a checkmark appear over "FIDO2", then click on "Reset" on the lower-right.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-10-reset-fido2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing Factory reset popup with the FIDO2 option selected." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-10-reset-fido2.webp" /></a></p>
+<p>You will be prompted to unplug your YubiKey from your computer. Unplug it, wait for the Status message to change with "Reinsert your YubiKey" then plug it in again.</p>
+<p>When prompted to "Touch the button on your YubiKey now", touch the gold part of your key.</p>
+<p>You will see a confirmation message saying "<abbr title="Fast IDentity Online">FIDO</abbr> application reset". You can now click on "Close" on the lower-right.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-11-reset-fido2close.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing Factory reset popup with a warning before reset." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-11-reset-fido2close.webp" /></a></p>
+<h4 id="53-reset-piv">5.3. Reset PIV</h4>
+<p>From the "Device" menu again, click on "Factory reset" again. This time click on "PIV". You will see a checkmark appear over "PIV", then click on "Reset" on the lower-right.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-12-reset-piv.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing Factory reset popup with the PIV option selected." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-12-reset-piv.webp" /></a></p>
+<div class="admonition success">
+<p class="admonition-title">Reset your spare key too!</p>
+<p>If you inserted both of your keys at once, click on your spare key on the left-side key menu. Repeat the 3 steps above for your spare key. If you inserted only one key at the time, insert your second key and repeat this process.</p>
+</div>
+<h3 id="step-6-reset-your-yubikeys-openpgp-and-yubihsm-auth-applications">Step 6: Reset your YubiKey's <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> and YubiHSM Auth applications</h3>
+<div class="admonition warning">
+<p class="admonition-title">Compatibility for YubiHSM Auth</p>
+<p>The YubiHSM Auth application is only available for YubiKeys with firmware version 5.4 or higher. Use the <strong>Yubico Authenticator</strong> to determine your YubiKey's firmware version.</p>
+</div>
+<p>To reset the <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> and YubiHSM Auth applications of your YubiKey, you will need to install a Yubico <abbr title="Command Line Interface">CLI</abbr> program called <a href="https://docs.yubico.com/software/yubikey/tools/ykman/Using_the_ykman_CLI.html"><strong>ykman <abbr title="Command Line Interface">CLI</abbr></strong></a> and use a terminal application.</p>
+<p>You can install <strong>ykman <abbr title="Command Line Interface">CLI</abbr></strong> using a package manager such as <strong>pip</strong> or <strong>brew</strong>, or by downloading the package from the Yubico developer's website:</p>
+<h4 id="61-install-ykman-cli">6.1. Install ykman <abbr title="Command Line Interface">CLI</abbr></h4>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/></svg></span> From any <abbr title="Operating System">OS</abbr>, using the <strong>pip</strong> package manager:</p>
+<p>Open a terminal application and type:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">pip install --user yubikey-manager</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">For Linux users</p>
+<p>Yubico makes the <strong>ykman <abbr title="Command Line Interface">CLI</abbr></strong> Python program files available on its <a href="https://developers.yubico.com/yubikey-manager/Releases/">website</a> and on its <a href="https://github.com/Yubico/yubikey-manager">GitHub repository</a>. Consult the documentation provided to ensure you have all the programs required for the installation. Certain third-party package maintainers might also offer <strong>ykman <abbr title="Command Line Interface">CLI</abbr></strong> (also called YubiKey Manager <abbr title="Command Line Interface">CLI</abbr>) for several Linux distributions other than Ubuntu.</p>
+</div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.62 8.35c-.42.28-1.75 1.04-1.95 1.19-.39.31-.75.29-1.14-.01-.2-.16-1.53-.92-1.95-1.19-.48-.31-.45-.7.08-.92 1.64-.69 3.28-.64 4.91.03.49.21.51.6.05.9m7.22 7.28c-.93-2.09-2.2-3.99-3.84-5.66a4.3 4.3 0 0 1-1.06-1.88c-.1-.33-.17-.67-.24-1.01-.2-.88-.29-1.78-.7-2.61-.73-1.58-2-2.4-3.84-2.47-1.81.05-3.16.81-3.95 2.4-.21.43-.36.88-.46 1.34-.17.76-.32 1.55-.5 2.32-.15.65-.45 1.21-.96 1.71-1.61 1.57-2.9 3.37-3.88 5.35-.14.29-.28.58-.37.88-.19.66.29 1.12.99.96.44-.09.88-.18 1.3-.31.41-.15.57-.05.67.35.65 2.15 2.07 3.66 4.24 4.5 4.12 1.56 8.93-.66 9.97-4.58.07-.27.17-.37.47-.27.46.14.93.24 1.4.35.49.09.85-.16.92-.64.03-.26-.06-.49-.16-.73"/></svg></span> From Linux (Ubuntu), using the Yubico developer's website:</p>
+<p>On <a href="https://developers.yubico.com/yubikey-manager/Releases/">this page</a>, download the latest <strong><code>tar.gz</code></strong> file and decompress it. Run the <strong>ykman</strong> Python program using the command line from the directory you have installed it in.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.62 8.35c-.42.28-1.75 1.04-1.95 1.19-.39.31-.75.29-1.14-.01-.2-.16-1.53-.92-1.95-1.19-.48-.31-.45-.7.08-.92 1.64-.69 3.28-.64 4.91.03.49.21.51.6.05.9m7.22 7.28c-.93-2.09-2.2-3.99-3.84-5.66a4.3 4.3 0 0 1-1.06-1.88c-.1-.33-.17-.67-.24-1.01-.2-.88-.29-1.78-.7-2.61-.73-1.58-2-2.4-3.84-2.47-1.81.05-3.16.81-3.95 2.4-.21.43-.36.88-.46 1.34-.17.76-.32 1.55-.5 2.32-.15.65-.45 1.21-.96 1.71-1.61 1.57-2.9 3.37-3.88 5.35-.14.29-.28.58-.37.88-.19.66.29 1.12.99.96.44-.09.88-.18 1.3-.31.41-.15.57-.05.67.35.65 2.15 2.07 3.66 4.24 4.5 4.12 1.56 8.93-.66 9.97-4.58.07-.27.17-.37.47-.27.46.14.93.24 1.4.35.49.09.85-.16.92-.64.03-.26-.06-.49-.16-.73"/></svg></span> From Linux (Ubuntu), using Yubico's <strong>yubico/stable PPA</strong> type:</p>
+<p>Open a terminal application and type:</p>
+<div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><span class="go">sudo apt-add-repository ppa:yubico/stable</span>
+<span class="go">sudo apt update</span>
+<span class="go">sudo apt install yubikey-manager</span>
+</code></pre></div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg></span> From macOS, using the <a href="https://brew.sh/">Homebrew</a> package manager:</p>
+<p>Open a terminal application and type:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">brew install ykman</span>
+</code></pre></div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg></span> From macOS, using the Yubico developer's website:</p>
+<p>On <a href="https://developers.yubico.com/yubikey-manager/Releases/">this page</a>, download the latest <strong><code>mac.pkg</code></strong> file, then double-click on it to complete the installation.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12V6.75l6-1.32v6.48zm17-9v8.75l-10 .15V5.21zM3 13l6 .09v6.81l-6-1.15zm17 .25V22l-10-1.91V13.1z"/></svg></span> From Windows, using the Yubico developer's website:</p>
+<p>On <a href="https://developers.yubico.com/yubikey-manager/Releases/">this page</a>, download the latest <strong><code>win64.msi</code></strong> file, then double-click on it to complete the installation.</p>
+<h4 id="62-navigate-to-the-application-directory">6.2. Navigate to the application directory</h4>
+<p>You might need to navigate to the application's directory first:</p>
+<div class="admonition tip">
+<p class="admonition-title">Installation path</p>
+<p>If you have chosen a different installation path from default, you will need to navigate to this installation path instead.</p>
+</div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg></span> From macOS, in the terminal navigate to:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">cd /Applications/Yubico\ Authenticator.app/Contents/MacOS/</span>
+</code></pre></div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12V6.75l6-1.32v6.48zm17-9v8.75l-10 .15V5.21zM3 13l6 .09v6.81l-6-1.15zm17 .25V22l-10-1.91V13.1z"/></svg></span> From Windows, in the command prompt navigate to:</p>
+<p>64-bit Systems:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">&quot;C:\Program Files\Yubico\YubiKey Manager CLI\ykman.exe &quot;</span>
+</code></pre></div>
+<p>32-bit Systems:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">&quot;C:\Program Files (x86)\Yubico\YubiKey Manager CLI\ykman.exe &quot;</span>
+</code></pre></div>
+<h4 id="63-reset-the-applications">6.3. Reset the applications</h4>
+<p>To make sure you reset both keys properly in this step, <strong>only plug one key at the time</strong> in your computer. Complete all the operations, unplug your main key then plug in your <em>spare</em> key and repeat.</p>
+<p>Once your main key is plugged in, in the terminal or command prompt type this line:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">ykman openpgp reset</span>
+</code></pre></div>
+<p>When prompted with this warning, type <span class="keys"><kbd class="key-y">Y</kbd></span>:</p>
+<div class="highlight"><pre><span></span><code><span class="go">&quot;WARNING! This will delete all stored OpenPGP keys and data and restore factory settings. Proceed? [y/N]:&quot;</span>
+</code></pre></div>
+<p>You should see this confirmation message:</p>
+<div class="highlight"><pre><span></span><code><span class="go">&quot;Reset complete. OpenPGP data has been cleared and default PINs are set.&quot;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Security warning</p>
+<p>This operation will set default PINs for your YubiKey's <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application.</p>
+<p>If you need to use this application later, you will need the default PINs. After reset, you should set up a new unique PIN and Admin PIN for this application, as explained on <a href="#step-11-generate-and-copy-an-openpgp-key-and-subkeys-to-your-yubikeys">Step 11</a>.</p>
+<p>You can see more setting commands for this application in Yubico's <a href="https://docs.yubico.com/software/yubikey/tools/ykman/OpenPGP_Commands.html">documentation</a>.</p>
+</div>
+<p>From the terminal, type this line:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">ykman hsmauth reset</span>
+</code></pre></div>
+<p>When prompted with this warning, type <span class="keys"><kbd class="key-y">Y</kbd></span>:</p>
+<div class="highlight"><pre><span></span><code><span class="go">&quot;WARNING! This will delete all stored YubiHSM Auth data and restore factory setting. Proceed? [y/N]:&quot;</span>
+</code></pre></div>
+<p>You should see this confirmation message:</p>
+<div class="highlight"><pre><span></span><code><span class="go">&quot;Reset complete. All YubiHSM Auth data has been cleared from the YubiKey.&quot;</span>
+</code></pre></div>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-13-reset-cli.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a terminal window showing the two commands for the OpenPGP and HSMauth resets." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-13-reset-cli.webp" /></a></p>
+<div class="admonition success">
+<p class="admonition-title">Reset your spare key too!</p>
+<p>Don't forget to unplug your <em>main</em> key, plug in your <em>spare</em> key, and repeat the process from <a href="#63-reset-the-applications">Step 6.3</a> to reset your spare key as well.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">The ykman CLI program</p>
+<p>You can use the <strong>ykman <abbr title="Command Line Interface">CLI</abbr></strong> program to do a lot more with your YubiKey. If you want to explore this program further, you can consult Yubico's <a href="https://docs.yubico.com/software/yubikey/tools/ykman/Using_the_ykman_CLI.html">documentation</a>.</p>
+</div>
+<h2 id="setting-up-and-backing-up-of-your-yubikeys"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c2 0 3.6 1.2 4.2 3H21v3h-3v3h-3V8h-3.3c-.6 1.8-2.3 3-4.2 3C5 11 3 9 3 6.5S5 2 7.5 2m0 3C6.7 5 6 5.7 6 6.5S6.7 8 7.5 8 9 7.3 9 6.5 8.3 5 7.5 5m0 8c2 0 3.6 1.2 4.2 3H21v3h-1v3h-2v-3h-2v3h-3v-3h-1.3c-.6 1.8-2.3 3-4.2 3C5 22 3 20 3 17.5S5 13 7.5 13m0 3c-.8 0-1.5.7-1.5 1.5S6.7 19 7.5 19 9 18.3 9 17.5 8.3 16 7.5 16"/></svg></span> Setting up and backing up of your YubiKeys</h2>
+<p>Now that you have a set of two freshly reset YubiKeys, we will set up your main key while creating a backup of each application that allows it to your spare key. The goal here is to create a spare key that you can safely keep as a backup, in the unfortunate event that you were to lose your main key.</p>
+<p>Keep in mind that your accounts and services will be only as protected as your <em>least</em> secured key. Make sure to <strong>protect both keys</strong> well.</p>
+<h3 id="step-7-secure-your-keys">Step 7: Secure your keys</h3>
+<p>Before starting to use your keys, Yubico <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/piv-certificates.html">recommends</a> changing the default <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/piv-certificates.html#changing-the-pin">PIN</a>, <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/piv-certificates.html#changing-the-puk">PUK</a>, and <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/piv-certificates.html#changing-the-management-key">Management Key</a> from their factory values. If you are using a YubiKey from the 5 FIPS Series with firmware 5.7 or later, changing this is required to enter the <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/settings.html#settings-home-fips-status">FIPS approved mode</a>.</p>
+<h4 id="71-from-the-yubico-authenticator">7.1. From the Yubico Authenticator</h4>
+<p>On the left-side menu, click on the "Certificates" button. You will see a section for various certificates in the center and in the right-side "Manage" menu, buttons to "Change PIN", "Change PUK", and "Management key".</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-14-config-certificates.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Certificates section." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-14-config-certificates.webp" /></a></p>
+<h4 id="72-change-the-default-pin">7.2. Change the default PIN</h4>
+<p>Click on the "Change PIN" button and a section will pop up. Enter a new PIN that is between 6 and 8 characters long, then click "Save".</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-15-config-certificatespin.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Change PIN popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-15-config-certificatespin.webp" /></a></p>
+<h4 id="73-change-the-default-puk">7.3. Change the default PUK</h4>
+<p>Click on the "Change PUK" button and a section will pop up. Enter a new PUK number that is between 6 and 8 characters long, then click "Save".</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-16-config-certificatespuk.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Change PUK popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-16-config-certificatespuk.webp" /></a></p>
+<h4 id="74-change-the-default-management-key">7.4. Change the default Management key</h4>
+<p>Click on the "Management key" button and a section will pop up. Enter or generate a "New management key" with a maximum of 64 characters. You can also change the encryption algorithm to "TDES", "AES128", "AES192", or "AES256" and add a pin protection by clicking on "Protect with PIN".  Then click "Save".</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-17-config-certificateskey.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Change management key popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-17-config-certificateskey.webp" /></a></p>
+<div class="admonition success">
+<p class="admonition-title">Secure your spare key too! Don't forget to repeat all of these steps for your spare key!</p>
+</div>
+<h3 id="step-8-create-and-register-each-keys-otp">Step 8: Create and register each key's <abbr title="One-Time Password">OTP</abbr></h3>
+<p>First, you will need to set up your keys' <abbr title="One-Time Password">OTP</abbr> and register them with <a href="https://www.yubico.com/products/yubicloud/">YubiCloud</a>. For security reasons, this setup <a href="https://support.yubico.com/hc/en-us/articles/360016614880-Can-I-duplicate-a-YubiKey">cannot be cloned</a> on your spare key. For services using <abbr title="One-Time Password">OTP</abbr>, you will need to register both of your keys which each service or product.</p>
+<div class="admonition tip">
+<p class="admonition-title">Add both keys</p>
+<p>Each time you secure a new account with your YubiKey, make sure to add both keys right at the start. This will save you the complication of going back to add your spare key to your accounts later on.</p>
+</div>
+<h4 id="81-from-the-yubico-authenticator">8.1. From the Yubico Authenticator</h4>
+<p>Click on the "Slots" button in the left-side menu. You will see 2 slots listed there labeled as "Short touch" and "Long touch" slots, both slots should be empty after the reset.</p>
+<p>Click on the first "Short touch" slot, then on the right-side menu, click on the "Yubico <abbr title="One-Time Password">OTP</abbr>" button in "Setup". A "Yubico <abbr title="One-Time Password">OTP</abbr>" section will pop up with three text fields.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-18-config-otp.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the Yubico OTP button selected on the right." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-18-config-otp.webp" /></a></p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-19-config-otpfields.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Yubico OTP popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-19-config-otpfields.webp" /></a></p>
+<h4 id="82-for-the-public-id-field">8.2. For the Public ID field</h4>
+<p>The <a href="https://developers.yubico.com/OTP/OTPs_Explained.html"><strong>Public ID</strong></a> of your YubiKey will be the first 12 characters of your key's <abbr title="One-Time Password">OTP</abbr> string. This is the static part that <em>could</em> technically create a link between your accounts if you leak it somewhere inappropriate.</p>
+<p>You can click on the "Use serial" star button on the right to generate a <a href="https://docs.yubico.com/yesdk/users-manual/application-otp/modhex.html">ModHex</a> string from your key's serial number, or you can type your own manually.</p>
+<div class="admonition info">
+<p class="admonition-title">If you decide to manually type your Public ID</p>
+<ul>
+<li>
+<p>Remember the string must be <strong>12-characters</strong> long</p>
+</li>
+<li>
+<p>You must only choose characters comprised within: <strong><code>bcdefghijklnrtuv</code></strong></p>
+</li>
+<li>
+<p>Because this string remains constant, to increase your privacy, favor a random string that isn't recognizable or specifically interesting. For example, resist the temptation to choose something irresistibly cool like "<code>vvbetterdude</code>" or "<code>vvfiercenerd</code>".</p>
+</li>
+</ul>
+</div>
+<h4 id="83-for-the-private-id-field">8.3. For the Private ID field</h4>
+<p>The <a href="https://developers.yubico.com/OTP/OTPs_Explained.html"><strong>Private ID</strong></a> of your YubiKey will also be 12-characters long but will not show in your key's <abbr title="One-Time Password">OTP</abbr> string. This <strong>Private ID</strong> can be used to store a private identity that can be accessed by a remote validation server holding the AES key used to encrypt the <abbr title="One-Time Password">OTP</abbr>.</p>
+<p>You can click on the "Generate random" circle-arrow button on the right to generate a random ID, or you can type your own manually.</p>
+<div class="admonition info">
+<p class="admonition-title">If you decide to manually type your Private ID</p>
+<ul>
+<li>
+<p>Remember the string must be <strong>12-characters</strong> long</p>
+</li>
+<li>
+<p>You must only choose characters comprised within: <strong><code>abcdef0123456789</code></strong></p>
+</li>
+<li>
+<p>If you want to increase your privacy, again favor a random string that isn't recognizable or specifically interesting. For example, resist the overwhelming temptation to choose something unbearably cool like "<code>c0de1337cafe</code>" or "<code>bada55babe42</code>"</p>
+</li>
+</ul>
+</div>
+<h4 id="84-for-the-secret-key-field">8.4. For the Secret key field</h4>
+<p>The <strong>Secret key</strong> of your YubiKey's <abbr title="One-Time Password">OTP</abbr> is a 32-character long random string. Again, you can click on the "Generate random" circle-arrow button on the right to generate a random Secret key, or you can type your own manually. If you decide to use your own Secret key, characters must be comprised within the allowed <strong><code>abcdef0123456789</code></strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">To remove automatic carriage return</p>
+<p>Automatically once you have filled all the fields, the option "Append" will get a checkmark. This means that each time you trigger your key's <abbr title="One-Time Password">OTP</abbr>, a carriage return will be added so that you will not have to press <span class="keys"><kbd class="key-enter">Enter</kbd></span> each time. If you do not wish this to happen, you can click on "Append" to disable it.</p>
+</div>
+<h4 id="85-save-your-otp-credentials">8.5. Save your <abbr title="One-Time Password">OTP</abbr> credentials</h4>
+<p>On the drop-down menu next to Append at the bottom, click on "No export file" and select "Select file". This will allow you to save this information locally and create a backup. You will need this information to register your keys later in <a href="#87-register-your-keys">Step 8.7</a>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Caution! Safeguard this file properly!</p>
+<p>This text file contains sensitive information in plain text. Make sure to pick a location to store it that is secure and encrypted. For example, do <strong>not</strong> store this file in a cloud service that isn't end-to-end encrypted. Ideally, only keep this file offline on an encrypted drive.</p>
+</div>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-20-config-otpfieldsfilled.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Yubico OTP popup with all text fields filled." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-20-config-otpfieldsfilled.webp" /></a></p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-21-config-otpfile.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a popup Choose File Name window to save a file." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-21-config-otpfile.webp" /></a></p>
+<p>Once all the information is filled, click on "Save" at the lower-right. The file you save will have the following coma-separated format:</p>
+<div class="highlight"><pre><span></span><code><span class="go">[serial_number],[public_id],[private_id],,[secret_key],[date],</span>
+</code></pre></div>
+<h4 id="86-set-up-the-otp-credentials-for-your-spare-key">8.6. Set up the <abbr title="One-Time Password">OTP</abbr> credentials for your spare key</h4>
+<p>To set up the <abbr title="One-Time Password">OTP</abbr> for your spare key, go back to the "Slots" section and click on your <em>spare</em> key listed on the upper-left key menu. If you were only able to plug one key at the time, unplug your <em>main</em> key and plug in your <em>spare</em> key. Repeat Steps 8.1 to 8.5 with your spare key. Make sure to select a different file name for <a href="#85-save-your-otp-credentials">Step 8.5</a> to not overwrite your main key's credential file.</p>
+<h4 id="87-register-your-keys">8.7. Register your keys</h4>
+<p>Now you will need to upload your keys' <abbr title="One-Time Password">OTP</abbr> credentials to the YubiCloud validation service. To avoid confusion, unplug one of your key and only keep one key plugged in at the time during the registration process.</p>
+<p>Go to Yubico's <a href="https://upload.yubico.com/">validation page</a> from a secure browser. Open the credentials file you have saved on <a href="#85-save-your-otp-credentials">Step 8.5</a> and copy each field in the corresponding section.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-22-config-register.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a browser window showing the Yubico OTP key upload web page." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-22-config-register.webp" /></a></p>
+<p>For the "<abbr title="One-Time Password">OTP</abbr> from YubiKey" field, click on the text field and touch your key's gold part to generate it. Then click on "I'm not a robot", solve the annoying CAPTCHA, and click on "Upload".</p>
+<p>On the next page, you should see "Yubico <abbr title="One-Time Password">OTP</abbr> key upload" and under it the confirmation: "Success!" and "Key upload successful".</p>
+<p>Under you key's Public ID, you will see 3 steps validating your key. This can take some time, be patient and do not close this page.</p>
+<p>Once your key's <abbr title="One-Time Password">OTP</abbr> credentials are fully uploaded to YubiCloud's validation server, you will see a "Try it out" green button appear. Click on it.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-23-config-registersuccess.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a browser window showing the Yubico OTP key upload web page validating a key registration." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-23-config-registersuccess.webp" /></a></p>
+<p>On this testing page, you can verify that your key's <abbr title="One-Time Password">OTP</abbr> slot works properly. Click on the "Yubico <abbr title="One-Time Password">OTP</abbr>" text field and touch the gold part of your key. You should see a small popup message on the lower-left confirming "<abbr title="One-Time Password">OTP</abbr> is valid". Try it a few times, then you can close this page.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-24-config-tryitout.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a browser window showing the Yubico OTP testing web page." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-24-config-tryitout.webp" /></a></p>
+<p>Finally, unplug your main key, plug in your <em>spare</em> key, and repeat this step using your spare key's saved credentials. It's important to <strong>register both your main and spare keys</strong>.</p>
+<h3 id="step-9-create-and-clone-your-keys-challenge-response">Step 9: Create and clone your key's Challenge-response</h3>
+<div class="admonition success">
+<p class="admonition-title">For use with KeePassXC</p>
+<p>This step is not necessary for all services, but is important for some services and products that will only allow you to register one key. For example, this is important if you wish to use YubiKey as a second factor to unlock your KeePassXC password database.</p>
+</div>
+<h4 id="91-from-the-yubico-authenticator">9.1. From the Yubico Authenticator</h4>
+<p>If you can, insert both your main and spare keys at once, and start configuring your main key on the upper-left key menu.</p>
+<p>Click on the "Slots" button in the left-side menu. You will see 2 slots listed there labeled as "Short touch" and "Long touch" slots.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-25-config-challenge.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the Long touch slot selected and the Challenge-response button selected on the right." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-25-config-challenge.webp" /></a></p>
+<div class="admonition success">
+<p class="admonition-title">Verify configuration</p>
+<p>If you have configured your keys' <abbr title="One-Time Password">OTP</abbr> in the previous step, the "Short touch" slot should now be labeled with "Slot is configured" and the "Long touch" slot should be empty.</p>
+</div>
+<p>Click on the "Long touch" slot, and on the right-side menu click on the "Challenge-response" button in "Setup". A "Challenge-response" section will pop up with a "Secret key" text field.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-26-config-challengepopup.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Challenge-response popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-26-config-challengepopup.webp" /></a></p>
+<h4 id="92-generate-a-secret-key-and-save-it">9.2. Generate a Secret key and save it</h4>
+<p>Click on the "Generate random" circle-arrow button on the right to generate a key. Before clicking save, you must copy this <strong>Secret key</strong> at least temporarily somewhere safe. This is how you will be able to clone your key's <a href="https://docs.yubico.com/yesdk/users-manual/application-otp/challenge-response.html">Challenge-response</a> to your spare key.</p>
+<div class="admonition danger">
+<p class="admonition-title">Caution! Safeguard this Secret key properly!</p>
+<p>This <strong>Secret key</strong> can be used to clone your YubiKey's Challenge-response on any other keys.</p>
+<p>If you only want to create one spare key, only copy this Secret key to a local text file and delete it fully once the configuration is completed and tested.</p>
+<p>If you want to keep it to create more spare keys later on, make sure to choose a location to store it that is secure and encrypted. For example, do <strong>not</strong> store this Secret key in a cloud service that isn't end-to-end encrypted. Do <strong>not</strong> store this Secret key in the same password manager you will unlock it with. Ideally, only keep this Secret key locally, offline, on an encrypted drive.</p>
+</div>
+<p>Click on "Require touch" if you wish to have to touch your YubiKey each time your key's Challenge-response is solicited. This is recommended as it will limit your key's Challenge-response being triggered unintentionally. Then, click on "Save" on the lower-right.</p>
+<h4 id="93-clone-your-keys-challenge-response-to-your-spare-key">9.3. Clone your key's Challenge-response to your spare key</h4>
+<p>Back to the "Slots" section, click on your <em>spare</em> key in the upper-left key menu. The click on "Long touch" and on "Challenge-response" again. Make sure you have selected your <em>spare key</em> this time.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-27-config-challengespare.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the spare key selected. The Long touch is labeled empty." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-27-config-challengespare.webp" /></a></p>
+<p>In the "Challenge-response" text field for your "Secret key", instead of generating a random one, paste the Secret key you have copied from your main key in the previous step. Click again on "Require touch" to enable it if you wish (optional), then click "Save". You should now see both your spare key's "Short touch" and "Long touch" labeled as configured.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-28-config-spareconfigured.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the spare key selected. The Long touch is labeled configured." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-28-config-spareconfigured.webp" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Make a note of which application is in each slot</p>
+<p>Although you can swap your YubiKey's slots, make a note of which application you have set up in which slot. If later on you need to delete an application to configure a different one, you want to make sure you delete the right one.</p>
+</div>
+<h3 id="step-10-register-and-copy-your-keys-oath-totps-passkeys-static-passwords-and-oath-hotps">Step 10: Register and copy your key's OATH-TOTPs, Passkeys, Static passwords, and OATH-HOTPs</h3>
+<div class="admonition info">
+<p class="admonition-title">YubiKey only has 2 configurable slots</p>
+<p>You can only set up 2 YubiKey slot applications at the time.</p>
+<p>If you have already configured the 2 slots for the <strong>Yubico <abbr title="One-Time Password">OTP</abbr></strong> and <strong>Challenge-response</strong> applications, and want to keep it that way, you will have no space to add a Static password or OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr> codes.</p>
+<p>In this case, you might want to skip the optional Steps 10.3, 10.4, and 10.5. You will still be able to add OATH-<abbr title="Time-based One-Time Password">TOTP</abbr> codes and Passkeys, because these applications are not stored in slots.</p>
+</div>
+<h4 id="101-register-and-copy-oath-time-based-one-time-password-oath-totp-codes">10.1. Register and copy OATH Time-based One-Time Password (OATH-<abbr title="Time-based One-Time Password">TOTP</abbr>) codes</h4>
+<p>To copy the OATH-<abbr title="Time-based One-Time Password">TOTP</abbr> authentication codes to your spare key, you will need to <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/tips.html#oath-accounts">use the same QR code</a> your were provided when originally registering an account on your main key.</p>
+<p>When you <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/oath.html#oath-add-an-account">add a new account</a> to your YubiKey's OATH-TOTPs, keep a copy of the QR code provided by the service or product to be able to register it again with your spare key. Ideally, register both keys at once. Make sure to <strong>secure this QR code properly</strong>, as it could be used to register it with any other authenticator.</p>
+<div class="admonition tip">
+<p class="admonition-title">If you have already registered an account</p>
+<p>If you have already registered an account and have not kept the QR code for your spare key, you can deregister your main key from this account and start the process over to add an authenticator app to this account. This time, use the QR code provided to register both keys at once, or securely keep a copy of the QR code to add it later.</p>
+</div>
+<p>Once you have registered a new OATH-<abbr title="Time-based One-Time Password">TOTP</abbr> code on your main key, you will not need to provide another time-based one-time password to this account when registering your spare key. You will only need to configure your spare key's OATH-<abbr title="Time-based One-Time Password">TOTP</abbr> code in the <strong>Yubico Authenticator</strong> application.</p>
+<p>If you successfully completed the setup for both your main and spare keys, the OATH-<abbr title="Time-based One-Time Password">TOTP</abbr> code generated should be the same on both keys. You will be able to see all the OATH-<abbr title="Time-based One-Time Password">TOTP</abbr> codes registered on your keys from the <strong>Yubico Authenticator</strong>. For this, click on the "Accounts" button on the left-side menu.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-29-config-oathtotp.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Accounts section." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-29-config-oathtotp.webp" /></a></p>
+<p>To keep your accounts secure, delete the copy of the QR code you have kept once you have completed the registration setup for a new OATH-<abbr title="Time-based One-Time Password">TOTP</abbr> account on both your main and spare key (unless you need to keep a backup for other purposes).</p>
+<p>Additionally, always make sure to note and secure well any account recovery information provided when adding a second factor of authentication. This is important to avoid getting locked out permanently of services or products.</p>
+<h4 id="102-register-and-copy-passkeys">10.2. Register and copy Passkeys</h4>
+<p>To copy your <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/fido2.html#fido2"><strong>Passkeys</strong></a> to your spare key, simply repeat the same setup process that was used to register the Passkey to your main YubiKey. To see a list of all the Passkeys stored on your key, in the <strong>Yubico Authenticator</strong> click on the "Passkeys" button on the left-side menu.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-30-config-passkeys.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Passkeys section." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-30-config-passkeys.webp" /></a></p>
+<p>From the "Passkeys" section, you can also click on the "Set PIN" button the on right to <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/fido2.html#creating-and-managing-the-fido2-pin">set up a password</a> protection for your Passkeys.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-31-config-passkeyspin.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Set PIN popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-31-config-passkeyspin.webp" /></a></p>
+<h4 id="103-optional-delete-yubikeys-slots-to-install-other-applications">10.3. Optional: Delete YubiKey's slot(s) to install other application(s)</h4>
+<p>If you are not using the <strong>Yubico <abbr title="One-Time Password">OTP</abbr></strong> and/or <strong>Challenge-response</strong> applications installed and copied in the previous steps, you might want to delete one or both slots to install either the <strong>Static password</strong> or the <strong>OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr></strong> application instead. YubiKeys only have 2 slots, so you cannot use them all at once.</p>
+<p>To delete a slot, click on the "Slots" button on the left-side menu, then select the slot you wish to delete. On the right-side menu, scroll down the "Setup" menu and click on "Delete credential".</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-32-deleteslot.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the Long touch selected and the Delete credential button selected on the right." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-32-deleteslot.webp" /></a></p>
+<p>You will be prompted with a warning message, then select "Delete". <strong>Be careful however</strong>, once deleted, there will be no way to restore the credentials you had stored there unless you have noted it elsewhere.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-33-deleteslotpopup.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Delete credential popup." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-33-deleteslotpopup.webp" /></a></p>
+<h4 id="104-optional-setup-and-copy-static-passwords">10.4. Optional: Setup and copy Static passwords</h4>
+<p>To set up the <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/yubico-otp.html#static-passwords"><strong>Static password</strong></a> application on your key, you must first allocate a slot to it. Click on the "Slots" button on the left-side menu, select the slot you wish to use, then click on "Static password" in the right-side menu.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-34-config-static.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the Long touch slot selected, and the Static password button selected on the right." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-34-config-static.webp" /></a></p>
+<p>A section will pop up with a text field, click on the "Generate random" circle-arrow button on the right to generate a <strong>Password</strong>. You can click on "Append" to deselect the carriage return if you prefer it removed from the end of your Password. This means you will have to press <span class="keys"><kbd class="key-enter">Enter</kbd></span> manually to confirm each entry.</p>
+<p>By default, the "Keyboard MODHEX" will be selected, but you can select a different "keyboard" if you prefer. This will change the type of characters used in your random Password.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-35-config-statickeyboards.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Static password popup with a keyboard selection drop-down menu." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-35-config-statickeyboards.webp" /></a></p>
+<p>Before confirming, copy this Password in a secure local text file temporarily. Then click "Save". Back to the "Slots" section, click on your <em>spare</em> key in the upper-left key menu. Then click on the same slot you have used with you main key and select again "Static password" on the right. When prompted with the text field again, paste the Password you have copied (make sure to select the same "keyboard" type). Then, click on "Save".</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-36-config-staticspare.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing a Static Password popup with a Password field filled." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-36-config-staticspare.webp" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">If you forgot to note your Static password</p>
+<p>You can trigger your <strong>Static password</strong> from your main key by opening a secure local text file and touch the gold part of your YubiKey. If you have configured your <strong>Static password</strong> in the "Short touch" slot, only touch the key for a second. If you have configured it in the "Long touch" slot, touch your key for about 3 seconds until a string is generated (make sure not to trigger a different application). You can then copy this Static password string to your spare key.</p>
+</div>
+<h4 id="105-optional-setup-and-copy-oath-hmac-based-one-time-password-oath-hotp-codes">10.5. Optional: Setup and copy OATH HMAC-based One-Time Password (OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr>) codes</h4>
+<p>To set up <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/yubico-otp.html#yubico-otp-hotp"><strong>OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr></strong></a> 6 or 8 digits counter-based codes on your YubiKeys, you must first allocate a slot to it. Click on the "Slots" button on the left-side menu, select the slot you wish to use, then click on "OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr>" in the right-side menu.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-37-config-hotp.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing the Slots section with the Long touch slot selected, and the OATH-HOTP button selected in the right." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-37-config-hotp.webp" /></a></p>
+<p>An "OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr>" section will pop up with a "Secret key" text field. Enter a unique and secure Secret key of your choice.</p>
+<p>Make sure the Secret key you choose has:</p>
+<ul>
+<li>
+<p><strong>A maximum of 32 characters</strong></p>
+</li>
+<li>
+<p>An <strong>even</strong> number of characters (ex: not 31, but 32 will work)</p>
+</li>
+<li>
+<p>Only uses characters comprised within: letters from a to z, numbers from 2 to 7</p>
+</li>
+</ul>
+<div class="admonition bug">
+<p class="admonition-title">If you are asked for an Access code</p>
+<p>If you type a Secret key that is longer than 32 characters, you might encounter a bug where an "Access code" window will pop up, even if your key doesn't have any access code set up. If this happens, verify that your Secret key has 32 or fewer characters, and an even number of characters.</p>
+</div>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-38-config-oathhotppopup.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the Yubico Authenticator application showing an OATH-HOTP popup with a Secret key field filled." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-38-config-oathhotppopup.webp" /></a></p>
+<p>Keep a <strong>secure copy of this Secret key in a local text file</strong>. You will need it to register with the validation server for each account, and for your spare key.</p>
+<p>You can click on "Append" to deselect it if you prefer the carriage return not be included at the end of your Secret key. This means you will have to press <span class="keys"><kbd class="key-enter">Enter</kbd></span> manually to confirm each entry. Select either "6 digits" or "8 digits" for your OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr> codes, then click "Save".</p>
+<p>To configure your spare key for the <a href="https://www.yubico.com/resources/glossary/oath-hotp/">OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr></a> counter-based codes, you will need to repeat this step with your <em>spare</em> key and use the <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/tips.html#register-a-spare-yubikey">same</a> OATH-<abbr title="HMAC (Hash-based Message Authentication Code) based One-Time Password">HOTP</abbr> Secret key and <abbr title="One-Time Password">OTP</abbr> length as your main key's configuration.</p>
+<h3 id="step-11-generate-and-copy-an-openpgp-key-and-subkeys-to-your-yubikeys">Step 11: Generate and copy an <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key and subkeys to your YubiKeys</h3>
+<div class="admonition info">
+<p class="admonition-title">Default PINs</p>
+<p>If you have reset the <strong><abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application</strong> on <a href="#63-reset-the-applications">Step 6.3</a>, you will need both default PINs to set up new ones. After a factory reset of the <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application, the default PIN is "123456", and the default Admin PIN is "12345678".</p>
+</div>
+<h4 id="111-secure-your-yubikeys-openpgp-application-with-a-new-pin-and-admin-pin">11.1. Secure your YubiKeys' <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application with a new PIN and Admin PIN</h4>
+<p>To secure this application after a reset, you should first set up new unique PINs for it. To do so, you will need to use the <strong>ykman <abbr title="Command Line Interface">CLI</abbr></strong> program you have installed on <a href="#61-install-ykman-cli">Step 6.1</a> from a terminal application.</p>
+<p>First, navigate to the application directory as described on <a href="#62-navigate-to-the-application-directory">Step 6.2</a>.</p>
+<p>To change the first <strong>default PIN</strong>, type the following command in the terminal:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">ykman openpgp access change-pin</span>
+</code></pre></div>
+<p>When prompted, enter the default PIN: <strong>123456</strong>.</p>
+<p>Then, enter a <strong>new unique 6-127 digits PIN</strong>, and confirm this new PIN.</p>
+<p>Your terminal should confirm with the message "User PIN has been changed." Note this new PIN somewhere secure where you will find it back easily, you will need it for the next steps.</p>
+<p>To change the <strong>default Admin PIN</strong>, type the following command in the terminal:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">ykman openpgp access change-admin-pin</span>
+</code></pre></div>
+<p>When prompted, enter the default PIN: <strong>12345678</strong>.</p>
+<p>Then, enter a <strong>new unique 8-127 digits PIN</strong>, and confirm this new Admin PIN.</p>
+<p>Your terminal should confirm with the message "Admin PIN has been changed." Note this new Admin PIN somewhere secure where you will find it back easily, you will need it for the next steps.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-39-config-pgppins.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a terminal window showing the commands to change the OpenPGP PIN and Admin PIN." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-39-config-pgppins.webp" /></a></p>
+<div class="admonition success">
+<p class="admonition-title">Secure your spare key as well!</p>
+<p>Unplug your <em>main</em> YubiKey and plug in your <em>spare</em> YubiKey. Repeat these steps to secure your spare key as well.</p>
+</div>
+<h4 id="112-open-or-install-the-appropriate-gpg-application-for-your-os">11.2. Open or install the appropriate <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> application for your <abbr title="Operating System">OS</abbr></h4>
+<p>Use the pre-installed software (Linux), or download and install a third-party software such as <a href="https://gpgtools.org/gpgsuite.html"><abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> Suite</a> (macOS) or <a href="https://www.gpg4win.org/download.html">GPG4Win</a> (Windows) to generate and manage an <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key.</p>
+<div class="admonition warning">
+<p class="admonition-title">Security recommendation</p>
+<p>Yubico strongly <a href="https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP">recommends</a> to generate <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> keys on an offline system, such as a live Linux distribution.</p>
+</div>
+<h4 id="113-generate-an-openpgp-key-externally">11.3. Generate an <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key externally</h4>
+<p>Open a terminal application and type the following command:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">gpg --expert --full-gen-key</span>
+</code></pre></div>
+<p>When prompted to select the type of key you wish to generate, enter <code>1</code> for "RSA and RSA (default)".</p>
+<p>When asked "What keysize do you want?", type <code>4096</code>. Type <code>4096</code> as well for the subkey.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-40-config-pgpgeneratekey.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a terminal window showing an OpenPGP key generation." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-40-config-pgpgeneratekey.webp" /></a></p>
+<p>Follow the instructions to choose an expiration date for your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key, and confirm with <span class="keys"><kbd class="key-y">Y</kbd></span>.</p>
+<p>When prompted with "<abbr title="GNU Privacy Guard (PGP implementation)">GnuPG</abbr> needs to construct a user ID to identify your key", enter the <strong>name</strong> and <strong>email address</strong> you wish to use with this key. Finally, enter a <strong>comment</strong> you want associated with this key (optional), and confirm with <code>O</code> for Okay.</p>
+<p>Once confirmed, a dialogue box should pop up from your <strong><abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software</strong>. Create a <strong>passphrase</strong> to protect your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-41-config-pgppassphrase.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a GPG software application asking to set up a passphrase." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-41-config-pgppassphrase.webp" /></a></p>
+<p>Go back to your terminal application, and type this command to find your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's ID:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">gpg --list-keys --keyid-format=long</span>
+</code></pre></div>
+<p>If you have multiple keys already stored on your computer, this command will list all of your keys.</p>
+<p>Only look at the last "key block" listed, and note its <strong>key ID</strong>. Each "key block" starts with a <strong><code>pub</code></strong> line, followed by a <strong><code>uid</code></strong> line(s), with potentially one or more <strong>sub</strong> lines (for subkeys).</p>
+<p>Your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> <strong>key ID</strong> will be a string of numbers and uppercase letters on the <strong><code>pub</code></strong> line, after the "rsa4096" key type, and separated by a <strong>/</strong> character as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="go">pub     rsa4096/[key_id]</span>
+</code></pre></div>
+<p>Note this <strong>[key_id]</strong> for the next steps.</p>
+<h4 id="114-add-subkeys">11.4. Add subkeys</h4>
+<p>You do not need to have any of your YubiKeys plugged in yet for this step.</p>
+<div class="admonition note">
+<p class="admonition-title">You might not need to add each subkey type</p>
+<p>For this step, we will add one subkey for each of the 3 YubiKey <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application slots: <strong>Signature key</strong>, <strong>Encryption key</strong>, and <strong>Authentication key</strong>.</p>
+<p>Depending on your usage, you might only need a specific type and not the others. Pick and choose what you need and ignore instructions for the others, if they're not relevant to you.</p>
+</div>
+<p>In a terminal application, type:</p>
+<div class="highlight"><pre><span></span><code><span class="go">gpg --expert --edit-key [key_id]</span>
+</code></pre></div>
+<p>This will start a <strong><code>gpg</code></strong> program prompt in your terminal. From there, type:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">addkey</span>
+</code></pre></div>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-42-config-pgpaddkeys.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a terminal window showing the command to edit and add subkeys." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-42-config-pgpaddkeys.webp" /></a></p>
+<p>When prompted with "Please select what kind of key you want" type <code>8</code>.</p>
+<p>You will be asked to toggle on or off some subkey options.  Here, we will generate all 3 subkeys at once, but adjust this step to your required usage. You might also need different encryption algorithms for different subkeys (see options available from the previous <strong><code>gpg</code></strong> program question).</p>
+<div class="admonition tip">
+<p class="admonition-title">To generate subkeys separately</p>
+<p>To add a <strong>Signature subkey</strong>: Toggle <code>E</code> to <em>disable</em> encrypt.</p>
+<p>To add an <strong>Encryption subkey</strong>: Toggle <code>S</code> to <em>disable</em> sign.</p>
+<p>To add an <strong>Authentication subkey</strong>: Toggle <code>S</code>, then toggle <code>E</code>, then toggle <code>A</code> to keep only Authenticate <em>enable</em>.</p>
+</div>
+<p>To generate all 3 subkeys, type <span class="keys"><kbd class="key-a">A</kbd></span> to <em>enable</em> Authenticate as well (Sign and Encrypt will already be enabled). On the line above the options, you should now see "Current allowed actions: Sign Encrypt Authenticate".</p>
+<p>The type <span class="keys"><kbd class="key-q">Q</kbd></span> to confirm your selection (Finished).</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-43-config-pgp3subkeys.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a terminal window showing the option for subkey types." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-43-config-pgp3subkeys.webp" /></a></p>
+<p>You will then be asked to choose a keysize, type <code>4096</code>.</p>
+<p>Select an <strong>expiration date</strong> again (it should be the <strong>same as the main <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key</strong>). Confirm with <span class="keys"><kbd class="key-y">Y</kbd></span> then <span class="keys"><kbd class="key-y">Y</kbd></span> again.</p>
+<p>When prompted by your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software, enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's passphrase, then click "OK".</p>
+<p>Once the <strong><code>gpg</code></strong> prompt is back in your terminal, exit the program by typing <code>quit</code>, then save the changes with <span class="keys"><kbd class="key-y">Y</kbd></span>.</p>
+<div class="admonition info">
+<p class="admonition-title">For more options on subkeys</p>
+<p>You might want to consult Yubico's <a href="https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP">documentation</a> for more information on <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> keys and subkeys.</p>
+</div>
+<h4 id="115-backup-your-openpgp-private-key-and-subkeys">11.5. Backup your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> Private Key and subkeys</h4>
+<div class="admonition danger">
+<p class="admonition-title">Security warning</p>
+<p>Be careful to store your <abbr title="Pretty Good Privacy (see OpenPGP)">PGP</abbr> Private Key securely. This information is very sensitive and should never be shared or stored on an unencrypted volume. For better security, store it externally offline on a fully encrypted USB stick.</p>
+</div>
+<p>If it is reasonably secure to store your private key and subkeys locally on your current device, type the following lines in your terminal (replace <code>[key_id]</code> with your specific key's ID).</p>
+<div class="admonition tip">
+<p class="admonition-title">Change de default path</p>
+<p>Unless you change the path, this command will create a backup of your private key located in the directory you currently are in your terminal.</p>
+<p>If you wish to store your private key backup elsewhere, navigate to another directory or add a specific path before the <code>backup_private_key.asc</code>. For example: <code>/Volumes/[secure_volume]/[secure_directory]/backup_private_key.asc</code></p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="go">gpg --armor --output backup_private_key.asc --export-secret-key [key_id]</span>
+</code></pre></div>
+<p>You will be prompted by your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software to enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's passphrase, enter it then click "OK".</p>
+<p>To also keep a copy of your subkeys, type the following line:</p>
+<div class="highlight"><pre><span></span><code><span class="go">gpg --armor --output backup_private_subkeys.asc --export-secret-subkeys [key_id]</span>
+</code></pre></div>
+<p>You will be prompted by your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software again to enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's passphrase, enter it then click "OK".</p>
+<h4 id="116-move-your-openpgp-key-and-subkeys-to-your-yubikeys">11.6. Move your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key and subkeys to your YubiKeys</h4>
+<p><strong>Insert your YubiKey</strong> in your computer's port, then type:</p>
+<div class="highlight"><pre><span></span><code><span class="go">gpg --edit-key [key_id]</span>
+</code></pre></div>
+<p>This will show the details for the <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key (<strong><code>sec</code></strong>) you just created and its subkeys (<strong><code>ssb</code></strong>).</p>
+<p>In the terminal <strong><code>gpg</code></strong> prompt, type the command:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">keytocard</span>
+</code></pre></div>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-44-config-pgpimportsubkeys.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a terminal window showing details of the OpenPGP key and its subkeys." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-44-config-pgpimportsubkeys.webp" /></a></p>
+<p>When prompted with "Really move the primary key? (y/N)" type <span class="keys"><kbd class="key-y">Y</kbd></span>.</p>
+<div class="admonition bug">
+<p class="admonition-title">If you encounter an error</p>
+<p>If you encounter a problem at this step, you might want to exit the terminal <strong><code>gpg</code></strong> program with <code>quit</code>, unplug your YubiKey from your computer, plug it in again, then start <a href="#116-move-your-openpgp-key-and-subkeys-to-your-yubikeys">Step 11.6</a> over.</p>
+</div>
+<p>Assuming you have created all 3 subkey types in the previous step, when prompted with "Your selection?", type <code>1</code> to move the <strong>Signature subkey</strong> to your YubiKey:</p>
+<div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><span class="hll"><span class="go">gpg&gt; keytocard</span>
+</span><span class="hll"><span class="go">Really move the primary key? (y/N) y</span>
+</span><span class="go">Please select where to store the key:</span>
+<span class="go">   (1) Signature key</span>
+<span class="go">   (3) Authentication key</span>
+<span class="hll"><span class="go">Your selection? 1</span>
+</span></code></pre></div>
+<p>Your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software will pop up and require you enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's passphrase. There will then be 2 more popups requiring you enter the <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application's <strong>Admin PIN</strong> you have just setup on <a href="#111-secure-your-yubikeys-openpgp-application-with-a-new-pin-and-admin-pin">Step 11.1</a>. You will be asked for your Admin PIN <em>twice</em>.</p>
+<p><a class="glightbox" href="../../../../assets/images/yubikey-reset-and-backup/yubikey-45-config-pgpadminpin.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a GPG software popup window requiring to enter an Admin PIN." src="../../../../assets/images/yubikey-reset-and-backup/yubikey-45-config-pgpadminpin.webp" /></a></p>
+<p>Back to the terminal <strong><code>gpg</code></strong> prompt, type <code>key 1</code> then <code>keytocard</code> again. This time select <code>2</code> to move the <strong>Encryption subkey</strong> to your YubiKey:</p>
+<div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><span class="hll"><span class="go">gpg&gt; key 1</span>
+</span>
+<span class="go">---- [key_information] ----</span>
+
+<span class="hll"><span class="go">gpg&gt; keytocard</span>
+</span><span class="go">Please select where to store the key:</span>
+<span class="go">   (2) Encryption key</span>
+<span class="hll"><span class="go">Your selection? 2</span>
+</span></code></pre></div>
+<p>Again, enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's passphrase and your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application's Admin PIN when prompted by your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software.</p>
+<p>Back to the terminal <strong><code>gpg</code></strong> prompt, type <code>key 1</code> then <code>key 2</code> then <code>keytocard</code> again. This time select <code>3</code> to move the <strong>Authentication subkey</strong> to your YubiKey:</p>
+<div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><span class="hll"><span class="go">gpg&gt; key 1</span>
+</span>
+<span class="go">---- [key_information] ----</span>
+
+<span class="hll"><span class="go">gpg&gt; key 2</span>
+</span>
+<span class="go">---- [key_information] ----</span>
+
+<span class="hll"><span class="go">gpg&gt; keytocard</span>
+</span><span class="go">Please select where to store the key:</span>
+<span class="go">   (1) Signature key</span>
+<span class="go">   (2) Encryption key</span>
+<span class="go">   (3) Authentication key</span>
+<span class="hll"><span class="go">Your selection? 3</span>
+</span></code></pre></div>
+<p>Enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key passphrase and your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application's Admin PIN when prompted by your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software.</p>
+<p>Finally, type <code>quit</code>, then <span class="keys"><kbd class="key-y">Y</kbd></span> to save the changes before exiting the <strong><code>gpg</code></strong> terminal program.</p>
+<h4 id="117-verify-that-all-your-subkeys-are-stored-properly-to-your-yubikey">11.7. Verify that all your subkeys are stored properly to your YubiKey</h4>
+<p>From the terminal, type:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">gpg --card-edit</span>
+</code></pre></div>
+<p>This will display the information stored inside your YubiKey's <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application.</p>
+<p>From the information displayed in the terminal, you can see your YubiKey's serial number, version, some attributes, your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key information, and the 3 subkey slots.</p>
+<p>If you have completed the steps above properly, above "General key info" you should see the lines "Signature key", "Encryption key", and "Authentication key" all have information stored in it. Otherwise, instead of a string of uppercase letters and numbers you will see "[none]".</p>
+<p>If all 3 slots are filled as expected, type <code>quit</code> to leave this <strong>card</strong> program.</p>
+<h4 id="118-copy-your-openpgp-key-and-subkeys-to-your-spare-yubikey">11.8. Copy your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key and subkeys to your spare YubiKey</h4>
+<p>To make this operation work, you will have to delete your local key and subkeys and restore them from your backups.</p>
+<p>First, <strong>unplug your main YubiKey</strong>. For the next step, you will need your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's and subkeys' <em>grip</em> strings. Type the following command in your terminal:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">gpg --list-secret-keys --with-keygrip</span>
+</code></pre></div>
+<p>If you have multiple keys listed, only look at the last block for <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key and subkeys you just created.</p>
+<p>Note carefully the <strong>Keygrip</strong> string for each key and subkeys.</p>
+<p>For your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key, look at the lines starting with "<code>sec&gt;</code>" on the left. The <strong>Keygrip</strong> string will be just above "Card serial no".</p>
+<p>For the subkeys, look at each block starting with "<code>ssb&gt;</code>" on the left. The <strong>Keygrip</strong> string will be on the second line for each. It should look something like this:</p>
+<div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><span class="go">sec&gt;  rsa4096 2025-03-04 [SC] [expires: 2025-03-06]</span>
+<span class="go">      ABC42ABC42ABC42ABC42ABC42[key_id]</span>
+<span class="hll"><span class="go">      Keygrip = [key_grip]</span>
+</span><span class="go">      Card serial no. = 0000 [yubikey_serial_number]</span>
+<span class="go">uid           [ultimate] Name (Comment) &lt;email@example.org&gt;</span>
+<span class="go">ssb&gt;  rsa4096 2025-03-04 [E] [expires: 2025-03-06]</span>
+<span class="hll"><span class="go">      Keygrip = [subkey_grip]</span>
+</span><span class="go">ssb&gt;  rsa4096 2025-03-04 [SEA] [expires: 2025-03-06]</span>
+<span class="hll"><span class="go">      Keygrip = [subkey_grip]</span>
+</span></code></pre></div>
+<p>Send a delete command for each key and subkeys:</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger! Make sure to delete the right key!</p>
+<p>If you have multiple keys stored on this computer, when noting the <strong>Keygrip</strong> make sure to note the correct one for the <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key you have just created and all its subkeys. You would not want to delete <em>another</em> important key you need.</p>
+<p>For safety, it is recommended to keep a backup of your other keys as well before running the deletion commands below.</p>
+</div>
+<p>You will need to send a delete command to the <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> agent in order to be able to restore and copy your subkeys to your spare YubiKey. Type the following command and replace <code>[key_grip]</code> with the string you have noted above:</p>
+<div class="highlight"><pre><span></span><code><span class="go">gpg-connect-agent &quot;DELETE_KEY [key_grip]&quot; /bye</span>
+</code></pre></div>
+<p>Once you see the "OK", type the following command for your subkeys and replace <code>[subkey_grip]</code> with the strings you have noted above.</p>
+<div class="admonition success">
+<p class="admonition-title">Repeat this command for each subkey with their respective Keygrip string.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="go">gpg-connect-agent &quot;DELETE_KEY [subkey_grip]&quot; /bye</span>
+</code></pre></div>
+<p>Restore your key and subkeys:</p>
+<p>To restore your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key and subkeys from your backup, type the following command (add the specific directory path you used, if any):</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">gpg --import backup_private_key.asc</span>
+</code></pre></div>
+<p>Enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's passphrase when prompted by your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software. Then, for your subkeys type:</p>
+<div class="yaml copy highlight"><pre><span></span><code><span class="go">gpg --import backup_private_subkeys.asc</span>
+</code></pre></div>
+<p>Enter your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key's passphrase again if prompted by your <abbr title="GNU Privacy Guard (PGP implementation)">GPG</abbr> software.</p>
+<p>Copy your <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> key and subkeys to your spare YubiKey:</p>
+<p><strong>Plug in your <em>spare</em> YubiKey</strong> in your computer's port. Make sure your main YubiKey is <em>unplugged</em>.</p>
+<p>Repeat all the operations from <a href="#116-move-your-openpgp-key-and-subkeys-to-your-yubikeys">Step 11.6</a> for your <em>spare</em> YubiKey. Use the same <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> <strong>[key_id]</strong> you have used with your main YubiKey.</p>
+<p>Again, verify that all your YubiKey's <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application slots have been filled properly by repeating <a href="#117-verify-that-all-your-subkeys-are-stored-properly-to-your-yubikey">Step 11.7</a> with your spare YubiKey.</p>
+<p>You can now <code>quit</code> this <strong>card</strong> program, unplug your <em>spare</em> YubiKey, plug in your main YubiKey again, and type <code>gpg --card-edit</code> again to verity that both your main and spare YubiKeys have the exact same "Signature key", "Encryption key", and "Authentication key" registered.</p>
+<p>Following this procedure correctly, each of these subkey slots should be identical on your main and spare YubiKeys. The "General key info" should also be identical between your YubiKeys, but each "Serial number" should be different.</p>
+<div class="admonition info">
+<p class="admonition-title">The gpg-card program</p>
+<p>From this command, you can change other parameters for your YubiKey's <abbr title="Open-source implementation of Pretty Good Privacy (PGP)">OpenPGP</abbr> application if needed. To see more options, you can consult Yubico's <a href="https://developers.yubico.com/PGP/PGP_Walk-Through.html">documentation</a>.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">Troubleshooting</p>
+<p>If you need additional help to troubleshoot, reset, setup, or copy information to your spare YubiKey, you can contact Yubico's Customer Support service from <a href="https://support.yubico.com/hc/en-us/requests/new">this form</a>.</p>
+</div>
+<h2 id="review-your-configuration"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.67 13.67c-.47.46-1.04.83-1.67 1.06V23H8v-2H5v-3h3v-3.28c-1.74-.62-3-2.26-3-4.22C5 8 7 6 9.5 6h.1c-.47.95-.68 2-.57 3.08-.59.2-1.03.76-1.03 1.42 0 .83.67 1.5 1.5 1.5.23 0 .45-.06.65-.15.64.84 1.52 1.47 2.52 1.82m8.06 5.77-2.76 1.16-.78-1.84-2.76 1.17-1.17-2.77L16.03 16l-1.27-3c-1.85.08-3.65-.95-4.41-2.75-.96-2.29.12-4.93 2.41-5.9.24-.1.5-.17.74-.23C12.84 2.87 11.5 2 10 2 7.79 2 6 3.79 6 6v.24c-.3.26-.6.58-.85.91C5.06 6.78 5 6.4 5 6c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.42-.6 2.67-1.55 3.57.42.43 1.05.56 1.63.31.77-.32 1.12-1.2.8-1.96a1 1 0 0 0-.14-.26C15.9 7.13 16 6.58 16 6c0-.63-.1-1.24-.28-1.81 1.28.36 2.38 1.25 2.93 2.57.76 1.8.24 3.81-1.15 5.05zM13 8.6c.37-.41.65-.89.82-1.42-.54.27-.85.82-.82 1.42"/></svg></span> Review your configuration</h2>
+<p>Once you have fully reset and reconfigured your 2 YubiKeys, make sure that you have:</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Registered both keys with the YubiCloud validation server.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Tested each YubiKey application you will use on both keys before registering them with any service or product.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configured properly all the protections and pins available to secure your keys.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Deleted the temporary files containing secrets that you no longer need for backup purposes.</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Stored your spare key in a different secure location, once it's registered with your services and accounts.</p>
+</li>
+</ul>
+<p>Finally, do not forget to register your freshly re-programmed YubiKey(s) with the services and accounts you had to remove it from. Do not leave your accounts unprotected!</p>
+<div class="admonition info">
+<p class="admonition-title">More information</p>
+<p>This tutorial only covers a few features and usages possible with YubiKeys, consult <strong>Yubico Authenticator</strong>'s <a href="https://docs.yubico.com/software/yubikey/tools/authenticator/auth-guide/">complete documentation</a> and <a href="https://www.yubico.com/setup/">guides</a> for more information.</p>
+</div>
+<p><small aria-hidden="true">Unless credited otherwise, all screenshots from: Privacy Guides</small></p>
+<hr />
+<p><strong>Share this page:</strong><br />
+<a class="md-button" href="https://x.com/intent/tweet?text=Blog%20Post%20Title%20Placeholder&amp;url=https%3A//murateren.github.io/mynotes/blog/2025/05/01/yubikey-reset-and-backup/&amp;hashtags=&amp;via=erenm" style="margin-right: 1em;">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span></a>
+<a class="md-button" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//murateren.github.io/mynotes/blog/2025/05/01/yubikey-reset-and-backup/&amp;title=Blog%20Post%20Title%20Placeholder&amp;summary=This%20tutorial%20demonstrates%20how%20to%20reset%20a%20YubiKey%20close%20to%20factory%20defaults%20and%20create%20a%20backup%20of%20most%20YubiKey%20applications%20on%20a%20spare%20key.">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg></span></a></p>
+</div>
+
+<!-- Source file information -->
+<!-- Render date of last update -->
+
+
+<!-- Render date of creation -->
+
+
+<!-- ---------------------------------------------------------------------- -->
+
+<!-- Render authors -->
+
+
+
+<!-- ---------------------------------------------------------------------- -->
+
+<!-- Determine date of last update -->
+
+  
+
+  <!-- Determine date of creation -->
+  
+
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+
+
+  
+
+
+
+
+
+
+
+<!-- Comment system -->
+
+    
+
+    <!-- 
+      <div>
+        <hr>
+        <p><strong><a href="https://discuss.privacyguides.net/c/announcements/articles/10">
+          <span class="twemoji">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0m.116 4.563a7.4 7.4 0 0 0-6.337 3.57 7.25 7.25 0 0 0-.148 7.22L4.4 19.61l4.794-1.074a7.42 7.42 0 0 0 8.136-1.39 7.26 7.26 0 0 0 1.737-7.997 7.375 7.375 0 0 0-6.84-4.585z"></path></svg>
+          </span> Join our forum
+        </a>
+        to comment on this article.</strong></p>
+        <p><em>Thank you for reading, and please consider sharing this post with your friends.
+          Privacy Guides is an independent, nonprofit media outlet. We don't have ads or sponsors, so if you liked this work your <a href="https://donate.magicgrants.org/privacyguides">donation</a> would be greatly appreciated.
+          Have a question, comment, or tip for us? You can securely <a href="https://www.privacyguides.org/en/about/#contact-us">contact us</a> at <code>@privacyguides.01</code> on Signal.</em></p>
+      </div>
+    </article>
+  </div>
+ -->
+
+    
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../02/03/easyoptouts-review/" class="md-footer__link md-footer__link--prev" aria-label="Previous: EasyOptOuts Review &amp; Real-World Test">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                EasyOptOuts Review & Real-World Test
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../why-i-run-a-tor-relay/" class="md-footer__link md-footer__link--next" aria-label="Next: Why I Decided to Run a Tor Relay">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Why I Decided to Run a Tor Relay
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+
+<!-- Copyright information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight" title="This version of Privacy Guides was built on May 22, 2025 at 11:17AM">
+      Footer Intro Text.
+      <br />
+      Footer Note Text.
+      <br />
+      <a href='/license' aria-label="More information about our website license.">
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="m245.83 214.87-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86m143.05 0-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86M247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248m.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82"/></svg></span>
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3m-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35q0 34.5-34.5 34.5c-34.5 0-34.5-11.5-34.5-34.5M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8m.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3"/></svg></span>
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8m.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3M137.7 221c13-83.9 80.5-95.7 108.9-95.7 99.8 0 127.5 82.5 127.5 134.2 0 63.6-41 132.9-128.9 132.9-38.9 0-99.1-20-109.4-97h62.5c1.5 30.1 19.6 45.2 54.5 45.2 23.3 0 58-18.2 58-82.8 0-82.5-49.1-80.6-56.7-80.6q-49.65 0-55.8 43.8h18.2l-49.2 49.2-49-49.2z"/></svg></span>
+        
+      </a>
+      2025 Murat Eren.
+      
+        <a href="https://murateren.github.io/mynotes/privacy/">
+          <strong>Privacy notice.</strong>
+        </a>
+      
+    </div>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:murate@gmail.com?subject=Support%20Request&body=Hi%20team%2C%0A%0AI%20need%20help%20with..." target="_blank" rel="noopener" title="Mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/erenm" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/murateren" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "content.action.edit", "content.tabs.link", "content.tooltips", "search.highlight", "toc.follow", "navigation.prune", "navigation.tabs.sticky", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.top", "search.share", "search.suggest", "content.icon.fontawesome", "content.action.view", "content.code.copy", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../../../assets/javascripts/randomize-element.js?v=20250306" defer></script>
+      
+        <script src="../../../../../assets/javascripts/feedback.js?v=20250306" defer></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

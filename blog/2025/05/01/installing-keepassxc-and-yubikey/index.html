@@ -1,0 +1,2220 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This tutorial demonstrates how to install the local-only password manager KeePassXC and secure a password database with YubiKey.">
+      
+      
+        <meta name="author" content="Murat Eren (murate@gmail.com)">
+      
+      
+        <link rel="canonical" href="https://murateren.github.io/mynotes/blog/2025/05/01/installing-keepassxc-and-yubikey/">
+      
+      
+        <link rel="prev" href="../integrating-metadata-removal/">
+      
+      
+        <link rel="next" href="../installing-and-using-tails/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/img/logo/BuWiFi.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+  
+    <title>Blog Post Title Placeholder - My Notes</title>
+  
+
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css?v=20250306">
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Blog Post Title Placeholder - My Notes" >
+      
+        <meta  property="og:description"  content="This tutorial demonstrates how to install the local-only password manager KeePassXC and secure a password database with YubiKey." >
+      
+        <meta  property="og:image"  content="https://murateren.github.io/mynotes/assets/images/social/blog/posts/installing-keepassxc-and-yubikey.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://murateren.github.io/mynotes/blog/2025/05/01/installing-keepassxc-and-yubikey/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Blog Post Title Placeholder - My Notes" >
+      
+        <meta  name="twitter:description"  content="This tutorial demonstrates how to install the local-only password manager KeePassXC and secure a password database with YubiKey." >
+      
+        <meta  name="twitter:image"  content="https://murateren.github.io/mynotes/assets/images/social/blog/posts/installing-keepassxc-and-yubikey.png" >
+      
+    
+    
+  
+
+  
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large">
+  
+
+  
+    <meta http-equiv="onion-location" content="https://murateren.github.io/mynotes/blog/2025/05/01/installing-keepassxc-and-yubikey/">
+  
+
+  
+
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#keepassxc-yubikey-how-to-set-up-a-local-only-password-manager" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+
+<!-- Determine classes -->
+
+
+
+
+
+<!-- Header -->
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+
+    <!-- Link to home -->
+    <a href="../../../../.." title="My Notes"
+      class="md-header__button md-logo" aria-label="My Notes" data-md-component="logo">
+      <!--  -->
+<img src="../../../../../assets/brand/mylogo/BuWiFi-black.svg#only-light" alt="logo" width="24" height="24">
+<img src="../../../../../assets/brand/mylogo/BuWiFi-white.svg#only-dark" alt="logo" width="24" height="24">
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+            Blog Post Title Placeholder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repository information -->
+    
+
+    <!-- Button to open search modal -->
+    
+    <label class="md-header__button md-icon" for="__search">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+    </label>
+
+
+    <!-- Site language selector -->
+    
+
+    <!-- Color palette toggle -->
+    
+    
+    <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 2c-1.82 0-3.53.5-5 1.35C8 5.08 10 8.3 10 12s-2 6.92-5 8.65C6.47 21.5 8.18 22 10 22a10 10 0 0 0 10-10A10 10 0 0 0 10 2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to system theme"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-2.69L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20z"/></svg>
+      </label>
+    
+  
+</form>
+    
+    
+
+    <!-- User preference: color palette -->
+    
+    <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+
+    <!--  <div class="md-header__option">
+  <div class="">
+    
+    <a href="/en/about/donate/" class="md-header__button md-icon pg-red" title="Donate">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg>
+    </a>
+  </div>
+</div>  -->
+
+    <!-- Search interface -->
+    <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+  
+  
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../basics/why-privacy-matters/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Knowledge Base
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../tools/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Recommendations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../videos/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Videos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../about/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+  
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="My Notes" class="md-nav__button md-logo" aria-label="My Notes" data-md-component="logo">
+      <!--  -->
+<img src="../../../../../assets/brand/mylogo/BuWiFi-black.svg#only-light" alt="logo" width="24" height="24">
+<img src="../../../../../assets/brand/mylogo/BuWiFi-white.svg#only-dark" alt="logo" width="24" height="24">
+    </a>
+    My Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../basics/why-privacy-matters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Knowledge Base
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../tools/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Recommendations
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../editorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Editorial Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/announcements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Announcements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/explainers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Explainers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/guest-wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Guest WiFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    News
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/opinion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Opinion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/reviews/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reviews
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../videos/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Videos
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../about/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#keepassxc-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      KeePassXC summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KeePassXC summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-cloud-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database cloud backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-new-with-keepassxc-2710" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's new with KeePassXC 2.7.10
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-and-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements and preparation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-keepassxc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up KeePassXC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up KeePassXC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-download-and-install-keepassxc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Download and Install KeePassXC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-adjust-the-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Adjust the settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Adjust the settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keep-a-previous-version-backup-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keep a previous version backup (recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-icons-specific-to-each-service-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add icons specific to each service (optional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create a database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Create a database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-a-main-password-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate a main password (optional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#securing-your-database-with-a-yubikey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Securing your database with a YubiKey
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Securing your database with a YubiKey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-4-prepare-your-yubikeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Prepare your YubiKey(s)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-add-your-yubikey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Add your YubiKey
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-keepassxc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using KeePassXC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using KeePassXC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-6-create-a-password-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Create a password entry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-back-up-your-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7: Back up your database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 7: Back up your database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-local-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic local backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-backup-from-the-application-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual backup from the application menu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-backup-from-copying-the-database-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual backup from copying the database file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-install-the-browser-extension-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8: Install the browser extension (optional)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Install the browser extension (optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-you-encounter-an-error-while-running-the-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      If you encounter an error while running the extension
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filling-credentials-using-the-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filling credentials using the extension
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consider-supporting-keepassxc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consider supporting KeePassXC
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+<div class="md-content md-content--post" data-md-component="content" itemscope
+  itemtype="https://schema.org/AnalysisNewsArticle">
+  <meta itemprop="headline" content="Blog Post Title Placeholder" />
+  <meta itemprop="isAccessibleForFree" content="True" />
+  <meta itemprop="isFamilyFriendly" content="True" />
+  
+  <meta itemprop="inLanguage" content="en-US" />
+  
+  <span itemprop="publisher" itemscope itemtype="https://schema.org/NewsMediaOrganization">
+    <meta itemprop="name" content="Privacy Guides" />
+    <link itemprop="url" href="https://www.privacyguides.org/" />
+    <link itemprop="sameAs" href="https://mastodon.neat.computer/@privacyguides" />
+    <link itemprop="sameAs" href="https://twitter.com/privacy_guides" />
+    <link itemprop="sameAs" href="https://github.com/privacyguides" />
+    <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <link itemprop="url" href="https://www.privacyguides.org/en/assets/brand/logos/png/square/pg-yellow.png" />
+      <meta itemprop="width" content="512" />
+      <meta itemprop="height" content="512" />
+    </span>
+    <link itemprop="publishingPrinciples" href="https://www.privacyguides.org/en/about/criteria/" />
+    <link itemprop="actionableFeedbackPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#actionable-feedback" />
+    <link itemprop="correctionsPolicy" href="https://www.privacyguides.org/articles/editorial/#corrections-policy" />
+    <link itemprop="ethicsPolicy" href="https://www.privacyguides.org/articles/editorial/#ethics-policy" />
+    <link itemprop="missionCoveragePrioritiesPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#coverage-priorities" />
+    <link itemprop="unnamedSourcesPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#unnamed-sources-policy" />
+    <link itemprop="verificationFactCheckingPolicy"
+      href="https://www.privacyguides.org/articles/editorial/#verification-fact-checking" />
+    <link itemprop="ownershipFundingInfo" href="https://www.privacyguides.org/en/about/donate/" />
+    <link itemprop="masthead" href="https://www.privacyguides.org/en/about/" />
+  </span>
+
+  <!-- Sidebar -->
+  <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner md-post">
+        <nav class="md-nav md-nav--primary">
+
+          <!-- Back to overview link -->
+          <div class="md-post__back">
+            <div class="md-nav__title md-nav__container">
+              <a href="../../../../" class=" md-nav__link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                <span class="md-ellipsis">
+                  Back to index
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Post authors -->
+          
+          <div class="md-post__authors md-typeset">
+            
+            <div class="md-profile md-post__profile" itemprop="author" itemscope
+              itemtype="https://schema.org/Person">
+              <span class="md-author md-author--long">
+                <img src="../../../../../assets/img/avatar/murat-profile-pic.jpg" alt="Murat Eren" />
+              </span>
+              <span class="md-profile__description">
+                <strong>
+                  
+                  <span itemprop="name">Murat Eren</span>
+                  
+                </strong>
+                <br />
+                <span itemprop="jobTitle">Founder</span>
+              </span>
+            </div>
+            
+            <div class="md-profile md-post__profile" itemprop="author" itemscope
+              itemtype="https://schema.org/Person">
+              <span class="md-author md-author--long">
+                <img src="https://github.com/EmAtPrivacyGuides.png" alt="Em" />
+              </span>
+              <span class="md-profile__description">
+                <strong>
+                  
+                  <span itemprop="name">Em</span>
+                  
+                </strong>
+                <br />
+                <span itemprop="jobTitle">Staff Writer</span>
+              </span>
+            </div>
+            
+          </div>
+          
+
+          <!-- Post metadata -->
+          <ul class="md-post__meta md-nav__list">
+            <li class="md-nav__item md-nav__item--section">
+              <div class="md-post__title">
+                <span class="md-ellipsis">
+                  Metadata
+                </span>
+              </div>
+              <nav class="md-nav">
+                <ul class="md-nav__list">
+
+                  <!-- Post date -->
+                  <li class="md-nav__item">
+                    <div class="md-nav__link" title="Date published">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                      <time datetime="2025-05-01 10:30:00+00:00" class="md-ellipsis" itemprop="datePublished">May 1, 2025</time>
+                    </div>
+                  </li>
+
+                  <!-- Post date updated -->
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link" title="Date last updated">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
+                      <time datetime="2025-05-06 12:00:00+00:00" class="md-ellipsis" itemprop="dateModified">May 6, 2025</time>
+                    </div>
+                  </li>
+                  
+
+                  <!-- Post categories -->
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                      <span class="md-ellipsis">
+                        in
+                        
+                        <a class="md-meta__link" href="../../../../category/tutorials/">Tutorials</a></span>
+                    </div>
+                  </li>
+                  
+
+                  <!-- Post readtime -->
+                  
+                  
+                  <li class="md-nav__item">
+                    <div class="md-nav__link">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                      <span class="md-ellipsis" itemprop="timeRequired">
+                        
+                        15 min read
+                        
+                      </span>
+                    </div>
+                  </li>
+                  
+                </ul>
+              </nav>
+            </li>
+          </ul>
+
+          <!-- Related links -->
+          
+
+          
+          
+          
+        </nav>
+
+        <!-- Table of contents, if integrated -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <article class="md-content__inner md-typeset">
+    
+    
+    
+    
+
+    
+    
+
+<!-- Tags -->
+
+  
+
+
+
+<!-- Actions -->
+
+
+
+
+<!-- Page content -->
+<div>
+<h1 id="keepassxc-yubikey-how-to-set-up-a-local-only-password-manager">KeePassXC + YubiKey: How to set up a local-only password manager</h1>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-cover.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Illustration showing a laptop computer with the KeePassXC logo on it. On the right is a green plus sign and a photo of a YubiKey." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-cover.webp" /></a>
+<small aria-hidden="true">Illustration: Privacy Guides | Graphics: Yubico | Logo: KeePassXC</small></p>
+<p>If you are looking for a good remote password manager you can use from anywhere, there are plenty of excellent <a href="https://www.privacyguides.org/en/passwords/">options</a> to choose from. However, if you prefer to only store your passwords locally, <a href="https://www.privacyguides.org/en/passwords/#keepassxc">KeePassXC</a> is what you need. In this tutorial, we will set up KeePassXC to work with <a href="https://www.privacyguides.org/en/security-keys/#yubikey">YubiKey</a> as an additional factor to secure your local-only password database.<!-- more --></p>
+<h2 id="keepassxc-summary"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.378 0 0 5.378 0 12c0 6.623 5.378 12 12 12 6.623 0 12-5.377 12-12 0-6.622-5.377-12-12-12m0 .791a11.203 11.203 0 0 1 11.209 11.21A11.2 11.2 0 0 1 12 23.208 11.203 11.203 0 0 1 .791 12 11.203 11.203 0 0 1 12.001.791zm0 1.871a9.4 9.4 0 0 0-1.705.162A1.746 1.746 0 0 0 12 4.95a1.746 1.746 0 0 0 1.706-2.126A9.3 9.3 0 0 0 12 2.662M7.2 4a9.34 9.34 0 0 0-4.54 8 9.338 9.338 0 0 0 18.677 0 9.34 9.34 0 0 0-4.54-7.998 4.89 4.89 0 0 1-2.701 5.365l-.12 2.066 1.482 1.483-1.483 1.482.989.989-.989.988.12 1.857L12 20.328l-2.096-2.096V9.367A4.89 4.89 0 0 1 7.2 4m3.4 6.543v6.99h.7v-6.99z"/></svg></span> KeePassXC summary</h2>
+<p>KeePassXC is a free, open-source, and desktop-only password manager. The community-driven project was first released in 2012 and is a <abbr title="A new software project created by copying an existing project and adding to it independently">fork</abbr> of both the <em>KeePass Password Safe</em> application and <em>KeePassX</em>, which is no longer actively maintained.</p>
+<p>In addition to having its <a href="https://github.com/keepassxreboot/keepassxc">code</a> available for all to see, KeePassXC also went through an independent <a href="https://keepassxc.org/blog/2023-04-15-audit-report/">security review</a> in 2023.</p>
+<p>Because it does not automatically sync with any remote cloud service, KeePassXC works offline by default. This offers additional protections for your privacy, and potentially for your security as well, depending on your specific situation.</p>
+<h3 id="platforms">Platforms</h3>
+<p>KeePassXC can run on Linux, macOS, and Windows computers. There is no direct option for a KeePassXC application on mobile. The KeePassXC team <a href="https://keepassxc.org/docs/#faq-platform-mobile">suggests</a> using <a href="https://www.keepassdx.com/">KeePassDX</a> or <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android">KeePass2Android</a> on Android phones, and <a href="https://strongboxsafe.com/">Strongbox</a> or <a href="https://keepassium.com/">KeePassium</a> on iPhones.</p>
+<h3 id="database-cloud-backup">Database cloud backup</h3>
+<p>KeePassXC is local-first and will not automatically back up your password database in the cloud. This can be both an advantage for security and privacy, and a disadvantage if something were to happen to your device.</p>
+<p>To prevent losing access to your passwords, it is recommended to regularly back up your encrypted database <code>.kdbx</code> file in a remote <a href="https://www.privacyguides.org/en/cloud/">cloud storage</a> of your choice, or on an encrypted external drive or USB stick.</p>
+<p>When copying this file to a third-party cloud service, it will <a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_storing_your_database">remain fully encrypted</a> and only get decrypted locally on your device. That being said, it's still always best to select an end-to-end encrypted cloud storage whenever possible.</p>
+<h3 id="feature-overview">Feature overview</h3>
+<p>This tutorial only covers the basic installation to get you ready using KeePassXC locally, with a main password secured with a YubiKey. However, KeePassXC offers a lot of features you might also want to have a look at.</p>
+<p>In addition to the features we will set up here, KeePassXC offers the following:</p>
+<ul>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_passkeys">Passkey support</a></p>
+</li>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_password_generator">Password generator</a></p>
+</li>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_command_line_tool">Command line tool</a></p>
+</li>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_ssh_agent_integration"><abbr title="Secure Shell">SSH</abbr> agent integration</a></p>
+</li>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_database_sharing_with_keeshare">KeeShare and groups</a></p>
+</li>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_importing_databases">Import password databases from 1Password, Bitwarden, Proton Pass, KeePass, <abbr title="Comma-Separated Values">CSV</abbr> files</a></p>
+</li>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_exporting_databases">Export databases to <abbr title="Comma-Separated Values">CSV</abbr>, HTML, or XML files</a></p>
+</li>
+<li>
+<p><a href="https://keepassxc.org/docs/KeePassXC_GettingStarted#_features">And more</a></p>
+</li>
+</ul>
+<h3 id="whats-new-with-keepassxc-2710">What's new with KeePassXC 2.7.10</h3>
+<p>On March 4th, KeePassXC released its most recent update. This update includes the capacity to import Proton Pass databases, to generate passphrases using <em>mixed</em> case (a mix of uppercase and lowercase), and many other <a href="https://keepassxc.org/blog/2025-03-04-2.7.10-released/">useful features</a>.</p>
+<h2 id="requirements-and-preparation"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16h-2v-1H8v1H6v-1H2v5h20v-5h-4zm2-8h-3V6c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v4h4v-2h2v2h8v-2h2v2h4v-4c0-1.1-.9-2-2-2m-5 0H9V6h6z"/></svg></span> Requirements and preparation</h2>
+<div class="admonition info">
+<p class="admonition-title">Operating systems</p>
+<p>This tutorial was completed using macOS, but your experience shouldn't be much different if you are using Linux or Windows.</p>
+</div>
+<p>For this tutorial you will need:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Computer running Linux, macOS, or Windows</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Internet connection</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Ability to install software on this computer</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> One or two YubiKeys (ideally two)</li>
+</ul>
+<h2 id="setting-up-keepassxc"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2M8 17h8v-2H8zm8-7h-2.5V6h-3v4H8l4 4z"/></svg></span> Setting up KeePassXC</h2>
+<h3 id="step-1-download-and-install-keepassxc">Step 1: Download and Install KeePassXC</h3>
+<p>Go to KeePassXC's download page and download the application version for your operating system. If the website doesn't detect your system automatically, you can change it on the top menu, or click on the "See more options" yellow button for previous versions.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-1-download.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC website download page." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-1-download.webp" /></a></p>
+<div class="admonition success">
+<p class="admonition-title">Verifying signatures</p>
+<p>For ideal security, you can verify the authenticity and integrity of the file you just downloaded by verifying the file's signatures. To do this, <a href="https://keepassxc.org/verifying-signatures/">follow the instructions</a> from the website to guarantee the file you downloaded was created by the KeePassXC Team and has not been tampered with.</p>
+</div>
+<p>Complete the process for your respective <abbr title="Operating System">OS</abbr> to install and open the application once verified.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-2-install.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the application installation window for KeePassXC on macOS." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-2-install.webp" /></a></p>
+<p>On macOS, you will be prompted with a warning message saying "<strong>“KeePassXC.app” is an app downloaded from the Internet. Are you sure you want to open it?</strong>", click "Open".</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-3-installwarning.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of a macOS warning popup before opening an application that was downloaded from the Internet." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-3-installwarning.webp" /></a></p>
+<div class="admonition info">
+<p class="admonition-title">KeePassXC blocks screenshots by default</p>
+<p>Interestingly, KeePassXC has a security feature that <a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_screenshot_security">blocks</a> screenshots and recordings of the application window on macOS and Windows.</p>
+<p>This is a great feature to prevent accidentally sharing your decrypted password database information during a meeting presentation, for example.</p>
+<p>Thankfully for writing this tutorial, there is a way to disable it temporarily, but <strong>you</strong> should definitely keep it on.</p>
+</div>
+<h3 id="step-2-adjust-the-settings">Step 2: Adjust the settings</h3>
+<p>Once you have installed and opened KeePassXC, before creating a database for your passwords, click on the "Settings" gear button on the upper-right, on the <em>toolbar</em>.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-4-settings.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the Settings section." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-4-settings.webp" /></a></p>
+<p>From there, you will see many options you can adjust to your preferences. The default settings are already good, but you might want to tweak a few things to your specific usage.</p>
+<h4 id="keep-a-previous-version-backup-recommended">Keep a previous version backup (recommended)</h4>
+<p>Scrolling down to the "File Management" section, you might want to enable the option to "Backup database file before saving". This will ensure you always have a backup of the previous version of your database, in case you accidentally delete important information for example.</p>
+<p>You can store this backup in the same or a different directory. You can change this backup's name or keep the default that will append <code>.old</code> to your database filename.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-5-backupprevious.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the Settings General section with the Backup database file before saving checkbox checked." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-5-backupprevious.webp" /></a></p>
+<h4 id="add-icons-specific-to-each-service-optional">Add icons specific to each service (optional)</h4>
+<p>If you want to use icons specific to each service for your password entries, you can go to the "Security" subsection on the left-side menu, then in "Privacy" at the bottom <em>enable</em> "Use DuckDuckGo service to download website icons". This isn't enabled by default. Then click "OK" on the lower-right.</p>
+<div class="admonition warning">
+<p class="admonition-title">Offline only?</p>
+<p>Do not enable this if you wish to use KeePassXC offline only. You will still be able to use different default icons for you entries instead of downloading specific icons from the internet.</p>
+</div>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-6-duckduckgo.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the Settings Security section with the checkbox for DuckDuckGo checked." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-6-duckduckgo.webp" /></a></p>
+<h3 id="step-3-create-a-database">Step 3: Create a database</h3>
+<p>A database in KeePassXC is an encrypted file that will contain all the passwords you register.</p>
+<p>You can use multiple separate databases with KeePassXC. For example, you could have a database for work, a database for your family, and a database for your personal accounts. All stored in separate files with separate main passwords. In the application, each database can be opened in its own tab.</p>
+<p>To create a new database, from the Welcome section click on the "Create Database" button on the lower-left.</p>
+<p>If you want to create a secondary database, you can also click on the dropdown Database menu on the application menu bar, then select "New Database".</p>
+<div class="admonition tip">
+<p class="admonition-title">Importing an existing database</p>
+<p>If you already have a password database file in the format <code>.kdbx</code>, you can import it from the Welcome page by clicking on "Import File" on the lower-right.</p>
+</div>
+<p>You will see a window pop up with "General Database Information". Pick a name and description for your database and click on "Continue" at the bottom.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-7-databasecreation.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the popup to Create a new KeePassXC database." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-7-databasecreation.webp" /></a></p>
+<p>For the second step, an "Encryption Settings" section will pop up. From there, you will be able to change the settings to your preferences. If you are not familiar with encryption algorithms, simply keep the defaults on and click "Continue" again.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-8-databaseencryption.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the popup to Create a new KeePassXC database in the Encryption Settings." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-8-databaseencryption.webp" /></a></p>
+<p>For the next step, a "Database Credentials" section will pop up. From there, you will be able to choose a main password to lock your entire password database.</p>
+<p>At this step, it is very important to <a href="https://www.privacyguides.org/en/basics/passwords-overview/#best-practices">choose a password</a> that is <strong>unique, complex, and long</strong>. This is the password that will protect all your other passwords. It should be easy to remember for you, but it must be <em>unique</em> and <em>long</em>. Ideally, pick a <strong>passphrase</strong>.</p>
+<h4 id="generate-a-main-password-optional">Generate a main password (optional)</h4>
+<p>If you do not feel inspired, you can use the "Generate password" dice button on the right to help you pick a strong password.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-9-passwordgenerate.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the popup to Generate Password." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-9-passwordgenerate.webp" /></a></p>
+<p>No matter if you invent or generate your main password/passphrase, <strong>make sure to remember this main password well</strong>. You cannot rely on your password manager for this one.</p>
+<div class="admonition success">
+<p class="admonition-title">This step isn't over yet!</p>
+<p>This is where you will be adding your YubiKey to further secure your database. Keep the "Database Credentials" application window open and <strong>continue with the step below</strong> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 4h6v8h4.84L12 19.84 4.16 12H9z"/></svg></span></p>
+</div>
+<h2 id="securing-your-database-with-a-yubikey"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m9 3c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4 9 4zm-9-5a3 3 0 0 0-3 3c0 1.31.83 2.42 2 2.83V18h2v-2h2v-2h-2v-2.17c1.17-.41 2-1.52 2-2.83a3 3 0 0 0-3-3"/></svg></span> Securing your database with a YubiKey</h2>
+<p>To add a YubiKey to secure your KeePassXC database, you will first need to prepare your YubiKey(s) for it, if it's not already ready to use with a <a href="https://docs.yubico.com/yesdk/users-manual/application-otp/challenge-response.html">Challenge-Response</a> application.</p>
+<details class="note">
+<summary>Using a YubiKey will not add authentication per se (read more)</summary>
+<p>Technically speaking, adding a YubiKey to your KeePassXC database isn't a second factor of authentication because KeePassXC isn't a service, therefore it cannot "authenticate" you.</p>
+<p>However, adding a YubiKey to secure your KeePassXC database will make decryption of your database more secure by enhancing the encryption key of your database.</p>
+<p>The Challenge-Response will remain the same each time you decrypt your database, <em>however</em>, it will change each time the database is updated (each time there is a change to it, such as adding an entry, removing an entry, adding a note, etc.). Note that the previous versions of your database could get unlocked with your main password + your key's previous Challenge-Response, however.</p>
+<p>If your key's Challenge-Response were to become compromised, you could update your database (by adding or changing an entry for example), then fully delete all previous versions of your database. This would effectively make all previous Challenge-Response obsolete to unlock your current database.</p>
+<p>You can read more on this in KeePassXC's <a href="https://keepassxc.org/docs/">documentation</a>.</p>
+</details>
+<h3 id="step-4-prepare-your-yubikeys">Step 4: Prepare your YubiKey(s)</h3>
+<p>Because you cannot register two YubiKeys for this type of application, you should first make sure that you either have a secure backup for this Challenge-Response, or that you have cloned it to two YubiKeys, or more. This is important in case you were to lose your YubiKey.</p>
+<p>If you do have two YubiKeys, we have a <a href="../yubikey-reset-and-backup/">guide on how to reset your YubiKeys entirely and set up multiple keys as a backup</a> which you may be interested in.</p>
+<p>If you only need to learn more about the Challenge-Response YubiKey application, jump to <a href="../yubikey-reset-and-backup/#step-9-create-and-clone-your-keys-challenge-response">this section</a> of the tutorial directly.</p>
+<h3 id="step-5-add-your-yubikey">Step 5: Add your YubiKey</h3>
+<p>Once your YubiKey's Challenge-Response slot has been properly configured and backed up, return to the KeePassXC's "Database Credentials" window, and click on the "Add additional protection" button in the middle.</p>
+<p>This will open a new section with "Key File" and "Challenge-Response" options. Scroll down to "Challenge-Response". Plug in your YubiKey in your computer's port (only plug one key at the time), then click on the "Add Challenge-Response" button.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-10-challengeresponse.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the popup to Create a new KeePassXC database in the Database Credentials section and highlighting the Add Challenge-Response button." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-10-challengeresponse.webp" /></a></p>
+<div class="admonition question">
+<p class="admonition-title">YubiKey or OnlyKey</p>
+<p>You can also use an OnlyKey to secure your KeePassXC database in the same way.</p>
+</div>
+<p>You should see your YubiKey's model and serial number listed, and also which YubiKey slot you have stored your Challenge-Response in. Once the correct key is selected, click on "Done" at the bottom.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-11-selectyubikey.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the popup to Create a new KeePassXC database in the Database Credentials section when a YubiKey is plugged in." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-11-selectyubikey.webp" /></a></p>
+<p>A window will pop up to ask where you want to save your password database. Name your database file and save it in a secure directory on your computer. You will then be asked to touch your YubiKey.</p>
+<p>Touch the gold part of your YubiKey to save your database file. You will have to touch your YubiKey each time you save this database, and the file will be saved each time you make changes to it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Important! Unlocking your database</p>
+<p>Each time you unlock your KeePassXC database, make sure to first plug in your YubiKey and verify that the "Use hardware key" checkbox is checked. Then, enter your main password and touch the gold part of your YubiKey when prompted.</p>
+<p>If you do not plug in your YubiKey first, an error will be triggered, and you will be unable to unlock your database.</p>
+</div>
+<h2 id="using-keepassxc"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M224 64c-44.2 0-80 35.8-80 80v48h240c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64h16v-48C80 64.5 144.5 0 224 0c57.5 0 107 33.7 130.1 82.3 7.6 16 .8 35.1-15.2 42.6s-35.1.8-42.6-15.2C283.4 82.6 255.9 64 224 64m32 320c17.7 0 32-14.3 32-32s-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32s14.3 32 32 32z"/></svg></span> Using KeePassXC</h2>
+<p>Using KeePassXC is quite simple and resembles most other password manager applications. The biggest difference is that your passwords will remain stored locally, unless you decide to back up your password database to a cloud service of your choice.</p>
+<p>All the options to manage and use your entries credentials will be located on the <em>toolbar</em> at the top.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-12-databasenew.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing an empty database section." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-12-databasenew.webp" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Locking the database</p>
+<p>At all time when the application is open, you can click in the "Lock Database" padlock button on the toolbar to lock your database. You can also adjust the settings to lock your database each time you minimize the application window (this is disabled by default).</p>
+<p>Your database will already lock itself automatically when your laptop lid is closed, the session is locked, or if your switch user (unless you disabled these options manually in settings).</p>
+</div>
+<h3 id="step-6-create-a-password-entry">Step 6: Create a password entry</h3>
+<p>To create a <a href="https://keepassxc.org/docs/KeePassXC_GettingStarted#_entry_handling">new entry</a> for a password, click on the "Add a new entry" plus-shaped button on the toolbar.</p>
+<p>From this section, you will be able to register a "Title", "Username", "Password" (or generate one), "URL" (this is important if you use the browser extension), "Tags", "Expires" date, "Notes", and more.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-13-newentry.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the Add entry section filled with information." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-13-newentry.webp" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Keep your YubiKey plugged in when changing your database</p>
+<p>When adding/removing entries or changing your database in any other way, make sure your YubiKey is plugged in. You will have to touch it each time you save changes to your database.</p>
+</div>
+<p>Before saving your entry by clicking "OK" on the lower-right, explore the options on the left-side menu.</p>
+<p>For example, in the "Advanced" section you can add additional attributes and store attachments, in the "Icon" section you can select an icon to represent your password entry (or download one from the web), in the "Auto-type" section you can enable/disable Auto-type, and in the "Properties" section you will see additional metadata for this entry.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-14-entryicons.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the Add entry section in the Icon subsection." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-14-entryicons.webp" /></a></p>
+<p>Once you have set up all the information you need for this password entry, click "OK" to save it to your database. You will be prompted to touch the gold part of your YubiKey to complete the operation. You should now see your entry listed in your database.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-15-entrycreated.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the database section with one password entry filled." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-15-entrycreated.webp" /></a></p>
+<p>Each time you need this information, you can select an entry and click on the "Copy username to clipboard" character-shaped button, or the "Copy password to clipboard" key-shaped button, or the "Copy URL to clipboard" earth-shaped button on the toolbar.</p>
+<p>The data will stay in your computer's clipboard for 10 seconds then will get cleared (unless you changed this from the default setting). Once copied, paste this information in the appropriate field for your service.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-16-useentry.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the database section with all three buttons Username, Password, and URL for entry pointed at with arrows." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-16-useentry.webp" /></a></p>
+<div class="admonition danger">
+<p class="admonition-title">Accidental deletion danger!</p>
+<p>Be careful not to mistakenly click on the dangerous "Delete Entry" trash-shaped button left to the "Copy username to clipboard" button on the toolbar!</p>
+<p>You would have to touch your YubiKey to confirm deletion, but remain careful. If you click on it accidentally, do NOT touch your YubiKey to confirm!</p>
+<p>If this accident happened to you, you might see your entry has been moved to a "Recycle Bin" directory on the left. Right-click on your entry and select "Restore Entry" at the top of the entry menu. Touch your YubiKey when prompted. You should now see your entry back in the "Root" directory on the left-side menu.</p>
+</div>
+<h3 id="step-7-back-up-your-database">Step 7: Back up your database</h3>
+<p>There are many ways to <a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_database_backup_options">back up</a> your KeePassXC database:</p>
+<h4 id="automatic-local-backup">Automatic local backup</h4>
+<p>If you enabled this setting on <a href="#step-2-adjust-the-settings">Step 2</a>, you will see a second file getting saved in the same directory with the same name but with an appended <code>.old</code> to it when you make a change to your password database.</p>
+<p>This is the previous version of your database. If you delete a password entry by mistake for example, you can easily restore it with this secondary database backup file.</p>
+<h4 id="manual-backup-from-the-application-menu">Manual backup from the application menu</h4>
+<p>When your database is unlocked, you can click on the dropdown "Database" menu in the application menu bar (not the toolbar), then select "Save Database Backup".</p>
+<p>You will have the option to rename this file and choose a different location. Then, you will be prompted to touch your YubiKey to confirm.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-17-savedatabase.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the application menu with the Database dropdown menu rolled down and the Save Database Backup option selected." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-17-savedatabase.webp" /></a></p>
+<h4 id="manual-backup-from-copying-the-database-file">Manual backup from copying the database file</h4>
+<p>Another way to keep a backup of your password database is to simply copy the database <code>.kdbx</code> file somewhere else.</p>
+<p>You can copy this file to another local directory, an external drive (ideally encrypted), or a secure <a href="https://www.privacyguides.org/en/cloud/">cloud service</a> of your choice (ideally an end-to-end encrypted one). Even if your database will be encrypted, it's always better to choose secure cloud services that offer solid end-to-end encryption.</p>
+<div class="admonition info">
+<p class="admonition-title">Entry history</p>
+<p>Within your database, KeePassXC also maintains a history of changes made to each of your entries. You can read more about this feature from KeePassXC's <a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_history">documentation</a>.</p>
+</div>
+<h3 id="step-8-install-the-browser-extension-optional">Step 8: Install the browser extension (optional)</h3>
+<p>When you need to use KeePassXC to fill credentials in a browser or an app, you can always copy the entry field you need manually, as explained on <a href="#step-6-create-a-password-entry">Step 6</a>. But if you prefer, to facilitate filling credentials for web-based services, you can take advantage of KeePassXC's <a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_browser_integration">browser extension</a>.</p>
+<p>To install the extension, go to <a href="https://keepassxc.org/download/#browser">this page</a> from the KeePassXC website and click on your browser's <em>category</em>.</p>
+<p>This means that for any Firefox-based browser, you can click on the Firefox logo, and for any Chromium-based browser, you can click on the Chrome logo. Some browsers might not be supported, however.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-18-downloadextension.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC website page to download the browser extension." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-18-downloadextension.webp" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Privacy warning</p>
+<p>Keep in mind that although browser extensions can be very convenient, they can also introduce some risk to your privacy.</p>
+<p>Even if the KeePassXC browser extension only <a href="https://keepassxc.org/privacy/">runs locally</a>, it does need to collect some information for its functionalities, and any additional extension installed has the potential to <a href="https://www.privacyguides.org/en/browser-extensions/">introduce</a> a new <abbr title="The total number of possible entry points for unauthorized access to a system">attack surface</abbr>.</p>
+<p>Additionally, the more unique your combination of hardware, software, and browser extensions is, the more you are vulnerable to <a href="https://neat.tube/w/fdszTYBKzeoE3ySQUGTzmo">browser fingerprinting</a>. Always be mindful to consider your specific threat model when installing new browser extensions.</p>
+</div>
+<p>Once you have installed the extension for your browser, go back to the KeePassXC application and click on the "Settings" gear button on toolbar. Click on "Browser Integration" on the left-side menu and check the box for "Enable browser integration" at the top of the section.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-19-browserintegration.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the KeePassXC application showing the Settings section in the Browser Integration subsection with the checkbox for Enable browser integration checked." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-19-browserintegration.webp" /></a></p>
+<p>From this <a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_configure_keepassxc_browser">section</a>, check the box for the browser(s) or browser type(s) you have installed the extension on. You can also enable the option "Search in all opened databases for matching credentials" if you are using multiple databases. Then click "OK" on the lower-right to save these options.</p>
+<p>Make sure your KeePassXC database is <em>unlocked</em>, then <strong>restart your browser</strong>.</p>
+<h4 id="if-you-encounter-an-error-while-running-the-extension">If you encounter an error while running the extension</h4>
+<div class="admonition info">
+<p class="admonition-title">You don't have to use the extension</p>
+<p>If you are not able to make the KeePassXC extension work with the browser you use, you can still use KeePassXC by manually copy-pasting your entries' credentials. It can even be a more secure and more private way to use it.</p>
+</div>
+<p>After installing the extension and enabling it from the KeePassXC settings, you might encounter an error where the KeePassXC icon in a credential field is <a href="https://keepassxc.org/docs/KeePassXC_GettingStarted#_using_the_browser_extension">marked</a> with a red "<strong>X</strong>", a red "<strong>!</strong>", or a padlock icon.</p>
+<p>If this happens, try the following:</p>
+<ol>
+<li>
+<p>Make sure your KeePassXC application is open, and your database is <em>unlocked</em>.</p>
+</li>
+<li>
+<p>Check if your YubiKey is <em>plugged</em> in your computer's port.</p>
+</li>
+<li>
+<p>Verify that your browser is <em>compatible</em> and does not use protections that could block the extension from working.</p>
+</li>
+<li>
+<p>Follow KeePassXC's <a href="https://keepassxc.org/docs/KeePassXC_UserGuide#_using_the_browser_extension">instructions</a> to connect your KeePassXC database to your KeePassXC browser extension.</p>
+</li>
+<li>
+<p>Look for possible solutions from KeePassXC's <a href="https://github.com/keepassxreboot/keepassxc-browser/wiki/Troubleshooting-guide">troubleshooting guide</a>.</p>
+</li>
+</ol>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-20-errorconnection.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the CryptPad website login page showing in the Username field the KeePassXC logo greyed out and marked with a red &quot;X&quot;." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-20-errorconnection.webp" /></a></p>
+<h4 id="filling-credentials-using-the-extension">Filling credentials using the extension</h4>
+<div class="admonition note">
+<p class="admonition-title">The database is connected but the logo is greyed out</p>
+<p>If you do not have an entry for this website, or if you have not registered a URL (or the correct one) for this entry, your will see the KeePassXC logo greyed out. This simply means your database could not find any credentials matching this website's URL.</p>
+</div>
+<p>Once configured and connected properly, you should see a green KeePassXC logo in the credential fields, when you have a corresponding entry in your database.</p>
+<p>Click on the green KeePassXC logo to populate all credential fields automatically.</p>
+<p><a class="glightbox" href="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-21-credentialsextension.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of the CryptPad website login page showing in the Username field the KeePassXC logo in green and both the credentials for Username and Password are filled." src="../../../../assets/images/installing-keepassxc-and-yubikey/keepassxc-21-credentialsextension.webp" /></a></p>
+<div class="admonition success">
+<p class="admonition-title">Congratulation! You're in!</p>
+<p>You are now logged in, thanks to KeePassXC!</p>
+</div>
+<h2 id="consider-supporting-keepassxc"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 17q.86 0 1.45.6t.58 1.4L14 22l-7-2v-9h1.95l7.27 2.69q.78.31.78 1.12 0 .47-.34.82t-.86.37H13l-1.75-.67-.33.94L13 17zM16 3.23Q17.06 2 18.7 2q1.36 0 2.3 1t1 2.3q0 1.03-1 2.46t-1.97 2.39T16 13q-2.08-1.89-3.06-2.85t-1.97-2.39T10 5.3q0-1.36.97-2.3t2.34-1q1.6 0 2.69 1.23M.984 11H5v11H.984z"/></svg></span> Consider supporting KeePassXC</h2>
+<p>KeePassXC is a free and open-source project built by the community. If you use and love this application, it's always a great idea to support the project if you can.</p>
+<p>Here are a few ways you can help keep KeePassXC thriving:</p>
+<ul>
+<li><a href="https://github.com/keepassxreboot/keepassxc/blob/develop/.github/CONTRIBUTING.md">Contributing on GitHub</a></li>
+<li><a href="https://fosstodon.org/@keepassxc">Following KeePassXC on Mastodon</a></li>
+<li><a href="https://keepassxc.org/donate/">Donating to KeePassXC to help with the development and maintenance of the application</a></li>
+</ul>
+<p>For more information on KeePassXC and its many features, you can consult the official <a href="https://keepassxc.org/docs/">Documentation and FAQ</a> or even have a look at KeePassXC's <a href="https://github.com/keepassxreboot/keepassxc">code</a> on GitHub.</p>
+<p><small aria-hidden="true">Unless credited otherwise, all screenshots from: Privacy Guides</small></p>
+<hr />
+<p><strong>Share this page:</strong><br />
+<a class="md-button" href="https://x.com/intent/tweet?text=Blog%20Post%20Title%20Placeholder&amp;url=https%3A//murateren.github.io/mynotes/blog/2025/05/01/installing-keepassxc-and-yubikey/&amp;hashtags=&amp;via=erenm" style="margin-right: 1em;">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span></a>
+<a class="md-button" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//murateren.github.io/mynotes/blog/2025/05/01/installing-keepassxc-and-yubikey/&amp;title=Blog%20Post%20Title%20Placeholder&amp;summary=This%20tutorial%20demonstrates%20how%20to%20install%20the%20local-only%20password%20manager%20KeePassXC%20and%20secure%20a%20password%20database%20with%20YubiKey.">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg></span></a></p>
+</div>
+
+<!-- Source file information -->
+<!-- Render date of last update -->
+
+
+<!-- Render date of creation -->
+
+
+<!-- ---------------------------------------------------------------------- -->
+
+<!-- Render authors -->
+
+
+
+<!-- ---------------------------------------------------------------------- -->
+
+<!-- Determine date of last update -->
+
+  
+
+  <!-- Determine date of creation -->
+  
+
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+
+
+  
+
+
+
+
+
+
+
+<!-- Comment system -->
+
+    
+
+    <!-- 
+      <div>
+        <hr>
+        <p><strong><a href="https://discuss.privacyguides.net/c/announcements/articles/10">
+          <span class="twemoji">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.103 0C18.666 0 24 5.485 24 11.997c0 6.51-5.33 11.99-11.9 11.99L0 24V11.79C0 5.28 5.532 0 12.103 0m.116 4.563a7.4 7.4 0 0 0-6.337 3.57 7.25 7.25 0 0 0-.148 7.22L4.4 19.61l4.794-1.074a7.42 7.42 0 0 0 8.136-1.39 7.26 7.26 0 0 0 1.737-7.997 7.375 7.375 0 0 0-6.84-4.585z"></path></svg>
+          </span> Join our forum
+        </a>
+        to comment on this article.</strong></p>
+        <p><em>Thank you for reading, and please consider sharing this post with your friends.
+          Privacy Guides is an independent, nonprofit media outlet. We don't have ads or sponsors, so if you liked this work your <a href="https://donate.magicgrants.org/privacyguides">donation</a> would be greatly appreciated.
+          Have a question, comment, or tip for us? You can securely <a href="https://www.privacyguides.org/en/about/#contact-us">contact us</a> at <code>@privacyguides.01</code> on Signal.</em></p>
+      </div>
+    </article>
+  </div>
+ -->
+
+    
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../integrating-metadata-removal/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Blog Post Title Placeholder">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Blog Post Title Placeholder
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../installing-and-using-tails/" class="md-footer__link md-footer__link--next" aria-label="Next: Blog Post Title Placeholder">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Blog Post Title Placeholder
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+
+<!-- Copyright information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight" title="This version of Privacy Guides was built on May 22, 2025 at 11:17AM">
+      Footer Intro Text.
+      <br />
+      Footer Note Text.
+      <br />
+      <a href='/license' aria-label="More information about our website license.">
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="m245.83 214.87-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86m143.05 0-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86M247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248m.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82"/></svg></span>
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3m-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35q0 34.5-34.5 34.5c-34.5 0-34.5-11.5-34.5-34.5M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8m.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3"/></svg></span>
+        
+          <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8m.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3M137.7 221c13-83.9 80.5-95.7 108.9-95.7 99.8 0 127.5 82.5 127.5 134.2 0 63.6-41 132.9-128.9 132.9-38.9 0-99.1-20-109.4-97h62.5c1.5 30.1 19.6 45.2 54.5 45.2 23.3 0 58-18.2 58-82.8 0-82.5-49.1-80.6-56.7-80.6q-49.65 0-55.8 43.8h18.2l-49.2 49.2-49-49.2z"/></svg></span>
+        
+      </a>
+      2025 Murat Eren.
+      
+        <a href="https://murateren.github.io/mynotes/privacy/">
+          <strong>Privacy notice.</strong>
+        </a>
+      
+    </div>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:murate@gmail.com?subject=Support%20Request&body=Hi%20team%2C%0A%0AI%20need%20help%20with..." target="_blank" rel="noopener" title="Mail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/erenm" target="_blank" rel="noopener" title="Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/murateren" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "content.action.edit", "content.tabs.link", "content.tooltips", "search.highlight", "toc.follow", "navigation.prune", "navigation.tabs.sticky", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.preview", "navigation.top", "search.share", "search.suggest", "content.icon.fontawesome", "content.action.view", "content.code.copy", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../../../assets/javascripts/randomize-element.js?v=20250306" defer></script>
+      
+        <script src="../../../../../assets/javascripts/feedback.js?v=20250306" defer></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

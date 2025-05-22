@@ -1,0 +1,268 @@
+@font-face {
+    font-family: 'Georgia';
+    src: local("Georgia");
+    font-weight: normal !important
+}
+
+@font-face {
+    font-family: 'Bower';
+    src: local("Bower Bold"),url("../brand/fonts/McKinsey/Bower-Bold.woff2") format("woff2"),url("../brand/fonts/McKinsey/Bower-Bold.woff") format("woff");
+    font-display: block;
+    font-weight: 500;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Regular"),url("../brand/fonts/McKinsey/McKinseySans-Regular.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Regular.woff") format("woff");
+    font-display: block;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Italic"),url("../brand/fonts/McKinsey/McKinseySans-Italic.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Italic.woff") format("woff");
+    font-display: block;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Medium"),url("../brand/fonts/McKinsey/McKinseySans-Medium.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Medium.woff") format("woff");
+    font-display: block;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: fallback
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Medium Italic"),url("../brand/fonts/McKinsey/McKinseySans-MediumItalic.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-MediumItalic.woff") format("woff");
+    font-display: block;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Light"),url("../brand/fonts/McKinsey/McKinseySans-Light.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Light.woff") format("woff");
+    font-display: block;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Light Italic"),url("../brand/fonts/McKinsey/McKinseySans-LightItalic.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-LightItalic.woff") format("woff");
+    font-display: block;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: italic
+}
+
+
+.light-text {
+  font-family: 'McKinsey Sans', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.md-button, .md-social {
+    font-family: 'McKinsey Sans', sans-serif !important;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+
+
+.label-underline {
+  padding-left: calc(var(--mdc-size-spacing-4) / 2);
+  padding-right: calc(var(--mdc-size-spacing-4) / 2);
+  text-decoration: none;
+  transition: 120ms linear;
+  transition-property: background-color, color;
+  color: currentcolor;
+  border-bottom: 2px solid var(--link-inline-default-border-color);
+  line-height: 1; /* Adjusted for better readability */
+}
+
+.label-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--link-inline-default-background-hover-color);
+}
+
+
+/* Only apply underline to links with this specific class */
+.link-underline {
+  padding-left: calc(var(--mdc-size-spacing-4) / 2);
+  padding-right: calc(var(--mdc-size-spacing-4) / 2);
+  text-decoration: none;
+  transition: 120ms linear;
+  transition-property: background-color, color;
+  color: currentcolor;
+  border-bottom: 2px solid var(--link-inline-default-border-color);
+  line-height: 1; /* Adjusted for better readability */
+}
+
+.link-underline:hover {
+    text-decoration: none;
+    color: var(--link-inline-default-hover-color);
+    border-color: var(--link-inline-default-border-hover-color);
+    background-color: var(--link-inline-default-background-hover-color);
+}
+
+
+/* Solid underline for links with no specific class */
+.md-content a:not([class]){
+/*.md-content a:not([class]):not(:has(img)):not(.footnote-ref):not(.footnote-backref) { */
+  padding-left: calc(var(--mdc-size-spacing-4) / 2);
+  padding-right: calc(var(--mdc-size-spacing-4) / 2);
+  text-decoration: none;
+  transition: 120ms linear;
+  transition-property: background-color, color;
+  color: currentcolor;
+  border-bottom: 2px solid var(--link-inline-default-border-color);
+  line-height: 1;
+}
+
+
+.md-content a:not([class]):hover{
+/* .md-content a:not([class]):not(:has(img)):not(.footnote-ref):not(.footnote-backref):hover { */
+    text-decoration: none;
+    color: var(--link-inline-default-hover-color);
+    border-color: var(--link-inline-default-border-hover-color);
+    background-color: var(--link-inline-default-background-hover-color);
+}
+
+/* Define the underline color if not already defined in your theme */
+:root {
+    --mdc-color-status-dark-neutral: #1B1B19;
+    --mdc-color-status-light-neutral: #EBEBF6;
+    --mdc-color-status-dark-blue: #1E32E6;
+    --mdc-color-status-light-blue: #E6ECFF;
+    --mdc-color-status-dark-yellow: #6A4F00;
+    --mdc-color-status-yellow: #FFD048;
+    --mdc-color-status-light-yellow: #FFF3CE;
+    --mdc-color-status-dark-red: #A41523;
+    --mdc-color-status-red: #D51F31;
+    --mdc-color-status-light-red: #FDE7E7;
+    --mdc-color-status-dark-green: #00611B;
+    --mdc-color-status-green: #007F26;
+    --mdc-color-status-light-green: #d1f4dd;
+    --mdc-color-neutral-black: #000000;
+    --mdc-color-neutral-dark-neutral: #1B1B19;
+    --mdc-color-neutral-gray-80: #333333;
+    --mdc-color-neutral-gray-70: #4D4D4D;
+    --mdc-color-neutral-gray-60: #666666;
+    --mdc-color-neutral-gray-54: #757575;
+    --mdc-color-neutral-gray-30: #B3B3B3;
+    --mdc-color-neutral-gray-18: #D0D0D0;
+    --mdc-color-neutral-gray-10: #E6E6E6;
+    --mdc-color-neutral-gray-06: #F0F0F0;
+    --mdc-color-neutral-gray-04: #F5F5F5;
+    --mdc-color-neutral-gray-03: #F7F7F7;
+    --mdc-color-neutral-gray-02: #FAFAFA;
+    --mdc-color-neutral-hover-gray: #F1F3FD;
+    --mdc-color-neutral-active-gray: #E3E6FC;
+    --mdc-color-neutral-white: #FFFFFF;
+    --mdc-color-functional-mckinsey-orange: #FAA082;
+    --mdc-color-functional-mckinsey-red: #E5546C;
+    --mdc-color-functional-mckinsey-pink: #E6A0C8;
+    --mdc-color-functional-mckinsey-purple: #8C5AC8;
+    --mdc-color-functional-mckinsey-turquoise: #3C96B4;
+    --mdc-color-functional-mckinsey-pale-blue: #AAE6F0;
+    --mdc-color-functional-blue-transition-4: #71D2F1;
+    --mdc-color-functional-blue-transition-3: #39BDF3;
+    --mdc-color-functional-blue-transition-2: #027AB1;
+    --mdc-color-functional-blue-transition-1: #034B6F;
+    --mdc-color-palette-cyan: #00A9F4;
+    --mdc-color-palette-deep-blue: #051C2C;
+    --mdc-color-palette-electric-blue: #2251FF;
+    --mdc-color-electric-blue-50: #D9E8FC;
+    --mdc-color-electric-blue-100: #CCE1FF;
+    --mdc-color-electric-blue-200: #99C4FF;
+    --mdc-color-electric-blue-300: #6E9DFF;
+    --mdc-color-electric-blue-400: #2972FF;
+    --mdc-color-electric-blue-500: #2251FF;
+    --mdc-color-electric-blue-600: #1C44DC;
+    --mdc-color-electric-blue-700: #1537BA;
+    --mdc-color-electric-blue-800: #0E2B99;
+    --mdc-color-electric-blue-900: #061F79;
+    --mdc-color-cyan-100: #CCF2FF;
+    --mdc-color-cyan-200: #99E6FF;
+    --mdc-color-cyan-300: #6ECBF9;
+    --mdc-color-cyan-400: #34B4F4;
+    --mdc-color-cyan-500: #00A9F4;
+    --mdc-color-cyan-600: #0291DC;
+    --mdc-color-cyan-700: #0679C3;
+    --mdc-color-cyan-800: #0863AA;
+    --mdc-color-cyan-900: #084D91;
+    --mdc-color-deep-blue-200: #82A6C9;
+    --mdc-color-deep-blue-300: #5380AC;
+    --mdc-color-deep-blue-400: #386694;
+    --mdc-color-deep-blue-500: #2B5580;
+    --mdc-color-deep-blue-600: #1B455E;
+    --mdc-color-deep-blue-700: #103559;
+    --mdc-color-deep-blue-800: #082644;
+    --mdc-color-deep-blue-900: #051C2C;
+    --mdc-color-deep-blue-1000: #031119;
+
+    --mdc-color-primary: var(--mdc-color-palette-electric-blue);
+    --link-inline-default-hover-color: var(--mdc-color-neutral-white);
+    --link-inline-default-border-color: var(--mdc-color-primary);
+
+
+    --link-inline-default-color: var(--mdc-color-neutral-gray-80)
+    --link-inline-default-hover-color: var(--mdc-color-neutral-white);
+    --link-inline-default-border-color: var(--mdc-color-primary);
+    --link-inline-default-border-hover-color: var(--mdc-color-primary);
+    --link-inline-default-background-hover-color: var(--mdc-color-primary);
+
+    --mdc-size-spacing-4: 0.25rem;
+    
+    --md-text-font: 'McKinsey Sans', sans-serif;
+    --md-code-font: 'McKinsey Sans', monospace;
+}
+
+.md-content {
+  font-weight: 300;
+}
+
+h1, h2, h3, .md-header__topic {
+    font-family: "Bower", serif;
+    color: var(--md-accent-fg-color);
+}
+
+.md-typeset h1 {
+    color: var(--md-accent-fg-color);
+}
+
+.md-typeset .md-button {
+  font-family: 'McKinsey Sans', sans-serif;
+  font-weight: 500; /* Regular */
+  color: var(--mdc-color-palette-electric-blue);
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+.md-typeset .md-button:focus,
+.md-typeset .md-button:hover {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-bg-color);
+}
+

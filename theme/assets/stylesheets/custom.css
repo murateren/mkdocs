@@ -1,21 +1,82 @@
 @font-face {
-  font-family: 'Bower';
-  src: url("../brand/fonts/McKinsey/Bower-Bold.woff2") format("woff");
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Georgia';
+    src: local("Georgia");
+    font-weight: normal !important
 }
 
- @font-face {
-  font-family: 'McKinsey';
-  src: url("../brand/fonts/McKinsey/McKinseySans-Light.woff2") format("woff");
-  font-display: swap;
-  font-weight: normal;
+@font-face {
+    font-family: 'Bower';
+    src: local("Bower Bold"),url("../brand/fonts/McKinsey/Bower-Bold.woff2") format("woff2"),url("../brand/fonts/McKinsey/Bower-Bold.woff") format("woff");
+    font-display: block;
+    font-weight: 500;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Regular"),url("../brand/fonts/McKinsey/McKinseySans-Regular.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Regular.woff") format("woff");
+    font-display: block;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Italic"),url("../brand/fonts/McKinsey/McKinseySans-Italic.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Italic.woff") format("woff");
+    font-display: block;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Medium"),url("../brand/fonts/McKinsey/McKinseySans-Medium.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Medium.woff") format("woff");
+    font-display: block;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: fallback
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Medium Italic"),url("../brand/fonts/McKinsey/McKinseySans-MediumItalic.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-MediumItalic.woff") format("woff");
+    font-display: block;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Light"),url("../brand/fonts/McKinsey/McKinseySans-Light.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-Light.woff") format("woff");
+    font-display: block;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'McKinsey Sans';
+    src: local("McKinsey Sans TT Light Italic"),url("../brand/fonts/McKinsey/McKinseySans-LightItalic.woff2") format("woff2"),url("../brand/fonts/McKinsey/McKinseySans-LightItalic.woff") format("woff");
+    font-display: block;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: italic
+}
+
+
+.light-text {
+  font-family: 'McKinsey Sans', sans-serif;
+  font-weight: 300;
   font-style: normal;
 }
 
 .md-button, .md-social {
-    font-family: 'McKinsey', sans-serif !important;
+    font-family: 'McKinsey Sans', sans-serif !important;
+    font-weight: 300;
+    font-style: normal;
   }
 
 
@@ -42,8 +103,8 @@
 }
 
 
-/* Solid underline for links with no specific class */
-.md-content a:not([class]){
+/* Only apply underline to links with this specific class */
+.link-underline {
   padding-left: calc(var(--mdc-size-spacing-4) / 2);
   padding-right: calc(var(--mdc-size-spacing-4) / 2);
   text-decoration: none;
@@ -54,8 +115,30 @@
   line-height: 1; /* Adjusted for better readability */
 }
 
+.link-underline:hover {
+    text-decoration: none;
+    color: var(--link-inline-default-hover-color);
+    border-color: var(--link-inline-default-border-hover-color);
+    background-color: var(--link-inline-default-background-hover-color);
+}
+
+
+/* Solid underline for links with no specific class */
+.md-content a:not([class]){
+/*.md-content a:not([class]):not(:has(img)):not(.footnote-ref):not(.footnote-backref) { */
+  padding-left: calc(var(--mdc-size-spacing-4) / 2);
+  padding-right: calc(var(--mdc-size-spacing-4) / 2);
+  text-decoration: none;
+  transition: 120ms linear;
+  transition-property: background-color, color;
+  color: currentcolor;
+  border-bottom: 2px solid var(--link-inline-default-border-color);
+  line-height: 1;
+}
+
 
 .md-content a:not([class]):hover{
+/* .md-content a:not([class]):not(:has(img)):not(.footnote-ref):not(.footnote-backref):hover { */
     text-decoration: none;
     color: var(--link-inline-default-hover-color);
     border-color: var(--link-inline-default-border-hover-color);
@@ -148,10 +231,13 @@
 
     --mdc-size-spacing-4: 0.25rem;
     
-    --md-text-font: 'McKinsey', sans-serif;
-    --md-code-font: 'McKinsey', monospace;
+    --md-text-font: 'McKinsey Sans', sans-serif;
+    --md-code-font: 'McKinsey Sans', monospace;
 }
 
+.md-content {
+  font-weight: 300;
+}
 
 h1, h2, h3, .md-header__topic {
     font-family: "Bower", serif;
@@ -163,6 +249,8 @@ h1, h2, h3, .md-header__topic {
 }
 
 .md-typeset .md-button {
+  font-family: 'McKinsey Sans', sans-serif;
+  font-weight: 500; /* Regular */
   color: var(--mdc-color-palette-electric-blue);
 }
 
